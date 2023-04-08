@@ -1,0 +1,52 @@
+body {
+  background-color: rgba(65, 80, 60, 1) !important;
+}
+
+.filterButton {
+  position: fixed;
+  right: .75vh;
+  top: 12vh;
+  z-index: 9998;
+  background-color: #dc4c10 !important;
+  border: white;
+  height: 48px; /* Changed from 4vw */
+  width: 60px; /* Changed from 5vw */
+  border-radius: 10px; /* Changed from 1vw */
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.8);
+}
+
+.filter-form-container {
+  position:fixed;
+  right: 3.5vh;
+  top: 16vh;
+  width: 150px;
+  border-radius: 3px;
+  z-index: 9999;
+  background-color: #1b3b01;
+  color: white;
+  border: 1px solid black;
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.8);
+}
+
+.filterLabel {
+  margin-top: 7px;
+  margin-bottom: 0;
+}
+
+.filterClearButton {
+  margin-top: 7px;
+  margin-bottom: 7px;
+  background-color: black;
+  border-color: #ec4708;
+}
+
+.artist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 600px);
+  grid-gap: 15px;
+  row-gap: 25px;
+  justify-content: center;
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+}

@@ -1,0 +1,59 @@
+.card {
+  width: 600px;
+  margin: 0;
+  border-radius: 50px !important;
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.image-shadow {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.label {
+  margin: 0;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.content {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.list-group-item {
+  margin: 0;
+  height: 50px;
+}
+
+/*Alternating coloring of listgroup items*/
+.list-group-item:nth-child(odd) {
+  background-color: #eeeeee;
+}
+/*Alternating coloring of listgroup items*/
+.list-group-item:nth-child(even) {
+  background-color: #cccccc;
+}
+
+.customHeader {
+  height: 100px;
+}
+
+.genres .instruments{
+  height: 60px;
+}
+
+.skill-level {
+  height: 30px;
+}
+
+.about {
+  height: 100px;
+  margin: 0;
+}
+
+.joinButtonSpan > .joinButton {
+  background-color: #ec4708;
+  box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.5);
+}
