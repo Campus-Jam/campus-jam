@@ -111,15 +111,17 @@ const BrowseArtists = () => {
   return (ready ? (
     <Container className="py-3">
 
-      <div className="filter">
-        <Button onClick={handleFilterClick}>
-          <Filter size="3vw" />
+      {/* FILTER BUTTON */}
+      <div>
+        <Button onClick={handleFilterClick} className="filterButton">
+          <Filter size="24px" />
         </Button>
         {showFilter && (
           <ArtistFilterForm filter={filter} setFilter={setFilter} />
         )}
       </div>
 
+      {/* ARTIST CARDS */}
       <div className="artist-grid">
         {artists
           .filter((artist) => {

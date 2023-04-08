@@ -2,42 +2,41 @@ body {
   background-color: rgba(65, 80, 60, 1) !important;
 }
 
-.filter {
+.filterButton {
   position: fixed;
-  right: 80px;
-  top: 80px;
-  z-index: 9999;
-}
-
-.filter > button {
-  background-color: #dc4c10;
+  right: .75vh;
+  top: 12vh;
+  z-index: 9998;
+  background-color: #dc4c10 !important;
   border: white;
-  height: 4vw;
-  width:  5vw;
+  height: 48px; /* Changed from 4vw */
+  width: 60px; /* Changed from 5vw */
+  border-radius: 10px; /* Changed from 1vw */
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.8);
 }
 
-/*.form-select {*/
-/*  width: 100%;*/
-/*  max-width: 300px;*/
-/*  margin-bottom: 1rem;*/
-/*  background-color: #328627;*/
-/*  color: white;*/
-/*}*/
-
 .filter-form-container {
-  background-color: #254d00;
-  color: white;
-  border: 1px solid #dee2e6;
-  border-radius: 5px;
-  padding: 1rem;
   position:fixed;
-  z-index: 9998;
+  right: 3.5vh;
+  top: 16vh;
+  width: 150px;
+  border-radius: 3px;
+  z-index: 9999;
+  background-color: #1b3b01;
+  color: white;
+  border: 1px solid black;
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.8);
 }
 
-.filterButton {
-  margin-top: 20px;
-  background-color: black !important;
+.filterLabel {
+  margin-top: 7px;
+  margin-bottom: 0;
+}
+
+.filterClearButton {
+  margin-top: 7px;
+  margin-bottom: 7px;
+  background-color: black;
   border-color: #ec4708;
 }
 
