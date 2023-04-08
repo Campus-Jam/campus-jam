@@ -1,54 +1,55 @@
-.card {
-  width: 300px;
+.artistCard .card {
+  width: 300px !important;
   margin: 0;
   border-radius: 50px !important;
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
   overflow: hidden;
 }
 
-.image-shadow {
+.artistCard .image-shadow {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   overflow: hidden;
 }
 
-.label {
+.artistCard .label {
   margin: 0;
   display: flex;
   justify-content: flex-start;
+  font-weight: bolder;
 }
 
-.content {
+.artistCard .content {
   display: flex;
   justify-content: flex-end;
 }
 
-.list-group-item {
+.artistCard .list-group-item {
   margin: 0;
   height: 50px;
 }
 
 /*Alternating coloring of listgroup items*/
-.list-group-item:nth-child(odd) {
+.artistCard .list-group-item:nth-child(odd) {
   background-color: #eeeeee;
 }
 /*Alternating coloring of listgroup items*/
-.list-group-item:nth-child(even) {
+.artistCard .list-group-item:nth-child(even) {
   background-color: #cccccc;
 }
 
-.customHeader {
+.artistCard .customHeader {
   height: 100px;
 }
 
-.genres .instruments{
+.artistCard .genres .instruments{
   height: 60px;
 }
 
-.skill-level {
+.artistCard .skill-level {
   height: 30px;
 }
 
-.bio {
+.artistCard .bio {
   height: 155px;
   margin: 0;
 }

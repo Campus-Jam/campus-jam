@@ -1,8 +1,8 @@
-body {
+.browseArtist {
   background-color: rgba(65, 80, 60, 1) !important;
 }
 
-.filterButton {
+.browseArtist .filterButton {
   position: fixed;
   right: .75vh;
   top: 12vh;
@@ -15,7 +15,7 @@ body {
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.8);
 }
 
-.filter-form-container {
+.browseArtist .filter-form-container {
   position:fixed;
   right: 3.5vh;
   top: 16vh;
@@ -28,19 +28,19 @@ body {
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.8);
 }
 
-.filterLabel {
+.browseArtist .filterLabel {
   margin-top: 7px;
   margin-bottom: 0;
 }
 
-.filterClearButton {
+.browseArtist .filterClearButton {
   margin-top: 7px;
   margin-bottom: 7px;
   background-color: black;
   border-color: #ec4708;
 }
 
-.artist-grid {
+.browseArtist .artist-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, 300px);
   grid-gap: 15px;

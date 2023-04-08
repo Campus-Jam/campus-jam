@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import React, { useState } from 'react';
 // import { Meteor } from 'meteor/meteor';
 import './BrowseGigsStyle.css';
-import { Container } from 'react-bootstrap';
+import { Button, Container } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
+import { Filter } from 'react-bootstrap-icons';
 import LoadingSpinner from '../components/LoadingSpinner';
 import GigCard from '../components/GigCard';
+import GigFilterForm from '../components/GigFilterForm';
 
 const dummyGigs = [{
   title: 'Summer Festival',
@@ -61,6 +63,8 @@ const dummyGigs = [{
 ];
 
 const BrowseGigs = () => {
+  const [showFilter, setShowFilter] = useState(false);
+  const [filter, setFilter] = useState({ instrument: '', genre: '', skillLevel: '' });
 
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, gigs } = useTracker(() => {
@@ -74,19 +78,44 @@ const BrowseGigs = () => {
     };
   }, []);
 
+  const handleFilterClick = () => {
+    setShowFilter(!showFilter);
+  };
+
   return (ready ? (
-    <Container className="py-3">
+    <div className="browseGigs">
+      <Container className="py-3">
+        {/* FILTER BUTTON */}
+        <div>
+          <Button onClick={handleFilterClick} className="filterButton">
+            <Filter size="24px" />
+          </Button>
+          {showFilter && (
+            <GigFilterForm filter={filter} setFilter={setFilter} />
+          )}
+        </div>
 
-      {/* ARTIST CARDS */}
-      <div className="artist-grid">
-        {gigs.map((gig) => (
-          <div key={gig._id}>
-            <GigCard gigEntry={gig} />
-          </div>
-        ))}
-      </div>
+        {/* GIG CARDS */}
+        <div className="gig-grid">
+          {gigs
+            .filter((gig) => {
+              if (filter.instrument && !gig.instruments.includes(filter.instrument)) {
+                return false;
+              }
+              if (filter.genre && !gig.genres.includes(filter.genre)) {
+                return false;
+              }
+              return !(filter.skillLevel && gig.skillLevel !== filter.skillLevel);
 
-    </Container>
+            })
+            .map((gig) => (
+              <div key={gig._id}>
+                <GigCard gigEntry={gig} />
+              </div>
+            ))}
+        </div>
+      </Container>
+    </div>
   ) :
     <LoadingSpinner />
   );
