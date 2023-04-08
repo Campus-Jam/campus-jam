@@ -1,10 +1,49 @@
 body {
-  background-color: rgba(65, 80, 60, 1);
+  background-color: rgba(65, 80, 60, 1) !important;
+}
+
+.filter {
+  position: fixed;
+  right: 80px;
+  top: 80px;
+  z-index: 9999;
+}
+
+.filter > button {
+  background-color: #dc4c10;
+  border: white;
+  height: 4vw;
+  width:  5vw;
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.8);
+}
+
+/*.form-select {*/
+/*  width: 100%;*/
+/*  max-width: 300px;*/
+/*  margin-bottom: 1rem;*/
+/*  background-color: #328627;*/
+/*  color: white;*/
+/*}*/
+
+.filter-form-container {
+  background-color: #254d00;
+  color: white;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  padding: 1rem;
+  position:fixed;
+  z-index: 9998;
+}
+
+.filterButton {
+  margin-top: 20px;
+  background-color: black !important;
+  border-color: #ec4708;
 }
 
 .artist-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, 300px);
   grid-gap: 15px;
   row-gap: 25px;
   justify-content: center;
