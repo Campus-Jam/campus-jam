@@ -12,7 +12,7 @@ const dummyArtistData = [{
   firstName: 'Albert', lastName: 'Haynes', email: 'albert.h@foo.com',
   image: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXw3NjA4Mjc3NHx8ZW58MHx8fHw%3D&w=1000&q=80',
   instruments: ['Guitar'], skillLevel: 'Intermediate',
-  genres: ['Blues', 'Psychadelic Rock'],
+  genres: ['Blues', 'Psychedelic Rock'],
   influences: ['Hendrix', 'Vaughn', 'B.B. King', 'The Doors', 'Grateful Dead'],
   bio: 'I have been practicing guitar for a little over a year now.  I love playing gnarly riffs over some heavy bass and looking forward to the jam sessions to come!',
 },

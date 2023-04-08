@@ -8,7 +8,7 @@ const instruments = [
 ];
 
 const genres = [
-  'Blues', 'Psychadelic Rock', 'Hawaiian', 'Reggae', 'Funk', 'Jazz', 'Soul',
+  'Blues', 'Psychedelic Rock', 'Hawaiian', 'Reggae', 'Funk', 'Jazz', 'Soul',
   'Rock', 'Pop', 'Indie', 'Classical', 'Folk', 'World', 'Metal', 'Punk', 'R&B',
 ];
 
