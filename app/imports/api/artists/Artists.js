@@ -1,7 +1,6 @@
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 
-/** Encapsulates state and variable values for this collection. */
 class ArtistsCollection {
   constructor() {
     // The name of this collection.
@@ -10,16 +9,17 @@ class ArtistsCollection {
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      firstName: { type: String },
-      lastName: { type: String },
-      image: { type: String },
-      instruments: { type: Array },
+      firstName: { type: String, optional: false },
+      lastName: { type: String, optional: false },
+      email: { type: String, optional: false },
+      image: { type: String, optional: true },
+      instruments: { type: Array, optional: true },
       'instruments.$': { type: String },
-      skillLevel: { type: String, allowedValues: ['Beginner', 'Intermediate', 'Advanced'] },
+      skillLevel: { type: String, allowedValues: ['Beginner', 'Intermediate', 'Advanced'], optional: true },
       genres: { type: Array },
-      'genres.$': { type: String },
+      'genres.$': { type: String, optional: true },
       influences: { type: Array },
-      'influences.$': { type: String },
+      'influences.$': { type: String, optional: true },
       bio: { type: String, optional: true },
     });
 
@@ -27,7 +27,7 @@ class ArtistsCollection {
     this.collection.attachSchema(this.schema);
     // Define names for publications and subscriptions
     this.userPublicationName = `${this.name}.publication.user`;
-    this.adminPublicationName = `${this.name}.publication.admin`;
+    // this.adminPublicationName = `${this.name}.publication.admin`;
   }
 }
 
