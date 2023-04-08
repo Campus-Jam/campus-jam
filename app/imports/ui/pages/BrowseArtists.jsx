@@ -1,18 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import { Meteor } from 'meteor/meteor';
 import './BrowseArtistsStyle.css';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Container, Button } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
+import { Filter } from 'react-bootstrap-icons';
 import LoadingSpinner from '../components/LoadingSpinner';
 import ArtistCard from '../components/ArtistCard';
+import ArtistFilterForm from '../components/ArtistFilterForm';
 
 const dummyArtistData = [{
   firstName: 'Albert', lastName: 'Haynes', email: 'albert.h@foo.com',
   image: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXw3NjA4Mjc3NHx8ZW58MHx8fHw%3D&w=1000&q=80',
   instruments: ['Guitar'], skillLevel: 'Intermediate',
-  genres: ['Blues', 'Psychedellic Rock'],
+  genres: ['Blues', 'Psychadelic Rock'],
   influences: ['Hendrix', 'Vaughn', 'B.B. King', 'The Doors', 'Grateful Dead'],
   bio: 'I have been practicing guitar for a little over a year now.  I love playing gnarly riffs over some heavy bass and looking forward to the jam sessions to come!',
+},
+{
+  firstName: 'Henry', lastName: 'Kapono', email: 'kapono.k@baz.com',
+  image: 'https://th.bing.com/th/id/OIP.6hJxyracpGt5Sq0xd3HoNAAAAA?w=287&h=176&c=7&r=0&o=5&pid=1.7',
+  instruments: ['Guitar', 'Ukulele', 'Vocals'], skillLevel: 'Advanced',
+  genres: ['Hawaiian', 'Reggae'],
+  influences: ['Bob Marley', 'John Lennon', 'Jimi Hendrix', 'Sting', 'Stevie Wonder'],
+  bio: 'I\'ve been playing ukulele my whole life.  My passion is to make music with my friends, and show aloha to my community',
 },
 {
   firstName: 'Samantha', lastName: 'Lee', email: 'samantha.l@foo.com',
@@ -72,18 +82,20 @@ const dummyArtistData = [{
 },
 ];
 
-
 /* Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 const BrowseArtists = () => {
+  const [showFilter, setShowFilter] = useState(false);
+  const [filter, setFilter] = useState({ instrument: '', genre: '', skillLevel: '' });
+
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, artists } = useTracker(() => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
     // Get access to Stuff documents.
-    // const subscription = Meteor.subscribe(Contacts.userPublicationName);
+    // const subscription = Meteor.subscribe(Artists_meteor.userPublicationName);  // @todo uncomment this once artist collection is implemented
     // Determine if the subscription is ready
-    // const rdy = subscription.ready();
-    const rdy = true;
+    // const rdy = subscription.ready();  // @todo uncomment this once artist collection is implemented
+    const rdy = true; // @todo delete this once artist collection is implemented
     // Get the Contact documents
     // const artistItems = dummyArtistData;
     return {
@@ -92,15 +104,41 @@ const BrowseArtists = () => {
     };
   }, []);
 
+  const handleFilterClick = () => {
+    setShowFilter(!showFilter);
+  };
+
   return (ready ? (
     <Container className="py-3">
-      <div className="artist-grid">
-        {artists.map((artist, index) => (
-          <div key={index}>
-            <ArtistCard artistEntry={artist} />
-          </div>
-        ))}
+
+      <div className="filter">
+        <Button onClick={handleFilterClick}>
+          <Filter size="3vw" />
+        </Button>
+        {showFilter && (
+          <ArtistFilterForm filter={filter} setFilter={setFilter} />
+        )}
       </div>
+
+      <div className="artist-grid">
+        {artists
+          .filter((artist) => {
+            if (filter.instrument && !artist.instruments.includes(filter.instrument)) {
+              return false;
+            }
+            if (filter.genre && !artist.genres.includes(filter.genre)) {
+              return false;
+            }
+            return !(filter.skillLevel && artist.skillLevel !== filter.skillLevel);
+
+          })
+          .map((artist, index) => (
+            <div key={index}>
+              <ArtistCard artistEntry={artist} />
+            </div>
+          ))}
+      </div>
+
     </Container>
   ) :
     <LoadingSpinner />
