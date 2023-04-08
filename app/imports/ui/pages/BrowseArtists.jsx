@@ -55,8 +55,8 @@ const BrowseArtists = () => {
             return !(filter.skillLevel && artist.skillLevel !== filter.skillLevel);
 
           })
-          .map((artist, index) => (
-            <div key={index}>
+          .map((artist) => (
+            <div key={artist._id}>
               <ArtistCard artistEntry={artist} />
             </div>
           ))}

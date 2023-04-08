@@ -75,6 +75,7 @@ ArtistCard.propTypes = {
     instruments: PropTypes.arrayOf(PropTypes.string),
     skillLevel: PropTypes.string,
     bio: PropTypes.string,
+    _id: PropTypes.string,
   }).isRequired,
 };
 
