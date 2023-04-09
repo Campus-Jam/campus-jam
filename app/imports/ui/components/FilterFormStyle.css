@@ -1,0 +1,41 @@
+:root {
+  --filter-dropdown-background-color: #1b3b01;
+  --filter-text-color: #fff;
+  --filter-option-background-color: #2b4b33;
+  --filter-option-text-color: #fff;
+  --filter-option-and-button-border-color: #ec4708;
+}
+
+.filterForm {
+  position:fixed;
+  right: 3.5vh;
+  top: 16vh;
+  width: 150px;
+  border-radius: 15px;
+  z-index: 9999;
+  background-color: var(--filter-dropdown-background-color);
+  color: var(--filter-text-color);
+  border: 1px solid black;
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.8);
+}
+
+.filterForm .form-label {
+  margin-top: 7px;
+  margin-bottom: 0;
+  margin-left: 7px;
+}
+
+.filterForm .form-control{
+  background-color: var(--filter-option-background-color);
+  color: var(--filter-option-text-color);
+  border-color: var(--filter-option-and-button-border-color);
+}
+
+
+
+.filterForm .filterClearButton {
+  margin-top: 7px;
+  margin-bottom: 7px;
+  background-color: black;
+  border-color: var(--filter-option-and-button-border-color);
+}

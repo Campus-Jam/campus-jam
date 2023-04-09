@@ -1,5 +1,10 @@
+:root {
+  --page-background-color: rgba(65, 80, 60, 1);
+  --page-hovering-filter-button-color: #dc4c10;
+}
+
 .browseGigs {
-  background-color: rgba(65, 80, 60, 1);
+  background-color: var(--page-background-color);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -10,37 +15,12 @@
   right: .75vh;
   top: 12vh;
   z-index: 9998;
-  background-color: #dc4c10 !important;
+  background-color: var(--page-hovering-filter-button-color);
   border: white;
   height: 48px; /* Changed from 4vw */
   width: 60px; /* Changed from 5vw */
   border-radius: 10px; /* Changed from 1vw */
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.8);
-}
-
-.browseGigs .filter-form-container {
-  position:fixed;
-  right: 3.5vh;
-  top: 16vh;
-  width: 150px;
-  border-radius: 3px;
-  z-index: 9999;
-  background-color: #1b3b01;
-  color: white;
-  border: 1px solid black;
-  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.8);
-}
-
-.browseGigs .filterLabel {
-  margin-top: 7px;
-  margin-bottom: 0;
-}
-
-.browseGigs .filterClearButton {
-  margin-top: 7px;
-  margin-bottom: 7px;
-  background-color: black;
-  border-color: #ec4708;
 }
 
 .browseGigs .gig-grid {
@@ -53,3 +33,5 @@
   max-width: none;
   margin: 0 auto;
 }
+
+

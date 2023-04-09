@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import '../pages/BrowseArtistsStyle.css';
+import './FilterFormStyle.css';
 
 const GigFilterForm = ({
   filter,
@@ -20,7 +20,7 @@ const GigFilterForm = ({
   };
 
   return (
-    <div className="filter-form-container">
+    <div className="filterForm">
       <Form>
         <Form.Group controlId="filterInstrument">
           <Form.Label className="filterLabel">Instrument</Form.Label>

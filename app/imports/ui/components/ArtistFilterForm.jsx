@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import '../pages/BrowseArtistsStyle.css';
+import './FilterFormStyle.css';
 
 const ArtistFilterForm = ({
   filter,
@@ -20,10 +20,10 @@ const ArtistFilterForm = ({
   };
 
   return (
-    <div className="filter-form-container">
+    <div className="filterForm">
       <Form>
         <Form.Group controlId="filterInstrument">
-          <Form.Label className="filterLabel">Instrument</Form.Label>
+          <Form.Label>Instrument</Form.Label>
           <Form.Control as="select" name="instrument" value={filter.instrument} onChange={handleInputChange}>
             <option value="">Any</option>
             {instruments.map((instrument, index) => (
