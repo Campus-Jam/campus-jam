@@ -5,9 +5,8 @@ import { Alert, Card, Col, Container, Row } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
-import { ComponentIDs, PageIDs } from '../utilities/ids';
 
-/*
+/**
  * Signin page overrides the form’s submit event and call Meteor’s loginWithPassword().
  * Authentication errors modify the component’s state to be displayed
  */
@@ -38,27 +37,27 @@ const SignIn = () => {
   // console.log('render', error, redirect);
   // if correct authentication, redirect to page instead of login screen
   if (redirect) {
-    return (<Navigate to="/home" />);
+    return (<Navigate to="/" />);
   }
   // Otherwise return the Login form.
   return (
-    <Container id={PageIDs.signInPage}>
+    <Container id="signin-page" className="py-3">
       <Row className="justify-content-center">
-        <Col xs={9}>
+        <Col xs={5}>
           <Col className="text-center">
             <h2>Login to your account</h2>
           </Col>
           <AutoForm schema={bridge} onSubmit={data => submit(data)}>
             <Card>
               <Card.Body>
-                <TextField id={ComponentIDs.signInFormEmail} name="email" placeholder="E-mail address" />
-                <TextField id={ComponentIDs.signInFormPassword} name="password" placeholder="Password" type="password" />
+                <TextField id="signin-form-email" name="email" placeholder="E-mail address" />
+                <TextField id="signin-form-password" name="password" placeholder="Password" type="password" />
                 <ErrorsField />
-                <SubmitField id={ComponentIDs.signInFormSubmit} />
+                <SubmitField id="signin-form-submit" />
               </Card.Body>
             </Card>
           </AutoForm>
-          <Alert variant="secondary">
+          <Alert variant="light">
             <Link to="/signup">Click here to Register</Link>
           </Alert>
           {error === '' ? (

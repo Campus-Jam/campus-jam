@@ -1,5 +1,7 @@
 {
   "defaultArtists": [{
+    "role": "user",
+    "password": "foo",
     "firstName": "Albert", "lastName": "Haynes", "email": "albert.h@foo.com",
     "image": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXw3NjA4Mjc3NHx8ZW58MHx8fHw%3D&w=1000&q=80",
     "instruments": ["Guitar"], "skillLevel": "Intermediate",
@@ -8,6 +10,8 @@
     "bio": "I have been practicing guitar for a little over a year now.  I love playing gnarly riffs over some heavy bass and looking forward to the jam sessions to come!"
   },
     {
+      "role": "user",
+      "password": "foo",
       "firstName": "Henry", "lastName": "Kapono", "email": "kapono.k@baz.com",
       "image": "https://th.bing.com/th/id/OIP.6hJxyracpGt5Sq0xd3HoNAAAAA?w=287&h=176&c=7&r=0&o=5&pid=1.7",
       "instruments": ["Guitar", "Ukulele", "Vocals"], "skillLevel": "Advanced",
@@ -16,6 +20,8 @@
       "bio": "I've been playing ukulele my whole life.  My passion is to make music with my friends, and show aloha to my community"
     },
     {
+      "role": "user",
+      "password": "foo",
       "firstName": "Samantha", "lastName": "Lee", "email": "samantha.l@foo.com",
       "image": "https://images.unsplash.com/photo-1564564295391-7f24f26f568b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fGt1bHxlbnwwfHwwfHw%3D&w=1000&q=80",
       "instruments": ["Bass Guitar"], "skillLevel": "Advanced",
@@ -24,6 +30,8 @@
       "bio": "'I have been playing bass guitar for 10 years now. I love the rhythm and groove that comes with funk, jazz, and soul music. Looking for fellow musicians who share the same passion and vibe!"
     },
     {
+      "role": "user",
+      "password": "foo",
       "firstName": "Alex", "lastName": "Nguyen", "email": "alex.n@foo.com",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQayQiD1x_FnLWOHbMia0mXHg6dyd91gcgFPztytUpnPg&usqp=CAU&ec=48600112",
       "instruments": ["Drums", "Piano"], "skillLevel": "Intermediate",
@@ -32,6 +40,8 @@
       "bio": "'I started playing drums when I was 12 and picked up piano a few years ago. Im into rock, pop, and indie music and always looking to expand my skills and knowledge. Lets create some awesome music together!"
     },
     {
+      "role": "user",
+      "password": "foo",
       "firstName": "Maria", "lastName": "Garcia", "email": "maria.g@foo.com",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjRk6Vs47AjyBOAOBNF8Cic74PJNkAcrpUsGDUcCYpdA&usqp=CAU&ec=48600112",
       "instruments": ["Violin"], "skillLevel": "Beginner",
@@ -40,6 +50,8 @@
       "bio": "'I recently started learning violin and am in love with the classical, folk, and world music that can be played with it. Looking for other musicians who can help me learn and grow!"
     },
     {
+      "role": "user",
+      "password": "foo",
       "firstName": "Jacob", "lastName": "Kim", "email": "jacob.kim@bar.com",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmWpVZGN21gUEgVVUx09wMf8sDsZawEsRqSnerToYRJg&usqp=CAU&ec=48600112",
       "instruments": ["Guitar"], "skillLevel": "Intermediate",
@@ -48,6 +60,8 @@
       "bio": "'I have been playing guitar for several years and am interested in exploring different genres like rock, blues, and funk. I would love to collaborate with other musicians and learn from them."
     },
     {
+      "role": "user",
+      "password": "foo",
       "firstName": "Sophie", "lastName": "Jones", "email": "sophie.jones@baz.com",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdeXOLbcQbqTH-1VQt-c_XGEpXCGioogdU_Y6FM8YUbw&usqp=CAU&ec=48600112",
       "instruments": ["Piano"], "skillLevel": "Advanced",
@@ -56,6 +70,8 @@
       "bio": "'I have been playing piano for many years and enjoy exploring various genres like classical, jazz, and pop. I am interested in collaborating with other musicians who share my passion for music."
     },
     {
+      "role": "user",
+      "password": "foo",
       "firstName": "William", "lastName": "Bryant", "email": "william.b@foo.com",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPNXlBHc6ipu53WmeQZWq6GrLcyiTef4fBXfH5wES-gA&usqp=CAU&ec=48600112",
       "instruments": ["Drums"], "skillLevel": "Intermediate",
@@ -64,6 +80,8 @@
       "bio": "'I have been playing drums for a few years and love playing rock, metal, and punk music. I am interested in collaborating with other musicians who share my passion for these genres."
     },
     {
+      "role": "admin",
+      "password": "foo",
       "firstName": "Ava", "lastName": "Chen", "email": "ava.chen@quux.com",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyPj1d0IG83GglbBjRyl1Ci50m6CQ7QcW7eSKV-A0hAQ&usqp=CAU&ec=48600112",
       "instruments": ["Vocals"], "skillLevel": "Advanced",

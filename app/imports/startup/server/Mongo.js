@@ -6,8 +6,10 @@ const addArtist = (artist) => {
   // eslint-disable-next-line no-console
   console.log(`    Adding: ${artist.firstName} (${artist.email})`);
   Artists.collection.insert(artist);
+
 };
 
+// Add default Artists upon meteor initialization, and create default user accounts
 if (Artists.collection.find().count() === 0) {
   if (Meteor.settings.defaultArtists) {
     // eslint-disable-next-line no-console
