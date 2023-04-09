@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-// import React, { useState } from 'react';
-// import { Meteor } from 'meteor/meteor';
+import { Meteor } from 'meteor/meteor';
 import './BrowseGigsStyle.css';
 import { Button, Container } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
@@ -8,6 +7,8 @@ import { Filter } from 'react-bootstrap-icons';
 import LoadingSpinner from '../components/LoadingSpinner';
 import GigCard from '../components/GigCard';
 import GigFilterForm from '../components/GigFilterForm';
+import { Gigs } from '../../api/gigs/Gigs';
+
 
 const dummyGigs = [{
   title: 'Summer Festival',
@@ -68,12 +69,11 @@ const BrowseGigs = () => {
 
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, gigs } = useTracker(() => {
-    // const subscription = Meteor.subscribe(Gigs.userPublicationName);
-    // const rdy = subscription.ready();
-    // const gigItems = Gigs.collection.find().fetch();
-    const rdy = !!dummyGigs;
+    const subscription = Meteor.subscribe(Gigs.userPublicationName);
+    const rdy = subscription.ready();
+    const gigItems = Gigs.collection.find().fetch();
     return {
-      gigs: dummyGigs,
+      gigs: gigItems,
       ready: rdy,
     };
   }, []);
