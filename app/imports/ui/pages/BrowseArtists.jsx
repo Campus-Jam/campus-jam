@@ -9,7 +9,24 @@ import ArtistCard from '../components/ArtistCard';
 import ArtistFilterForm from '../components/ArtistFilterForm';
 import { Artists } from '../../api/artists/Artists';
 
-/* Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
+const getUniqueInstruments = (artists) => {
+  const instruments = new Set();
+  artists.forEach((artist) => artist.instruments.forEach((instrument) => instruments.add(instrument)));
+  return Array.from(instruments);
+};
+
+const getUniqueGenres = (artists) => {
+  const genres = new Set();
+  artists.forEach((artist) => artist.genres.forEach((genre) => genres.add(genre)));
+  return Array.from(genres);
+};
+
+const getUniqueSkillLevels = (artists) => {
+  const skillLevels = new Set();
+  artists.forEach((artist) => skillLevels.add(artist.skillLevel));
+  return Array.from(skillLevels);
+};
+
 const BrowseArtists = () => {
   const [showFilter, setShowFilter] = useState(false);
   const [filter, setFilter] = useState({ instrument: '', genre: '', skillLevel: '' });
@@ -29,6 +46,10 @@ const BrowseArtists = () => {
     setShowFilter(!showFilter);
   };
 
+  const uniqueInstruments = getUniqueInstruments(artists);
+  const uniqueGenres = getUniqueGenres(artists);
+  const uniqueSkillLevels = getUniqueSkillLevels(artists);
+
   return (ready ? (
     <div className="browseArtist">
       <Container className="py-3">
@@ -38,7 +59,13 @@ const BrowseArtists = () => {
             <Filter size="24px" />
           </Button>
           {showFilter && (
-            <ArtistFilterForm filter={filter} setFilter={setFilter} />
+            <ArtistFilterForm
+              filter={filter}
+              setFilter={setFilter}
+              instruments={uniqueInstruments}
+              genres={uniqueGenres}
+              skillLevels={uniqueSkillLevels}
+            />
           )}
         </div>
 
@@ -53,7 +80,6 @@ const BrowseArtists = () => {
                 return false;
               }
               return !(filter.skillLevel && artist.skillLevel !== filter.skillLevel);
-
             })
             .map((artist) => (
               <div key={artist._id}>

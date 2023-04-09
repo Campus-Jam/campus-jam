@@ -1,5 +1,8 @@
 .browseArtist {
-  background-color: rgba(65, 80, 60, 1) !important;
+  background-color: rgba(65, 80, 60, 1);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .browseArtist .filterButton {

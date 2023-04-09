@@ -44,7 +44,7 @@
       "password": "foo",
       "firstName": "Maria", "lastName": "Garcia", "email": "maria.g@foo.com",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjRk6Vs47AjyBOAOBNF8Cic74PJNkAcrpUsGDUcCYpdA&usqp=CAU&ec=48600112",
-      "instruments": ["Violin"], "skillLevel": "Beginner",
+      "instruments": ["Violin", "Kazoo"], "skillLevel": "Beginner",
       "genres": ["Classical", "Folk", "World"],
       "influences": ["Bach", "Mozart", "Yo-Yo Ma", "Lindsey Stirling", "Gaelic Storm"],
       "bio": "'I recently started learning violin and am in love with the classical, folk, and world music that can be played with it. Looking for other musicians who can help me learn and grow!"

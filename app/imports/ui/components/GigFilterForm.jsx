@@ -3,18 +3,13 @@ import { Form, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import '../pages/BrowseArtistsStyle.css';
 
-const instruments = [
-  'Guitar', 'Ukulele', 'Vocals', 'Bass Guitar', 'Drums', 'Piano', 'Violin',
-];
-
-const genres = [
-  'Blues', 'Psychedelic Rock', 'Hawaiian', 'Reggae', 'Funk', 'Jazz', 'Soul',
-  'Rock', 'Pop', 'Indie', 'Classical', 'Folk', 'World', 'Metal', 'Punk', 'R&B',
-];
-
-const skillLevels = ['Beginner', 'Intermediate', 'Advanced'];
-
-const GigFilterForm = ({ filter, setFilter }) => {
+const GigFilterForm = ({
+  filter,
+  setFilter,
+  instruments,
+  genres,
+  skillLevels,
+}) => {
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFilter({ ...filter, [name]: value });
@@ -72,6 +67,9 @@ GigFilterForm.propTypes = {
     skillLevel: PropTypes.string,
   }),
   setFilter: PropTypes.func,
+  instruments: PropTypes.arrayOf(PropTypes.string),
+  genres: PropTypes.arrayOf(PropTypes.string),
+  skillLevels: PropTypes.arrayOf(PropTypes.string),
 };
 
 GigFilterForm.defaultProps = {
@@ -81,6 +79,9 @@ GigFilterForm.defaultProps = {
     skillLevel: '',
   },
   setFilter: () => {},
+  instruments: [],
+  genres: [],
+  skillLevels: [],
 };
 
 export default GigFilterForm;
