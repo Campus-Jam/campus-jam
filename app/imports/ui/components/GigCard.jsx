@@ -16,7 +16,7 @@ const MAX_CARD_INSTRUMENTS_LEN = 115;
 const MAX_CARD_VENUE_LEN = 125;
 
 // Maximum Length of About that should be displayed
-const MAX_CARD_ABOUT_LEN = 250;
+const MAX_CARD_ABOUT_LEN = 225;
 
 // A function used to truncate card data to a length specified by maxlen
 const truncateTo = (data, maxlen) => {

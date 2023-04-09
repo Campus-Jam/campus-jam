@@ -1,9 +1,20 @@
+:root {
+  --card-background-color: rgb(37, 100, 64);
+  --card-text-color1: #fcf80a;
+  --card-text-color2: #00e1ff;
+}
+
 .gigCard .card {
   width: 600px;
   margin: 0;
   border-radius: 50px !important;
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
   overflow: hidden;
+  background-color: var(--card-background-color);
+}
+
+.gigCard .card-title {
+  color: var(--card-text-color1);
 }
 
 .gigCard .image-shadow {
@@ -24,17 +35,21 @@
 }
 
 .gigCard .list-group-item {
+  color: var(--card-text-color1);
   margin: 0;
   height: 50px;
+  opacity: 0.9;
 }
 
 /*Alternating coloring of listgroup items*/
 .gigCard .list-group-item:nth-child(odd) {
-  background-color: #eeeeee;
+  background-color: rgba(255,255,255, 0.1);
+  color: var(--card-text-color2);
 }
 /*Alternating coloring of listgroup items*/
 .gigCard .list-group-item:nth-child(even) {
-  background-color: #cccccc;
+  color: var(--card-text-color1);
+  background-color: rgba(255,255,255, 0.05);
 }
 
 .gigCard .customHeader {
@@ -57,4 +72,5 @@
 .gigCard .joinButtonSpan > .joinButton {
   background-color: #ec4708;
   box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.5);
+  margin-left: 15px;
 }
