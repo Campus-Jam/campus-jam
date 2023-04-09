@@ -26,8 +26,8 @@ const NavBar = () => {
             {currentUser ? (
               <Nav.Link as={NavLink} id={ComponentIDs.homeMenuItem} to="/home" key="home">Profile</Nav.Link>
             ) : ''}
-            <Nav.Link as={NavLink} id={ComponentIDs.profilesMenuItem} to="/profiles" key="profiles">Artists</Nav.Link>
-            <Nav.Link as={NavLink} id={ComponentIDs.projectsMenuItem} to="/projects" key="projects">Jam Sessions</Nav.Link>
+            <Nav.Link as={NavLink} id={ComponentIDs.artistsMenuItem} to="/artists" key="artists">Artists</Nav.Link>
+            <Nav.Link as={NavLink} id={ComponentIDs.jamSessionsMenuItem} to="/jam-sessions" key="jam-sessions">Jam Sessions</Nav.Link>
             <Nav.Link as={NavLink} id={ComponentIDs.addProjectMenuItem} to="/addProject" key="addP">Add Jam Session</Nav.Link>
           </Nav>
           <Nav className="justify-content-end">
