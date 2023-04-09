@@ -13,9 +13,9 @@
   width: 150px;
   border-radius: 15px;
   z-index: 9999;
-  background-color: var(--filter-dropdown-background-color);
+  background-color: var(--filter-dropdown-background-color) !important;
   color: var(--filter-text-color);
-  border: 1px solid black;
+  border: 2px solid black;
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.8);
 }
 
@@ -26,6 +26,8 @@
 }
 
 .filterForm .form-control{
+  margin-left: 2px;
+  margin-right: 2px;
   background-color: var(--filter-option-background-color);
   color: var(--filter-option-text-color);
   border-color: var(--filter-option-and-button-border-color);
