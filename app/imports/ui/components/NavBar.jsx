@@ -28,7 +28,7 @@ const NavBar = () => {
             ) : ''}
             <Nav.Link as={NavLink} id={ComponentIDs.artistsMenuItem} to="/artists" key="artists">Artists</Nav.Link>
             <Nav.Link as={NavLink} id={ComponentIDs.jamSessionsMenuItem} to="/jam-sessions" key="jam-sessions">Jam Sessions</Nav.Link>
-            <Nav.Link as={NavLink} id={ComponentIDs.addProjectMenuItem} to="/addProject" key="addP">Add Jam Session</Nav.Link>
+            <Nav.Link as={NavLink} id={ComponentIDs.addProjectFormCreateJamSession} to="/create-jam-session" key="create-jam-session">Add Jam Session</Nav.Link>
           </Nav>
           <Nav className="justify-content-end">
             {currentUser === '' ? (
@@ -62,4 +62,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-

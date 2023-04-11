@@ -1,4 +1,5 @@
 export const ComponentIDs = {
+  addProjectFormCreateJamSession: 'addCreateJamSession',
   addProjectMenuItem: 'addProjectMenuItem',
   addProjectFormName: 'addProjectFormName',
   addProjectFormPicture: 'addProjectFormPicture',
