@@ -17,14 +17,20 @@ const NavBar = () => {
   return (
     <Navbar expand="lg" style={menuStyle} className={navbarClassName}>
       <Container>
-        <Navbar.Brand as={NavLink} to="/" className="align-items-center">
-          <span style={{ fontWeight: 800, fontSize: '24px' }}><Image src="/images/logo-transparent.png" width={80} style={{ marginBottom: 3 }} /> jamb-UH-ree</span>
-        </Navbar.Brand>
+        {currentUser === '' ? (
+          <Navbar.Brand as={NavLink} to="/" className="align-items-center">
+            <span style={{ fontWeight: 800, fontSize: '24px' }}><Image src="/images/logo-transparent.png" width={80} style={{ marginBottom: 3 }} /> jamb-UH-ree</span>
+          </Navbar.Brand>
+        ) : (
+          <Navbar.Brand as={NavLink} to="/signInLanding" className="align-items-center">
+            <span style={{ fontWeight: 800, fontSize: '24px' }}><Image src="/images/logo-transparent.png" width={80} style={{ marginBottom: 3 }} /> jamb-UH-ree</span>
+          </Navbar.Brand>
+        )}
         <Navbar.Toggle aria-controls={ComponentIDs.basicNavbarNav} />
         <Navbar.Collapse id={ComponentIDs.basicNavbarNav}>
           <Nav className="me-auto justify-content-start">
             {currentUser ? (
-              <Nav.Link as={NavLink} id={ComponentIDs.homeMenuItem} to="/signInLanding" key="home">Profile</Nav.Link>
+              <Nav.Link as={NavLink} id={ComponentIDs.homeMenuItem} to="/profile" key="home">Profile</Nav.Link>
             ) : ''}
             <Nav.Link as={NavLink} id={ComponentIDs.artistsMenuItem} to="/artists" key="artists">Artists</Nav.Link>
             <Nav.Link as={NavLink} id={ComponentIDs.jamSessionsMenuItem} to="/jam-sessions" key="jam-sessions">Jam Sessions</Nav.Link>
