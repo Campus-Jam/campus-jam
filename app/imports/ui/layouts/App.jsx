@@ -18,6 +18,7 @@ import Filter from '../pages/Filter';
 import AddProject from '../pages/AddProject';
 import BrowseArtists from '../pages/BrowseArtists';
 import BrowseGigs from '../pages/BrowseGigs';
+import SignInLanding from '../pages/SignInLanding';
 
 /* Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -34,6 +35,7 @@ const App = () => (
         <Route path="/jam-sessions" element={<BrowseGigs />} />
         <Route path="/artists" element={<BrowseArtists />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="/signInLanding" element={<ProtectedRoute><SignInLanding /></ProtectedRoute>} />
         <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
         <Route path="/filter" element={<ProtectedRoute><Filter /></ProtectedRoute>} />
         <Route path="/addproject" element={<ProtectedRoute><AddProject /></ProtectedRoute>} />
