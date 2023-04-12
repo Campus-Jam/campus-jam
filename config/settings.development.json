@@ -99,8 +99,7 @@
     "genres": [ "Bluegrass", "Folk", "Americana", "Country", "Rockabilly", "Blues", "Jazz", "Gospel", "World Music", "Soul", "Funk", "Reggae", "Hip-Hop", "Electronic", "Classical", "Pop", "Alternative"],
     "instruments": [ "Fiddle", "Bass", "Drums", "Accordion", "Banjo", "Fiddle", "Bass", "Drums", "Accordion", "Banjo", "Guitar", "Mandolin", "Harmonica", "Piano", "Trumpet", "Saxophone", "Clarinet", "Flute", "Violin", "Cello"],
     "venue": "The Summer Festival will take place at The Villa@Hoffman Park, a stunning outdoor venue located in the heart of the city. The Villa is a spacious and elegant property that boasts sprawling gardens, tranquil ponds, and plenty of open space for guests to relax and enjoy the festivities.",
-    "about": "The Summer Festival is an exciting event that takes place every year, showcasing live music, delicious food, and a great atmosphere. This year's festival promises to be one of the best yet, with an impressive lineup of talented musicians and mouth-watering food trucks that will keep your taste buds happy all evening long.",
-    "_id": "1234"
+    "about": "The Summer Festival is an exciting event that takes place every year, showcasing live music, delicious food, and a great atmosphere. This year's festival promises to be one of the best yet, with an impressive lineup of talented musicians and mouth-watering food trucks that will keep your taste buds happy all evening long."
   },
   {
     "title": "Acoustic Night",
@@ -122,8 +121,7 @@
       "DJ"
     ],
     "venue": "In the back room at Reverb",
-    "about": "An evening jam of acoustic music and coffee.",
-    "_id": "5678"
+    "about": "An evening jam of acoustic music and coffee."
   },
   {
     "title": "Rock and Metal",
@@ -145,8 +143,7 @@
       "DJ"
     ],
     "venue": "Blacksheep Concert Hall",
-    "about": "A high-energy beginner friendly rock session.",
-    "_id": "9012"},
+    "about": "A high-energy beginner friendly rock session."},
   {
     "title": "Jazz Night",
     "image": "https://www.gannett-cdn.com/-mm-/fe540925f187d73c8a91c93ece4e29936ea358fc/c=0-885-3804-3034/local/-/media/2015/07/16/MIGroup/Lansing/635726564289570272-ThinkstockPhotos-486813379-1-.jpg",
@@ -166,8 +163,7 @@
       "Saxophone"
     ],
     "venue": "The Jazz Club",
-    "about": "An evening of jazz music and cocktails.",
-    "_id": "3456"
+    "about": "An evening of jazz music and cocktails."
   }
 ],
   "loadAssetsFile": false

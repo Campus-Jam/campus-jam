@@ -9,8 +9,8 @@ class ArtistsToGigsCollection {
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      Artist_id: { type: String, optional: false },
-      Gig_id: { type: String, optional: false },
+      artist_id: { type: String, optional: false },
+      gig_id: { type: String, optional: false },
     });
 
     // Ensure collection documents obey schema.

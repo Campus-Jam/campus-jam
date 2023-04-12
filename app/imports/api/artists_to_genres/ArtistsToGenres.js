@@ -9,8 +9,8 @@ class ArtistsToGenresCollection {
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      Artist_id: { type: String, optional: false },
-      genres: { type: String, optional: true },
+      artist_id: { type: String, optional: false },
+      genre: { type: String, optional: false },
     });
 
     // Ensure collection documents obey schema.

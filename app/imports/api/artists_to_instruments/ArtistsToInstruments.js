@@ -9,8 +9,8 @@ class ArtistsToInstrumentsCollection {
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      Artist_id: { type: String, optional: false },
-      Instrument: { type: String, optional: false },
+      artist_id: { type: String, optional: false },
+      instrument: { type: String, optional: false },
     });
 
     // Ensure collection documents obey schema.
