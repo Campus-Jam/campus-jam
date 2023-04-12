@@ -1,10 +1,12 @@
 import { Meteor } from 'meteor/meteor';
 import { Artists } from '../../api/artists/Artists';
 import { Gigs } from '../../api/gigs/Gigs';
-import { findUserByEmail, findGigByTitle, linkArtistToGenre, linkArtistToGig, linkArtistToInstrument } from '../../api/helperFunctions';
+import { findUserByEmail, findGigByTitle, linkArtistToGenre, linkArtistToGig, linkArtistToInstrument, linkGigToGenre, linkGigToInstrument } from '../../api/helperFunctions';
 
 function addArtist(artist) {
-  console.log(`    Processing ${artist.email} Artists information`);
+  console.log(`    Processing ${artist.email}`);
+  const artistCopy = { ...artist };
+  Artists.collection.insert(artistCopy);
 
   const id = findUserByEmail(artist.email);
 
@@ -16,14 +18,19 @@ function addArtist(artist) {
     // Add artist-instrument links
     artist.instruments.forEach(inst => linkArtistToInstrument(id, inst));
   }
-
-  Artists.collection.insert(artist);
 }
 
 const addGig = (gig) => {
-  // eslint-disable-next-line no-console
-  console.log(`    Adding: ${gig.title} (${gig.date})`);
-  Gigs.collection.insert(gig);
+  console.log(`    Processing ${gig.title} (${gig.date})`);
+  const gigCopy = { ...gig };
+  const gig_id = Gigs.collection.insert(gigCopy);
+
+  if (gig.genres) {
+    gig.genres.forEach(genre => linkGigToGenre(gig_id, genre));
+  }
+  if (gig.instruments) {
+    gig.instruments.forEach(instr => linkGigToInstrument(gig_id, instr));
+  }
 };
 
 if (Gigs.collection.find().count() === 0) {

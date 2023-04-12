@@ -5,6 +5,8 @@ import { ArtistsToGenres } from '../../api/artists_to_genres/ArtistsToGenres';
 import { ArtistsToGigs } from '../../api/artists_to_gigs/ArtistsToGigs';
 import { ArtistsToInstruments } from '../../api/artists_to_instruments/ArtistsToInstruments';
 import { InstrumentChoices } from '../../api/instrument_choices/InstrumentChoices';
+import { GigsToGenres } from '../../api/gigs_to_genres/GigsToGenres';
+import { GigsToInstruments } from '../../api/gigs_to_instruments/GigsToInstruments';
 
 Meteor.publish(Artists.userPublicationName, function () {
   return Artists.collection.find();
@@ -20,6 +22,14 @@ Meteor.publish(ArtistsToGigs.userPublicationName, function () {
 
 Meteor.publish(ArtistsToInstruments.userPublicationName, function () {
   return ArtistsToInstruments.collection.find();
+});
+
+Meteor.publish(GigsToGenres.userPublicationName, function () {
+  return GigsToGenres.collection.find();
+});
+
+Meteor.publish(GigsToInstruments.userPublicationName, function () {
+  return GigsToInstruments.collection.find();
 });
 
 Meteor.publish(Gigs.userPublicationName, function () {
