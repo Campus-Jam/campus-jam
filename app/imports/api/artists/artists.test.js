@@ -16,9 +16,7 @@ if (Meteor.isServer) {
         firstName: 'John',
         lastName: 'Doe',
         image: 'https://example.com/image.jpg',
-        instruments: ['Guitar'],
         skillLevel: 'Intermediate',
-        genres: ['Rock'],
         influences: ['Hendrix'],
       };
       const artistId = Artists.collection.insert(artist);
@@ -32,9 +30,7 @@ if (Meteor.isServer) {
         firstName: 'John',
         lastName: 'Doe',
         image: 'not-a-url',
-        instruments: ['Guitar'],
         skillLevel: 'Expert',
-        genres: ['Rock'],
         influences: ['Hendrix'],
       };
       expect(() => {
