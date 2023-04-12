@@ -6,7 +6,7 @@ const SignInLanding = () => (
   <div style={{ backgroundImage: 'url(/images/background.jpg)' }}>
     <Container className="py-4">
       <Card>
-        <Col>
+        <Col className="px-4">
           <Row>
             <Container className="p-3">
               <h1 className="text-center">User Profile</h1>

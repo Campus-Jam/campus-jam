@@ -8,30 +8,32 @@ const CreateJamSession = () => (
     <Container>
       <br />
       <Card className="py-4">
-        <h1 className="text-center"> Create a Jam Session</h1>
-        <Row>
-          <Col>
-            <Form.Group className="mb-3">
-              <Form.Label>Attendees</Form.Label>
-              <Form.Control as="textarea" rows={5} placeholder="Attendees" />
-              <Form.Label>About</Form.Label>
-              <Form.Control as="textarea" rows={5} placeholder="About" />
-            </Form.Group>
-          </Col>
-          <Col>
-            <Form.Group className="mb-3">
-              <Form.Label>Venue</Form.Label>
-              <Form.Control placeholder="Venue" />
-              <Form.Label>Date</Form.Label>
-              <Form.Control placeholder="Date" />
-              <Form.Label>Genre(s):</Form.Label>
-              <Form.Control placeholder="Venue" />
-              <Form.Label>Instruments:</Form.Label>
-              <Form.Control placeholder="Instruments" />
-            </Form.Group>
-          </Col>
-        </Row>
-        <Row><Button>Submit</Button></Row>
+        <div className="px-4">
+          <h1 className="text-center"> Create a Jam Session</h1>
+          <Row>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>Attendees</Form.Label>
+                <Form.Control as="textarea" rows={5} placeholder="Attendees"/>
+                <Form.Label>About</Form.Label>
+                <Form.Control as="textarea" rows={5} placeholder="About"/>
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>Venue</Form.Label>
+                <Form.Control placeholder="Venue"/>
+                <Form.Label>Date</Form.Label>
+                <Form.Control placeholder="Date"/>
+                <Form.Label>Genre(s):</Form.Label>
+                <Form.Control placeholder="Venue"/>
+                <Form.Label>Instruments:</Form.Label>
+                <Form.Control placeholder="Instruments"/>
+              </Form.Group>
+            </Col>
+          </Row>
+          <Row><Button>Submit</Button></Row>
+        </div>
       </Card>
     </Container>
   </div>
