@@ -10,7 +10,6 @@ import SignOut from '../pages/SignOut';
 import NavBar from '../components/NavBar';
 import SignIn from '../pages/SignIn';
 import NotAuthorized from '../pages/NotAuthorized';
-import Profiles from '../pages/Profiles';
 import Projects from '../pages/Projects';
 import Interests from '../pages/Interests';
 import Home from '../pages/Home';
@@ -35,8 +34,8 @@ const App = () => (
         <Route path="/jam-sessions" element={<BrowseGigs />} />
         <Route path="/artists" element={<BrowseArtists />} />
         <Route path="/projects" element={<Projects />} />
-        <Route path="/create-jam-session" element={<CreateJamSession />} />
         <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+        <Route path="/createJamSession" element={<ProtectedRoute><CreateJamSession /></ProtectedRoute>} />
         <Route path="/filter" element={<ProtectedRoute><Filter /></ProtectedRoute>} />
         <Route path="/addproject" element={<ProtectedRoute><AddProject /></ProtectedRoute>} />
         <Route path="/notauthorized" element={<NotAuthorized />} />
