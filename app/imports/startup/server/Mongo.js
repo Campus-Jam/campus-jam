@@ -1,14 +1,16 @@
 import { Meteor } from 'meteor/meteor';
 import { Artists } from '../../api/artists/Artists';
 import { Gigs } from '../../api/gigs/Gigs';
-import { findUserByEmail, findGigByTitle, linkArtistToGenre, linkArtistToGig, linkArtistToInstrument, linkGigToGenre, linkGigToInstrument } from '../../api/helperFunctions';
+import { findUserByEmail, findGigByTitle, linkArtistToGenre, linkArtistToGig, linkArtistToInstrument, linkGigToGenre, linkGigToInstrument } from '../../helperFunctions';
 
 function addArtist(artist) {
   console.log(`    Processing ${artist.email}`);
   const artistCopy = { ...artist };
-  Artists.collection.insert(artistCopy);
 
   const id = findUserByEmail(artist.email);
+  artistCopy.artist_id = id;
+
+  Artists.collection.insert(artistCopy);
 
   if (artist.genres) {
     // Add artist-genre links

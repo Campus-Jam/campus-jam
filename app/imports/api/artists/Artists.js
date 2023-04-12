@@ -17,6 +17,7 @@ class ArtistsCollection {
       influences: { type: Array },
       'influences.$': { type: String, optional: true },
       bio: { type: String, optional: true },
+      artist_id: { type: String, optional: true },
     });
 
     // Ensure collection documents obey schema.
