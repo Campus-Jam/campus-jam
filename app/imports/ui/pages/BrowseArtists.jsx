@@ -9,19 +9,19 @@ import ArtistCard from '../components/ArtistCard';
 import ArtistFilterForm from '../components/ArtistFilterForm';
 import { Artists } from '../../api/artists/Artists';
 
-const getUniqueInstruments = (artists) => {
+export const getUniqueInstruments = (artists) => {
   const instruments = new Set();
   artists.forEach((artist) => artist.instruments.forEach((instrument) => instruments.add(instrument)));
   return Array.from(instruments);
 };
 
-const getUniqueGenres = (artists) => {
+export const getUniqueGenres = (artists) => {
   const genres = new Set();
   artists.forEach((artist) => artist.genres.forEach((genre) => genres.add(genre)));
   return Array.from(genres);
 };
 
-const getUniqueSkillLevels = (artists) => {
+export const getUniqueSkillLevels = (artists) => {
   const skillLevels = new Set();
   artists.forEach((artist) => skillLevels.add(artist.skillLevel));
   return Array.from(skillLevels);
@@ -46,9 +46,9 @@ const BrowseArtists = () => {
     setShowFilter(!showFilter);
   };
 
+  const uniqueSkillLevels = getUniqueSkillLevels(artists);
   const uniqueInstruments = getUniqueInstruments(artists);
   const uniqueGenres = getUniqueGenres(artists);
-  const uniqueSkillLevels = getUniqueSkillLevels(artists);
 
   return (ready ? (
     <div className="browseArtist">
