@@ -46,9 +46,9 @@ const BrowseArtists = () => {
     setShowFilter(!showFilter);
   };
 
+  const uniqueSkillLevels = getUniqueSkillLevels(artists);
   const uniqueInstruments = getUniqueInstruments(artists);
   const uniqueGenres = getUniqueGenres(artists);
-  const uniqueSkillLevels = getUniqueSkillLevels(artists);
 
   return (ready ? (
     <div className="browseArtist">
