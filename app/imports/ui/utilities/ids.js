@@ -24,6 +24,7 @@ export const ComponentIDs = {
   loginDropdownSignUp: 'loginDropdownSignUp',
   artistsMenuItem: 'artistsMenuItem',
   jamSessionsMenuItem: 'jamSessionsMenuItem',
+  createJamSession: 'createJamSession',
   signInFormEmail: 'signInFormEmail',
   signInFormPassword: 'signInFormPassword',
   signInFormSubmit: 'signInFormSubmit',
@@ -45,4 +46,5 @@ export const PageIDs = {
   signInPage: 'signInPage',
   signOutPage: 'signOutPage',
   signUpPage: 'signUpPage',
+  createJamSessionPage: 'CreateJamSessionPage',
 };
