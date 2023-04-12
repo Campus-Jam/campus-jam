@@ -1,16 +1,27 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
+import { useTracker } from 'meteor/react-meteor-data';
 import Form from 'react-bootstrap/Form';
 import { PageIDs } from '../utilities/ids';
 import { getUniqueInstruments } from './BrowseArtists';
 import { Artists } from '../../api/artists/Artists';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const CreateJamSession = () => {
+  const { ready, artists } = useTracker(() => {
+    const subscription = Meteor.subscribe(Artists.userPublicationName);
+    const rdy = subscription.ready();
+    const artistItems = Artists.collection.find().fetch();
+    return {
+      artists: artistItems,
+      ready: rdy,
+    };
+  }, []);
 
-  const artists = Artists.collection.find().fetch();
   const uniqueInstruments = getUniqueInstruments(artists);
 
-  return (
+  return (ready ? (
     <div id={PageIDs.createJamSessionPage} style={{ backgroundImage: 'url(/images/background.jpg)' }}>
       <Container>
         <br />
@@ -50,6 +61,8 @@ const CreateJamSession = () => {
         </Card>
       </Container>
     </div>
+  ) :
+    <LoadingSpinner />
   );
 
 };
