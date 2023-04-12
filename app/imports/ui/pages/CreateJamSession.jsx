@@ -35,6 +35,7 @@ const CreateJamSession = () => (
           <Row><Button>Submit</Button></Row>
         </div>
       </Card>
+      <br />
     </Container>
   </div>
 );
