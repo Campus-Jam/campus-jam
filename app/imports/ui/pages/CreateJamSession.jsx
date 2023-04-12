@@ -54,6 +54,7 @@ const CreateJamSession = () => {
                   {/* SKILL LEVEL */}
                   <Form.Label>Skill Level:</Form.Label>
                   <Form.Select defaultValue="">
+                    {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
                     <option value="" disabled />
                     {uniqueSkillLevels.map((sklvl, index) => (
                       <option key={index} value={sklvl}>
@@ -65,6 +66,7 @@ const CreateJamSession = () => {
                   {/* GENREs */}
                   <Form.Label>Genre(s):</Form.Label>
                   <Form.Select defaultValue="">
+                    {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
                     <option value="" disabled />
                     {uniqueGenres.map((sklvl, index) => (
                       <option key={index} value={sklvl}>
@@ -76,6 +78,7 @@ const CreateJamSession = () => {
                   {/* INSTRUMENTS */}
                   <Form.Label>Instrument(s):</Form.Label>
                   <Form.Select defaultValue="">
+                    {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
                     <option value="" disabled />
                     {uniqueInstruments.map((sklvl, index) => (
                       <option key={index} value={sklvl}>
@@ -86,7 +89,7 @@ const CreateJamSession = () => {
 
                   {/* ABOUT */}
                   <Form.Label>About</Form.Label>
-                  <Form.Control as="textarea" rows={5} placeholder="Write something about the event" />
+                  <Form.Control as="textarea" rows={5} placeholder="Write something about the jam session" />
 
                 </Form.Group>
               </Col>
