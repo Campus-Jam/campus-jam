@@ -34,15 +34,6 @@ const CreateJamSession = () => {
               <Col>
                 <Form.Group className="mb-3">
 
-                  {/* ATTENDEES */}
-                  <Form.Label>Attendees</Form.Label>
-                  <Form.Control as="textarea" rows={5} placeholder="Attendees" />
-
-                </Form.Group>
-              </Col>
-              <Col>
-                <Form.Group className="mb-3">
-
                   {/* VENUE */}
                   <Form.Label>Venue</Form.Label>
                   <Form.Control placeholder="Venue" />
