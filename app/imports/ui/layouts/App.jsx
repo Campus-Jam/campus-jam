@@ -18,6 +18,7 @@ import AddProject from '../pages/AddProject';
 import BrowseArtists from '../pages/BrowseArtists';
 import BrowseGigs from '../pages/BrowseGigs';
 import SignInLanding from '../pages/SignInLanding';
+import EditProfile from '../pages/EditProfile';
 
 import CreateJamSession from '../pages/CreateJamSession';
 
@@ -34,7 +35,7 @@ const App = () => (
         <Route path="/interests" element={<Interests />} />
         <Route path="/artists" element={<BrowseArtists />} />
         <Route path="/jam-sessions" element={<BrowseGigs />} />
-        <Route path="/artists" element={<BrowseArtists />} />
+        <Route path="/edit-profile" element={<EditProfile />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
         <Route path="/createJamSession" element={<ProtectedRoute><CreateJamSession /></ProtectedRoute>} />
