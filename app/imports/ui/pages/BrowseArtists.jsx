@@ -10,7 +10,6 @@ import ArtistFilterForm from '../components/ArtistFilterForm';
 import { Artists } from '../../api/artists/Artists';
 
 export const getUniqueInstruments = (artists) => {
-  console.log(artists);
   const instruments = new Set();
   artists.forEach((artist) => artist.instruments.forEach((instrument) => instruments.add(instrument)));
   return Array.from(instruments);
