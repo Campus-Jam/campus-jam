@@ -110,7 +110,7 @@ const GigCard = ({ gigEntry }) => {
           </ListGroup.Item>
 
           {/* SKILL LEVEL */}
-          <ListGroup.Item className="d-flex justify-content-between align-items-center date">
+          <ListGroup.Item className="d-flex justify-content-between align-items-center skill-level">
             <span className="label fw-bold d-flex justify-content-start">Date: </span>
             <span className="content">{gigEntry.date}</span>
             <span className="label fw-bold d-flex justify-content-start">Skill Level: </span>
