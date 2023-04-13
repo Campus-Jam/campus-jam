@@ -10,7 +10,6 @@ import SignOut from '../pages/SignOut';
 import NavBar from '../components/NavBar';
 import SignIn from '../pages/SignIn';
 import NotAuthorized from '../pages/NotAuthorized';
-import Profiles from '../pages/Profiles';
 import Projects from '../pages/Projects';
 import Interests from '../pages/Interests';
 import Home from '../pages/Home';
@@ -19,6 +18,7 @@ import AddProject from '../pages/AddProject';
 import BrowseArtists from '../pages/BrowseArtists';
 import BrowseGigs from '../pages/BrowseGigs';
 import SignInLanding from '../pages/SignInLanding';
+import EditProfile from '../pages/EditProfile';
 
 /* Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -33,7 +33,7 @@ const App = () => (
         <Route path="/interests" element={<Interests />} />
         <Route path="/artists" element={<BrowseArtists />} />
         <Route path="/jam-sessions" element={<BrowseGigs />} />
-        <Route path="/artists" element={<BrowseArtists />} />
+        <Route path="/edit-profile" element={<EditProfile />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/signInLanding" element={<ProtectedRoute><SignInLanding /></ProtectedRoute>} />
         <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
