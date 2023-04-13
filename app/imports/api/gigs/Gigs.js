@@ -46,8 +46,6 @@ class GigsCollection {
       title: { type: String, optional: false },
       image: { type: String, optional: false },
       date: { type: String, optional: false },
-      attendees: { type: Array, optional: true },
-      'attendees.$': { type: String },
       skillLevel: { type: String, allowedValues: ['Beginner', 'Intermediate', 'Advanced'], optional: true },
       genres: { type: Array },
       'genres.$': { type: String, optional: true },
