@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { Accounts } from 'meteor/accounts-base';
-import { Alert, Card, Col, Container, Row } from 'react-bootstrap';
+import { Alert, Card, Col, Row } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { ComponentIDs, PageIDs } from '../utilities/ids';
+import './SignUpStyle.css';
 
 /*
  * SignUp component is similar to signin component, but we create a new user instead.
@@ -38,19 +39,20 @@ const SignUp = () => {
     return (<Navigate to="/home" />);
   }
   return (
-    <Container id={PageIDs.signUpPage}>
+    <div id={PageIDs.signUpPage} className="signUp">
       <Row className="justify-content-center">
-        <Col xs={9}>
+        <Col xs={6}>
           <Col className="text-center">
-            <h2>Register your account</h2>
+            <h2 style={{ paddingTop: '120px' }}>Sign up for Jamb-UH-ree</h2>
+            <p>Start connecting with fellow musicians today.</p>
           </Col>
           <AutoForm schema={bridge} onSubmit={data => submit(data)}>
-            <Card>
+            <Card className="card">
               <Card.Body>
                 <TextField id={ComponentIDs.signUpFormEmail} name="email" placeholder="E-mail address" />
                 <TextField id={ComponentIDs.signUpFormPassword} name="password" placeholder="Password" type="password" />
                 <ErrorsField />
-                <SubmitField id={ComponentIDs.signUpFormSubmit} />
+                <SubmitField id={ComponentIDs.signUpFormSubmit} value="Sign Up" />
               </Card.Body>
             </Card>
           </AutoForm>
@@ -69,7 +71,7 @@ const SignUp = () => {
           )}
         </Col>
       </Row>
-    </Container>
+    </div>
   );
 };
 
