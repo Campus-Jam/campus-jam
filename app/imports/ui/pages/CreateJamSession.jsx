@@ -14,21 +14,21 @@ const CreateJamSession = () => (
             <Col>
               <Form.Group className="mb-3">
                 <Form.Label>Attendees</Form.Label>
-                <Form.Control as="textarea" rows={5} placeholder="Attendees"/>
+                <Form.Control as="textarea" rows={5} placeholder="Attendees" />
                 <Form.Label>About</Form.Label>
-                <Form.Control as="textarea" rows={5} placeholder="About"/>
+                <Form.Control as="textarea" rows={5} placeholder="About" />
               </Form.Group>
             </Col>
             <Col>
               <Form.Group className="mb-3">
                 <Form.Label>Venue</Form.Label>
-                <Form.Control placeholder="Venue"/>
+                <Form.Control placeholder="Venue" />
                 <Form.Label>Date</Form.Label>
-                <Form.Control placeholder="Date"/>
+                <Form.Control placeholder="Date" />
                 <Form.Label>Genre(s):</Form.Label>
-                <Form.Control placeholder="Venue"/>
+                <Form.Control placeholder="Venue" />
                 <Form.Label>Instruments:</Form.Label>
-                <Form.Control placeholder="Instruments"/>
+                <Form.Control placeholder="Instruments" />
               </Form.Group>
             </Col>
           </Row>
