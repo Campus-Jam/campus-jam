@@ -90,7 +90,7 @@ const EditProfile = () => (
               <Form.Control as="textarea" placeholder="Enter Text Here" />
             </Col>
           </Row>
-          <Row className="justify-content-center py-3" >
+          <Row className="justify-content-center py-3">
             <Button>Submit</Button>
           </Row>
         </Card.Body>
