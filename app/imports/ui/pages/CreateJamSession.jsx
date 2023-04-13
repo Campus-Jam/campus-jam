@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import Form from 'react-bootstrap/Form';
+import ReactSelect from 'react-select';
 import { PageIDs } from '../utilities/ids';
 import { getUniqueGenres, getUniqueInstruments, getUniqueSkillLevels } from './BrowseArtists';
 import { Artists } from '../../api/artists/Artists';
@@ -55,7 +56,9 @@ const CreateJamSession = () => {
                   <Form.Label>Skill Level:</Form.Label>
                   <Form.Select defaultValue="">
                     {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-                    <option value="" disabled />
+                    <option value="" disabled>
+                      Select
+                    </option>
                     {uniqueSkillLevels.map((sklvl, index) => (
                       <option key={index} value={sklvl}>
                         {sklvl}
@@ -65,27 +68,17 @@ const CreateJamSession = () => {
 
                   {/* GENREs */}
                   <Form.Label>Genre(s):</Form.Label>
-                  <Form.Select defaultValue="">
-                    {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-                    <option value="" disabled />
-                    {uniqueGenres.map((sklvl, index) => (
-                      <option key={index} value={sklvl}>
-                        {sklvl}
-                      </option>
-                    ))}
-                  </Form.Select>
+                  <ReactSelect
+                    isMulti
+                    options={uniqueGenres.map((genre) => ({ label: genre, value: genre }))}
+                  />
 
                   {/* INSTRUMENTS */}
                   <Form.Label>Instrument(s):</Form.Label>
-                  <Form.Select defaultValue="">
-                    {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-                    <option value="" disabled />
-                    {uniqueInstruments.map((sklvl, index) => (
-                      <option key={index} value={sklvl}>
-                        {sklvl}
-                      </option>
-                    ))}
-                  </Form.Select>
+                  <ReactSelect
+                    isMulti
+                    options={uniqueInstruments.map((instrument) => ({ label: instrument, value: instrument }))}
+                  />
 
                   {/* ABOUT */}
                   <Form.Label>About</Form.Label>
