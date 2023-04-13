@@ -140,9 +140,10 @@ const GigCard = ({ gigEntry }) => {
             <span className="label fw-bold d-flex justify-content-start">About: </span>
             <span className="content">{truncateTo(gigEntry.about, MAX_CARD_ABOUT_LEN)}</span>
             <span className="joinButtonSpan">
-              <Button className="joinButton" onClick={joinGig} disabled={buttonDisabled}>
+              <Button className={`btn ${joined ? 'leaveButton' : 'joinButton'}`} onClick={joinGig} disabled={buttonDisabled}>
                 {joined ? 'Leave' : 'Join'}
               </Button>
+
             </span>
           </ListGroup.Item>
 

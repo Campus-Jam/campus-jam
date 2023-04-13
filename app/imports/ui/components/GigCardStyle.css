@@ -70,7 +70,21 @@
 }
 
 .gigCard .joinButtonSpan > .joinButton {
+  width: 80px;
+  background-color: #5be00e;
+  box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.5);
+  margin-left: 15px;
+}
+
+.gigCard .joinButtonSpan > .leaveButton {
+  width: 80px;
   background-color: #ec4708;
+  box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.5);
+  margin-left: 15px;
+}
+
+.gigCard .joinButtonSpan > .btn:active {
+  background-color: #dcd90b;
   box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.5);
   margin-left: 15px;
 }
