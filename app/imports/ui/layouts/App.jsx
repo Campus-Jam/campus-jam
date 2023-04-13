@@ -20,6 +20,7 @@ import BrowseGigs from '../pages/BrowseGigs';
 import EditProfile from '../pages/EditProfile';
 
 import CreateJamSession from '../pages/CreateJamSession';
+import SignInLanding from '../pages/SignInLanding';
 
 /* Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -37,6 +38,7 @@ const App = () => (
         <Route path="/edit-profile" element={<EditProfile />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+        <Route path="/signInLanding" element={<ProtectedRoute><SignInLanding /></ProtectedRoute>} />
         <Route path="/createJamSession" element={<ProtectedRoute><CreateJamSession /></ProtectedRoute>} />
         <Route path="/filter" element={<ProtectedRoute><Filter /></ProtectedRoute>} />
         <Route path="/addproject" element={<ProtectedRoute><AddProject /></ProtectedRoute>} />
