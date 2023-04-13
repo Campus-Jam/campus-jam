@@ -52,7 +52,7 @@
     {
       "role": "user",
       "password": "foo",
-      "firstName": "Jacob", "lastName": "Kim", "email": "jacob.kim@bar.com",
+      "firstName": "Jacob", "lastName": "Kim", "email": "jacob.k@bar.com",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmWpVZGN21gUEgVVUx09wMf8sDsZawEsRqSnerToYRJg&usqp=CAU&ec=48600112",
       "instruments": ["Guitar"], "skillLevel": "Intermediate",
       "genres": ["Rock", "Blues", "Funk"],
@@ -62,7 +62,7 @@
     {
       "role": "user",
       "password": "foo",
-      "firstName": "Sophie", "lastName": "Jones", "email": "sophie.jones@baz.com",
+      "firstName": "Sophie", "lastName": "Jones", "email": "sophie.j@baz.com",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdeXOLbcQbqTH-1VQt-c_XGEpXCGioogdU_Y6FM8YUbw&usqp=CAU&ec=48600112",
       "instruments": ["Piano"], "skillLevel": "Advanced",
       "genres": ["Classical", "Jazz", "Pop"],
@@ -144,6 +144,9 @@
     ],
     "venue": "Blacksheep Concert Hall",
     "about": "A high-energy beginner friendly rock session."},
+    "about": "A high-energy beginner friendly rock session."
+  },
+
   {
     "title": "Jazz Night",
     "image": "https://www.gannett-cdn.com/-mm-/fe540925f187d73c8a91c93ece4e29936ea358fc/c=0-885-3804-3034/local/-/media/2015/07/16/MIGroup/Lansing/635726564289570272-ThinkstockPhotos-486813379-1-.jpg",

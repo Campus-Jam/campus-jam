@@ -1,5 +1,5 @@
 :root {
-  --card-background-color: rgb(37, 100, 64);
+  --card-background-color: #256440;
   --card-text-color1: #fcf80a;
   --card-text-color2: #00e1ff;
 }
@@ -20,6 +20,8 @@
 .gigCard .image-shadow {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   overflow: hidden;
+  margin-bottom: 10px;
+  border-radius: 20px;
 }
 
 .gigCard .label {
@@ -52,25 +54,28 @@
   background-color: rgba(255,255,255, 0.05);
 }
 
-.gigCard .customHeader {
-  height: 100px;
-}
-
-.gigCard .genres .instruments{
-  height: 60px;
-}
-
-.gigCard .skill-level {
-  height: 30px;
-}
-
 .gigCard .about {
   height: 100px;
   margin: 0;
 }
 
-.gigCard .joinButtonSpan > .joinButton {
-  background-color: #ec4708;
+/*JOIN/LEAVE BUTTON*/
+.gigCard .joinButtonSpan > .btn {
   box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.5);
   margin-left: 15px;
+  width: 80px;
 }
+
+.gigCard .joinButtonSpan > .btn:active {
+  background-color: #dcd90b;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+.gigCard .joinButtonSpan > .joinButton {
+  background-color: #5be00e;
+}
+
+.gigCard .joinButtonSpan > .leaveButton {
+  background-color: #ec4708;
+}
+
