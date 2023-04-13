@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
-import { Alert, Card, Col, Container, Row } from 'react-bootstrap';
+import { Alert, Card, Col, Row } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import './SignUpStyle.css';
 
 /**
  * Signin page overrides the form’s submit event and call Meteor’s loginWithPassword().
@@ -41,24 +42,26 @@ const SignIn = () => {
   }
   // Otherwise return the Login form.
   return (
-    <Container id="signin-page" className="py-3">
+    <div id="signin-page" className="signUp">
       <Row className="justify-content-center">
-        <Col xs={5}>
+        <Col xs={6}>
           <Col className="text-center">
-            <h2>Login to your account</h2>
+            <h2 style={{ paddingTop: '120px', paddingBottom: '10px' }}>Login</h2>
           </Col>
           <AutoForm schema={bridge} onSubmit={data => submit(data)}>
-            <Card>
+            <Card className="card">
               <Card.Body>
                 <TextField id="signin-form-email" name="email" placeholder="E-mail address" />
                 <TextField id="signin-form-password" name="password" placeholder="Password" type="password" />
                 <ErrorsField />
-                <SubmitField id="signin-form-submit" />
+                <SubmitField value="Login" id="signin-form-submit" />
               </Card.Body>
             </Card>
           </AutoForm>
-          <Alert variant="light">
-            <Link to="/signup">Click here to Register</Link>
+          <Alert variant="secondary">
+            Don&#39;t have an account? Sign up
+            {' '}
+            <Link to="/signup">here</Link>
           </Alert>
           {error === '' ? (
             ''
@@ -70,7 +73,7 @@ const SignIn = () => {
           )}
         </Col>
       </Row>
-    </Container>
+    </div>
   );
 };
 
