@@ -17,7 +17,6 @@ import Filter from '../pages/Filter';
 import AddProject from '../pages/AddProject';
 import BrowseArtists from '../pages/BrowseArtists';
 import BrowseGigs from '../pages/BrowseGigs';
-import SignInLanding from '../pages/SignInLanding';
 import EditProfile from '../pages/EditProfile';
 
 import CreateJamSession from '../pages/CreateJamSession';
