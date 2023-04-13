@@ -52,7 +52,7 @@
     {
       "role": "user",
       "password": "foo",
-      "firstName": "Jacob", "lastName": "Kim", "email": "jacob.kim@bar.com",
+      "firstName": "Jacob", "lastName": "Kim", "email": "jacob.k@bar.com",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmWpVZGN21gUEgVVUx09wMf8sDsZawEsRqSnerToYRJg&usqp=CAU&ec=48600112",
       "instruments": ["Guitar"], "skillLevel": "Intermediate",
       "genres": ["Rock", "Blues", "Funk"],
@@ -62,7 +62,7 @@
     {
       "role": "user",
       "password": "foo",
-      "firstName": "Sophie", "lastName": "Jones", "email": "sophie.jones@baz.com",
+      "firstName": "Sophie", "lastName": "Jones", "email": "sophie.j@baz.com",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdeXOLbcQbqTH-1VQt-c_XGEpXCGioogdU_Y6FM8YUbw&usqp=CAU&ec=48600112",
       "instruments": ["Piano"], "skillLevel": "Advanced",
       "genres": ["Classical", "Jazz", "Pop"],

@@ -69,8 +69,32 @@ const linkEmailToGig = (email, title) => {
 // Add default data to ArtistsToGigsCollection
 Meteor.startup(() => {
   if (ArtistsToGigs.collection.find().count() === 0) {
-    const albert_email = 'albert.h@foo.com';
+    const albert = 'albert.h@foo.com';
+    const henry = 'kapono.k@baz.com';
+    const samantha = 'samantha.l@foo.com';
+    const alex = 'alex.n@foo.com';
+    const maria = 'maria.g@foo.com';
+    const jacob = 'jacob.k@bar.com';
+    const sophie = 'sophie.j@baz.com';
+    const william = 'william.b@foo.com';
+
+    const summerFestival = 'Summer Festival';
     const acousticNight = 'Acoustic Night';
-    linkEmailToGig(albert_email, acousticNight);
+    const jazzNight = 'Jazz Night';
+    const rockAndMetal = 'Rock and Metal';
+
+    linkEmailToGig(albert, jazzNight);
+    linkEmailToGig(albert, rockAndMetal);
+    linkEmailToGig(henry, acousticNight);
+    linkEmailToGig(samantha, jazzNight);
+    linkEmailToGig(alex, acousticNight);
+    linkEmailToGig(maria, summerFestival);
+    linkEmailToGig(maria, acousticNight);
+    linkEmailToGig(jacob, jazzNight);
+    linkEmailToGig(sophie, summerFestival);
+    linkEmailToGig(sophie, summerFestival);
+    linkEmailToGig(sophie, summerFestival);
+    linkEmailToGig(sophie, jazzNight);
+    linkEmailToGig(william, rockAndMetal);
   }
 });
