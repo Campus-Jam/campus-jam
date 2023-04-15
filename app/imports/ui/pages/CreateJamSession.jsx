@@ -30,59 +30,62 @@ const CreateJamSession = () => {
         <Card className="py-4">
           <div className="px-4">
             <h1 className="text-center"> Create a Jam Session</h1>
-            <Row>
+            <Row className="mb-3">
+
               <Col>
-                <Form.Group className="mb-3">
+                {/* VENUE */}
+                <Form.Label>Venue</Form.Label>
+                <Form.Control placeholder="Venue" />
 
-                  {/* VENUE */}
-                  <Form.Label>Venue</Form.Label>
-                  <Form.Control placeholder="Venue" />
+                {/* ABOUT */}
+                <Form.Label>About</Form.Label>
+                <Form.Control as="textarea" rows={5} placeholder="Write something about the jam session" />
 
-                  {/* DATE */}
-                  <Form.Label>Date</Form.Label>
-                  <Form.Control placeholder="Date" />
+                {/* Image Link */}
+                <Form.Label>Image Link</Form.Label>
+                <Form.Control placeholder="Image Link" />
+              </Col>
 
-                  {/* SKILL LEVEL */}
-                  <Form.Label>Skill Level:</Form.Label>
-                  <Form.Select defaultValue="">
-                    {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-                    <option value="" disabled />
-                    {uniqueSkillLevels.map((sklvl, index) => (
-                      <option key={index} value={sklvl}>
-                        {sklvl}
-                      </option>
-                    ))}
-                  </Form.Select>
+              <Col>
+                {/* DATE */}
+                <Form.Label>Date</Form.Label>
+                <Form.Control placeholder="Date" />
 
-                  {/* GENREs */}
-                  <Form.Label>Genre(s):</Form.Label>
-                  <Form.Select defaultValue="">
-                    {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-                    <option value="" disabled />
-                    {uniqueGenres.map((sklvl, index) => (
-                      <option key={index} value={sklvl}>
-                        {sklvl}
-                      </option>
-                    ))}
-                  </Form.Select>
+                {/* SKILL LEVEL */}
+                <Form.Label>Skill Level:</Form.Label>
+                <Form.Select defaultValue="">
+                  {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+                  <option value="" disabled />
+                  {uniqueSkillLevels.map((sklvl, index) => (
+                    <option key={index} value={sklvl}>
+                      {sklvl}
+                    </option>
+                  ))}
+                </Form.Select>
 
-                  {/* INSTRUMENTS */}
-                  <Form.Label>Instrument(s):</Form.Label>
-                  <Form.Select defaultValue="">
-                    {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-                    <option value="" disabled />
-                    {uniqueInstruments.map((sklvl, index) => (
-                      <option key={index} value={sklvl}>
-                        {sklvl}
-                      </option>
-                    ))}
-                  </Form.Select>
+                {/* GENREs */}
+                <Form.Label>Genre(s):</Form.Label>
+                <Form.Select defaultValue="">
+                  {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+                  <option value="" disabled />
+                  {uniqueGenres.map((sklvl, index) => (
+                    <option key={index} value={sklvl}>
+                      {sklvl}
+                    </option>
+                  ))}
+                </Form.Select>
 
-                  {/* ABOUT */}
-                  <Form.Label>About</Form.Label>
-                  <Form.Control as="textarea" rows={5} placeholder="Write something about the jam session" />
-
-                </Form.Group>
+                {/* INSTRUMENTS */}
+                <Form.Label>Instrument(s):</Form.Label>
+                <Form.Select defaultValue="">
+                  {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+                  <option value="" disabled />
+                  {uniqueInstruments.map((sklvl, index) => (
+                    <option key={index} value={sklvl}>
+                      {sklvl}
+                    </option>
+                  ))}
+                </Form.Select>
               </Col>
             </Row>
             <Row><Button>Submit</Button></Row>

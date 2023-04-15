@@ -1,0 +1,13 @@
+:root {
+  --page-background-color: #376551;
+}
+
+.signUp {
+  background-color: #376551;
+  color: white;
+  min-height: 90vh;
+}
+
+.signUp .card {
+  color: black;
+}

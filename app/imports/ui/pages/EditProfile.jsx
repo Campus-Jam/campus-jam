@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Col, Container, Row, Dropdown, DropdownButton, InputGroup } from 'react-bootstrap';
+import { Card, Col, Container, Row, Dropdown, DropdownButton, InputGroup, Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 // import { AutoForm, LongTextField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
 // import { pageStyle } from './pageStyles';
@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form';
 const EditProfile = () => (
   <Container className="justify-content-center">
     <Col>
-      <Col className="justify-content-center text-center"><h2>Your Profile</h2></Col>
+      <Col className="justify-content-center text-center py-3"><h2>Your Profile</h2></Col>
       <Card>
         <Card.Body>
           <Row className="py-2">
@@ -89,6 +89,9 @@ const EditProfile = () => (
               <Form.Label>Biography/Description</Form.Label>
               <Form.Control as="textarea" placeholder="Enter Text Here" />
             </Col>
+          </Row>
+          <Row className="justify-content-center py-3">
+            <Button>Submit</Button>
           </Row>
         </Card.Body>
       </Card>
