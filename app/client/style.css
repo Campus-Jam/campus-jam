@@ -3,10 +3,19 @@
 
 /* Create some Bowfolio CSS variables. */
 :root {
-  --bowfolio-navbar-bg: #376551;
+  --bowfolio-navbar-bg: var(--page-background-color2);
   --bowfolio-navbar-bg-rgb: 55, 101, 81;
   --bowfolio-navbar-text: white;
   --bowfolio-navbar-highlight-text: var(--bs-gray-500);
+
+  --page-background-color1: #41503c;
+  --page-background-color2: #256440;
+  --text-color1: #fcf80a;
+  --text-color2: #00e1ff;
+  --button-color1: #5be00e;
+  --button-color2: #ec4708;
+  --button-color-pressed: #fcf80a;
+
 }
 /* Change bootstrap variable values.
  See https://getbootstrap.com/docs/5.2/customize/css-variables/

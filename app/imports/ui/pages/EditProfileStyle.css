@@ -1,0 +1,45 @@
+.editProfile {
+  background-color: var(--page-background-color1);
+  color: var(--text-color1);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.editProfile .card{
+  border-radius: 40px;
+  background-color: var(--page-background-color2);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.editProfile .card .row {
+  padding-top: 20px;
+}
+
+.editProfile .card .form-label {
+  margin-left: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.editProfile .card .form-control {
+  background-color: var(--page-background-color1);
+  color: var(--text-color2);
+  border-color: black;
+  font-size: 18px;
+}
+
+.editProfile button[type="submit"] {
+  width: 200px;
+  height: 50px;
+  background-color: var(--button-color2);
+  border-color: black;
+}
+
+.editProfile button[type="submit"]:active {
+  width: 200px;
+  height: 50px;
+  background-color: var(--button-color-pressed);
+  border-color: black;
+  color: black;
+}

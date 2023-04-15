@@ -1,20 +1,14 @@
-:root {
-  --card-background-color: rgb(37, 100, 64);
-  --card-text-color1: #fcf80a;
-  --card-text-color2: #00e1ff;
-}
-
 .artistCard .card {
   width: 300px !important;
   margin: 0;
   border-radius: 50px !important;
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
   overflow: hidden;
-  background-color: var(--card-background-color);
+  background-color: var(--page-background-color2);
 }
 
 .artistCard .card-title {
-  color: var(--card-text-color1);
+  color: var(--text-color1);
 }
 
 .artistCard .image-shadow {
@@ -42,11 +36,11 @@
 /*Alternating coloring of listgroup items*/
 .artistCard .list-group-item:nth-child(odd) {
   background-color: rgba(255,255,255, 0.1);
-  color: var(--card-text-color2);
+  color: var(--text-color2);
 }
 /*Alternating coloring of listgroup items*/
 .artistCard .list-group-item:nth-child(even) {
-  color: var(--card-text-color1);
+  color: var(--text-color1);
   background-color: rgba(255,255,255, 0.05);
 }
 

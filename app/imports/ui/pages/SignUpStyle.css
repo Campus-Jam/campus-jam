@@ -1,9 +1,5 @@
-:root {
-  --page-background-color: #376551;
-}
-
 .signUp {
-  background-color: #376551;
+  background-color: var(--page-background-color1);
   color: white;
   min-height: 90vh;
 }

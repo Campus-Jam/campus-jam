@@ -1,10 +1,5 @@
-:root {
-  --page-background-color: rgba(65, 80, 60, 1);
-  --page-hovering-filter-button-color: #dc4c10;
-}
-
 .browseArtist {
-  background-color: var(--page-background-color);
+  background-color: var(--page-background-color1);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -15,7 +10,7 @@
   right: .75vh;
   top: 12vh;
   z-index: 9998;
-  background-color: var(--page-hovering-filter-button-color);
+  background-color: var(--button-color2);
   border: white;
   height: 48px; /* Changed from 4vw */
   width: 60px; /* Changed from 5vw */
