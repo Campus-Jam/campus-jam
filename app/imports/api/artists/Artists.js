@@ -45,6 +45,7 @@ if (Meteor.isServer) {
         throw new Meteor.Error('not-authorized');
       }
 
+      const { _id, ...artistWithoutId } = updatedArtist;
       new SimpleSchema({
         firstName: { type: String, optional: false },
         lastName: { type: String, optional: false },
@@ -58,9 +59,9 @@ if (Meteor.isServer) {
         influences: { type: Array },
         'influences.$': { type: String, optional: true },
         bio: { type: String, optional: true },
-      }).validate(updatedArtist);
+      }).validate(artistWithoutId);
 
-      Artists.collection.update({ _id: artistId }, { $set: updatedArtist });
+      Artists.collection.update({ _id: artistId }, { $set: artistWithoutId });
     },
   });
 }

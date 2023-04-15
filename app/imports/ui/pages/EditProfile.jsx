@@ -9,15 +9,17 @@ import { Artists } from '../../api/artists/Artists';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 const EditProfile = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [image, setImage] = useState('');
-  const [skillLevel, setSkillLevel] = useState('');
-  const [instruments, setInstruments] = useState([]);
-  const [genres, setGenres] = useState([]);
-  const [influences, setInfluences] = useState([]);
-  const [bio, setBio] = useState('');
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    image: '',
+    influences: [],
+    instruments: [],
+    genres: [],
+    skillLevel: '',
+    bio: '',
+  });
 
   const { currentArtist, isReady } = useTracker(() => {
     const currentUser = Meteor.user();
@@ -31,42 +33,42 @@ const EditProfile = () => {
     };
   });
 
-  const handleInputChange = (event, setValue) => {
+  const handleInputChange = (event, key) => {
+    const { value } = event.target;
+    setFormData((prevData) => ({ ...prevData, [key]: value }));
+  };
+
+  const handleArrayInputChange = (event, key) => {
     const { value } = event.target;
     const arr = value.split(',').map(v => v.trim());
-    setValue(arr);
+    setFormData((prevData) => ({ ...prevData, [key]: arr }));
   };
 
   useEffect(() => {
     if (isReady && currentArtist) {
-      setFirstName(currentArtist.firstName || '');
-      setLastName(currentArtist.lastName || '');
-      setEmail(currentArtist.email || '');
-      setImage(currentArtist.image || '');
-      setInfluences(currentArtist.influences || []);
-      setInstruments(currentArtist.instruments || []);
-      setGenres(currentArtist.genres || []);
-      setSkillLevel(currentArtist.skillLevel || '');
-      setBio(currentArtist.bio || '');
+      setFormData({
+        firstName: currentArtist.firstName || '',
+        lastName: currentArtist.lastName || '',
+        email: currentArtist.email || '',
+        image: currentArtist.image || '',
+        influences: currentArtist.influences || [],
+        instruments: currentArtist.instruments || [],
+        genres: currentArtist.genres || [],
+        skillLevel: currentArtist.skillLevel || '',
+        bio: currentArtist.bio || '',
+      });
     }
-  }, []);
+  }, [isReady, currentArtist?._id]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const artist = {
-      firstName,
-      lastName,
-      email,
-      image,
-      influences,
-      instruments,
-      genres,
-      skillLevel,
-      bio,
+    const updatedArtist = {
+      ...currentArtist,
+      ...formData,
     };
 
-    Meteor.call('artists.update', currentArtist._id, artist, (error) => {
+    Meteor.call('artists.update', currentArtist._id, updatedArtist, (error) => {
       if (error) {
         // eslint-disable-next-line no-console
         console.log(error);
@@ -75,7 +77,6 @@ const EditProfile = () => {
         console.log('Artist updated successfully!');
       }
     });
-
   };
 
   return (isReady ? (
@@ -92,22 +93,22 @@ const EditProfile = () => {
                   <Col xs={4}>
                     <Form.Label>First Name:</Form.Label>
                     <Form.Control
-                      value={firstName || currentArtist?.firstName || ''}
-                      onChange={(event) => setFirstName(event.target.value)}
+                      value={formData.firstName}
+                      onChange={(event) => handleInputChange(event, 'firstName')}
                     />
                   </Col>
                   <Col xs={4}>
                     <Form.Label>Last Name:</Form.Label>
                     <Form.Control
-                      value={lastName || currentArtist?.lastName || ''}
-                      onChange={(event) => setLastName(event.target.value)}
+                      value={formData.lastName}
+                      onChange={(event) => handleInputChange(event, 'lastName')}
                     />
                   </Col>
                   <Col xs={4}>
                     <Form.Label>Email:</Form.Label>
                     <Form.Control
-                      value={email || currentArtist?.email || ''}
-                      onChange={(event) => setEmail(event.target.value)}
+                      value={formData.email}
+                      onChange={(event) => handleInputChange(event, 'email')}
                     />
                   </Col>
                 </Row>
@@ -117,8 +118,8 @@ const EditProfile = () => {
                   <Col xs={6}>
                     <Form.Label>Image URL:</Form.Label>
                     <Form.Control
-                      value={image || currentArtist?.image || ''}
-                      onChange={(event) => setImage(event.target.value)}
+                      value={formData.image}
+                      onChange={(event) => handleInputChange(event, 'image')}
                     />
                   </Col>
 
@@ -127,18 +128,18 @@ const EditProfile = () => {
                     <Form.Label>Skill Level:</Form.Label>
                     <InputGroup>
                       <Form.Control
-                        value={skillLevel || currentArtist?.skillLevel || ''}
-                        onChange={(event) => setSkillLevel(event.target.value)}
+                        value={formData.skillLevel}
+                        onChange={(event) => handleInputChange(event, 'skillLevel')}
                         disabled
                       />
                       <DropdownButton
                         variant="outline-secondary"
-                        title={skillLevel || currentArtist?.skillLevel || 'Skill Level'}
+                        title={formData.skillLevel || 'Skill Level'}
                         align="end"
                       >
-                        <Dropdown.Item onClick={() => setSkillLevel('Beginner')}>Beginner</Dropdown.Item>
-                        <Dropdown.Item onClick={() => setSkillLevel('Intermediate')}>Intermediate</Dropdown.Item>
-                        <Dropdown.Item onClick={() => setSkillLevel('Advanced')}>Advanced</Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleInputChange({ target: { value: 'Beginner' } }, 'skillLevel')}>Beginner</Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleInputChange({ target: { value: 'Intermediate' } }, 'skillLevel')}>Intermediate</Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleInputChange({ target: { value: 'Advanced' } }, 'skillLevel')}>Advanced</Dropdown.Item>
                       </DropdownButton>
                     </InputGroup>
                   </Col>
@@ -149,8 +150,8 @@ const EditProfile = () => {
                   <Form.Label>Instrument(s):</Form.Label>
                   <InputGroup>
                     <FormControl
-                      value={instruments.join(', ') || currentArtist?.instruments.join(', ') || ''}
-                      onChange={(event) => handleInputChange(event, setInstruments)}
+                      value={formData.instruments.join(', ')}
+                      onChange={(event) => handleArrayInputChange(event, 'instruments')}
                     />
                   </InputGroup>
                 </Row>
@@ -160,8 +161,8 @@ const EditProfile = () => {
                   <Form.Label>Genre(s):</Form.Label>
                   <InputGroup>
                     <FormControl
-                      value={genres.join(', ') || currentArtist?.genres.join(', ') || ''}
-                      onChange={(event) => handleInputChange(event, setGenres)}
+                      value={formData.genres.join(', ')}
+                      onChange={(event) => handleArrayInputChange(event, 'genres')}
                     />
                   </InputGroup>
                 </Row>
@@ -171,8 +172,8 @@ const EditProfile = () => {
                   <Form.Label>Influences:</Form.Label>
                   <InputGroup>
                     <FormControl
-                      value={influences.join(', ') || currentArtist?.influences.join(', ') || ''}
-                      onChange={(event) => handleInputChange(event, setInfluences)}
+                      value={formData.influences.join(', ')}
+                      onChange={(event) => handleArrayInputChange(event, 'influences')}
                     />
                   </InputGroup>
                 </Row>
@@ -184,8 +185,8 @@ const EditProfile = () => {
                     <Form.Control
                       as="textarea"
                       placeholder="Enter Text Here"
-                      value={bio || currentArtist?.bio || ''}
-                      onChange={(event) => setBio(event.target.value)}
+                      value={formData.bio}
+                      onChange={(event) => handleInputChange(event, 'bio')}
                     />
                   </Col>
                 </Row>
