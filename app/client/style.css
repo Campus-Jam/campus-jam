@@ -14,7 +14,7 @@
   --text-color2: #00e1ff;
   --button-color1: #5be00e;
   --button-color2: #ec4708;
-  --button-color-pressed: #fcf80a;
+  --button-color-pressed: var(--text-color1);
 
 }
 /* Change bootstrap variable values.

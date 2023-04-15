@@ -51,7 +51,6 @@ const EditProfile = () => {
     }
   }, []);
 
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -72,6 +71,7 @@ const EditProfile = () => {
         // eslint-disable-next-line no-console
         console.log(error);
       } else {
+        // eslint-disable-next-line no-console
         console.log('Artist updated successfully!');
       }
     });

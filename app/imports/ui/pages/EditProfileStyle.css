@@ -34,6 +34,7 @@
   height: 50px;
   background-color: var(--button-color2);
   border-color: black;
+  box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.5);
 }
 
 .editProfile button[type="submit"]:active {
@@ -41,5 +42,6 @@
   height: 50px;
   background-color: var(--button-color-pressed);
   border-color: black;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
   color: black;
 }

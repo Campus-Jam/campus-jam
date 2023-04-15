@@ -12,7 +12,7 @@
     {
       "role": "user",
       "password": "foo",
-      "firstName": "Henry", "lastName": "Kapono", "email": "kapono.k@baz.com",
+      "firstName": "Henry", "lastName": "Kapono", "email": "henry.k@baz.com",
       "image": "https://th.bing.com/th/id/OIP.6hJxyracpGt5Sq0xd3HoNAAAAA?w=287&h=176&c=7&r=0&o=5&pid=1.7",
       "instruments": ["Guitar", "Ukulele", "Vocals"], "skillLevel": "Advanced",
       "genres": ["Hawaiian", "Reggae"],

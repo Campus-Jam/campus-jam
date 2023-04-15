@@ -40,6 +40,7 @@ if (Meteor.isServer) {
     'artists.update'(artistId, updatedArtist) {
       check(artistId, String);
       check(updatedArtist, Object);
+
       if (!this.userId) {
         throw new Meteor.Error('not-authorized');
       }
