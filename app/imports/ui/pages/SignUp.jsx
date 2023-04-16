@@ -18,11 +18,11 @@ const SignUp = () => {
     password: String,
     verifyPassword: {
       type: String,
-      custom() {
-        if (this.value !== this.field('password').value) {
+      custom(value, { parent }) {
+        if (value !== parent.password) {
           return 'passwordMismatch';
         }
-        return undefined; // add this line
+        return undefined;
       },
     },
   });
