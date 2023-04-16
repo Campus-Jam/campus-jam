@@ -16,24 +16,31 @@ const NavBar = () => {
   const navbarClassName = loggedIn ? 'bg-dark' : 'bg-light';
   return (
     <Navbar expand="lg" style={menuStyle} className={navbarClassName}>
+
       <Container>
         {currentUser === '' ? (
+          // SIGNED IN USER
+          // LOGO & JAMB-UH-REE
           <Navbar.Brand as={NavLink} to="/" className="align-items-center">
             <span style={{ fontWeight: 800, fontSize: '24px' }}><Image src="/images/logo-transparent.png" width={80} style={{ marginBottom: 3 }} /> jamb-UH-ree</span>
           </Navbar.Brand>
+
         ) : (
+          // SIGNED OUT USER
           <Navbar.Brand as={NavLink} to="/signInLanding" className="align-items-center">
             <span style={{ fontWeight: 800, fontSize: '24px' }}><Image src="/images/logo-transparent.png" width={80} style={{ marginBottom: 3 }} /> jamb-UH-ree</span>
           </Navbar.Brand>
         )}
+
         <Navbar.Toggle aria-controls={ComponentIDs.basicNavbarNav} />
         <Navbar.Collapse id={ComponentIDs.basicNavbarNav}>
           <Nav className="me-auto justify-content-start">
             {currentUser ? (
-              <Nav.Link as={NavLink} id={ComponentIDs.homeMenuItem} to="/edit-profile" key="home">Profile</Nav.Link>
+              // SIGNED IN USER
+              <Nav.Link as={NavLink} id={ComponentIDs.homeMenuItem} to="/editProfile" key="home">Edit Profile</Nav.Link>
             ) : ''}
             <Nav.Link as={NavLink} id={ComponentIDs.artistsMenuItem} to="/artists" key="artists">Artists</Nav.Link>
-            <Nav.Link as={NavLink} id={ComponentIDs.jamSessionsMenuItem} to="/jam-sessions" key="jam-sessions">Jam Sessions</Nav.Link>
+            <Nav.Link as={NavLink} id={ComponentIDs.jamSessionsMenuItem} to="/jamSessions" key="jam-sessions">Jam Sessions</Nav.Link>
             <Nav.Link as={NavLink} id={ComponentIDs.createJamSession} to="/createJamSession" key="createJamSession">Add Jam Session</Nav.Link>
           </Nav>
           <Nav className="justify-content-end">
@@ -41,13 +48,11 @@ const NavBar = () => {
               <NavDropdown id={ComponentIDs.loginDropdown} title="Login">
                 <NavDropdown.Item id={ComponentIDs.loginDropdownSignIn} as={NavLink} to="/signin">
                   <PersonFill />
-                  Sign
-                  in
+                  Sign-in
                 </NavDropdown.Item>
                 <NavDropdown.Item id={ComponentIDs.loginDropdownSignUp} as={NavLink} to="/signup">
                   <PersonPlusFill />
-                  Sign
-                  up
+                  Sign-up
                 </NavDropdown.Item>
               </NavDropdown>
             ) : (
@@ -55,8 +60,7 @@ const NavBar = () => {
                 <NavDropdown.Item id={ComponentIDs.currentUserDropdownSignOut} as={NavLink} to="/signout">
                   <BoxArrowRight />
                   {' '}
-                  Sign
-                  out
+                  Sign-out
                 </NavDropdown.Item>
               </NavDropdown>
             )}

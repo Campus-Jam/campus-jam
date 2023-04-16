@@ -10,11 +10,7 @@ import SignOut from '../pages/SignOut';
 import NavBar from '../components/NavBar';
 import SignIn from '../pages/SignIn';
 import NotAuthorized from '../pages/NotAuthorized';
-import Projects from '../pages/Projects';
-import Interests from '../pages/Interests';
 import Home from '../pages/Home';
-import Filter from '../pages/Filter';
-import AddProject from '../pages/AddProject';
 import BrowseArtists from '../pages/BrowseArtists';
 import BrowseGigs from '../pages/BrowseGigs';
 import EditProfile from '../pages/EditProfile';
@@ -42,7 +38,6 @@ const App = () => (
         <Route path="/jamSessions" element={<BrowseGigs />} />
 
         <Route path="/editProfile" element={<ProtectedRoute><EditProfile /></ProtectedRoute>} />
-
         <Route path="/createJamSession" element={<ProtectedRoute><CreateJamSession /></ProtectedRoute>} />
 
         <Route path="/notauthorized" element={<NotAuthorized />} />

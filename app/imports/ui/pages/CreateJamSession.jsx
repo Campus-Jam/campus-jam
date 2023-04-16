@@ -90,7 +90,7 @@ const CreateJamSession = () => {
         <Container className="justify-content-center">
           <Col>
             <Col className="justify-content-center text-center py-2">
-              <h2>Create Jam Session</h2>
+              <h2>Create A Jam Session</h2>
             </Col>
 
             <Card>

@@ -24,7 +24,7 @@ export const globalSelectStyle = {
     borderWidth: '2px',
   }),
   option: () => ({
-    color: 'var(--text-color1)',
+    color: 'var(--text-color2)',
     ':hover': {
       backgroundColor: 'var(--page-background-color1)',
       color: 'var(--text-color2)',
@@ -38,7 +38,7 @@ export const globalSelectStyle = {
   }),
   multiValueLabel: (provided) => ({
     ...provided,
-    color: 'var(--text-color1)',
+    color: 'var(--text-color2)',
   }),
   singleValue: (provided, state) => {
     let color = 'var(--text-color2)';
