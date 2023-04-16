@@ -18,7 +18,7 @@ const NavBar = () => {
 
   const handleNavClick = (page) => {
     setActivePage(page);
-    console.log(`active page set to ${page}`);
+    // console.log(`active page set to ${page}`);
   };
 
   // Define styles for the navbar
