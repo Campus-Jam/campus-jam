@@ -3,6 +3,8 @@ import SimpleSchema from 'simpl-schema';
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 
+export const skillLevels = ['Beginner', 'Intermediate', 'Advanced'];
+
 class ArtistsCollection {
   constructor() {
     // The name of this collection.
@@ -17,7 +19,7 @@ class ArtistsCollection {
       image: { type: String, optional: true },
       instruments: { type: Array, optional: true },
       'instruments.$': { type: String },
-      skillLevel: { type: String, allowedValues: ['Beginner', 'Intermediate', 'Advanced'], optional: true },
+      skillLevel: { type: String, allowedValues: skillLevels, optional: true },
       genres: { type: Array },
       'genres.$': { type: String, optional: true },
       influences: { type: Array },
@@ -65,3 +67,21 @@ if (Meteor.isServer) {
     },
   });
 }
+
+export const getUniqueInstruments = (artists) => {
+  const instruments = new Set();
+  artists.forEach((gig) => gig.instruments.forEach((instrument) => instruments.add(instrument)));
+  return Array.from(instruments);
+};
+
+export const getUniqueGenres = (artists) => {
+  const genres = new Set();
+  artists.forEach((gig) => gig.genres.forEach((genre) => genres.add(genre)));
+  return Array.from(genres);
+};
+
+export const getUniqueSkillLevels = (artists) => {
+  const skLvls = new Set();
+  artists.forEach((artist) => skLvls.add(artist.skillLevel));
+  return Array.from(skLvls);
+};

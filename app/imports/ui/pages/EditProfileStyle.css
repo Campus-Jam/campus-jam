@@ -4,6 +4,8 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  border-color: black;
+  border-width: 3px;
 }
 
 .editProfile .card{
@@ -28,6 +30,10 @@
   border-color: black;
   font-size: 18px;
 }
+
+/*.editProfile .multiSelect {*/
+/*  border-color: black;*/
+/*}*/
 
 .editProfile button[type="submit"] {
   width: 200px;

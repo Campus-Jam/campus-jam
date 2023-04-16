@@ -8,24 +8,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import GigCard from '../components/GigCard';
 import GigFilterForm from '../components/GigFilterForm';
 import { Gigs } from '../../api/gigs/Gigs';
-
-const getUniqueInstruments = (gigs) => {
-  const instruments = new Set();
-  gigs.forEach((gig) => gig.instruments.forEach((instrument) => instruments.add(instrument)));
-  return Array.from(instruments);
-};
-
-const getUniqueGenres = (gigs) => {
-  const genres = new Set();
-  gigs.forEach((gig) => gig.genres.forEach((genre) => genres.add(genre)));
-  return Array.from(genres);
-};
-
-const getUniqueSkillLevels = (gigs) => {
-  const skillLevels = new Set();
-  gigs.forEach((gig) => skillLevels.add(gig.skillLevel));
-  return Array.from(skillLevels);
-};
+import { getUniqueGenres, getUniqueInstruments, getUniqueSkillLevels } from '../../api/artists/Artists';
 
 const BrowseGigs = () => {
   const [showFilter, setShowFilter] = useState(false);

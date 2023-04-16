@@ -1,12 +1,51 @@
 import React, { useState, useEffect } from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Card, Col, Container, Row, Dropdown, DropdownButton, InputGroup, Button, FormControl } from 'react-bootstrap';
+import { Card, Col, Container, Row, InputGroup, Button, FormControl } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import './EditProfileStyle.css';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Artists } from '../../api/artists/Artists';
-
+import Select from 'react-select';
+import { Artists, getUniqueInstruments, getUniqueGenres, skillLevels } from '../../api/artists/Artists';
 import LoadingSpinner from '../components/LoadingSpinner';
+
+const generalSelectStyle = {
+  control: (provided) => ({
+    ...provided,
+    backgroundColor: 'var(--page-background-color1)',
+    color: 'black',
+    borderColor: 'black',
+  }),
+  menu: (provided) => ({
+    ...provided,
+    backgroundColor: 'var(--page-background-color1)',
+  }),
+  option: () => ({
+    color: 'var(--text-color1)',
+    ':hover': {
+      backgroundColor: 'var(--page-background-color1)',
+      color: 'var(--text-color2)',
+    },
+  }),
+  multiValue: (provided) => ({
+    ...provided,
+    backgroundColor: 'var(--page-background-color2)',
+    fontsize: '16px',
+    fontweight: 'bold',
+  }),
+  multiValueLabel: (provided) => ({
+    ...provided,
+    color: 'var(--text-color1)',
+  }),
+  singleValue: (provided, state) => {
+    let color = 'var(--text-color2)';
+    if (state.isDisabled) {
+      color = 'var(--text-color2)';
+    } else if (state.isSelected) {
+      color = 'var(--text-color2)';
+    }
+    return { ...provided, color };
+  },
+};
 
 const EditProfile = () => {
   const [formData, setFormData] = useState({
@@ -21,27 +60,58 @@ const EditProfile = () => {
     bio: '',
   });
 
-  const { currentArtist, isReady } = useTracker(() => {
+  const { currentArtist, allArtists, isReady } = useTracker(() => {
+    const artistsSub = Meteor.subscribe(Artists.userPublicationName);
     const currentUser = Meteor.user();
-    const subscription = Meteor.subscribe(Artists.userPublicationName);
-    const rdy = subscription.ready();
+    const artists = Artists.collection.find().fetch();
+    const rdy = artistsSub.ready();
     const curr = rdy && currentUser && Artists.collection.findOne({ email: currentUser.emails[0].address });
 
     return {
       currentArtist: curr,
+      allArtists: artists,
       isReady: rdy,
     };
   });
+
+  const getSkillLevelOptions = (skLvls) => skLvls.map((sl) => ({
+    value: sl,
+    label: sl,
+  }));
+
+  const getInstrumentOptions = (artists) => {
+    const uniqueInstruments = getUniqueInstruments(artists);
+    const instrumentOptions = uniqueInstruments.map((instrument) => ({
+      value: instrument,
+      label: instrument,
+    }));
+    return instrumentOptions;
+  };
+
+  const getGenreOptions = (artists) => {
+    const uniqueGenres = getUniqueGenres(artists);
+    const genreOptions = uniqueGenres.map((genre) => ({
+      value: genre,
+      label: genre,
+    }));
+    return genreOptions;
+  };
+
+  const SkillLevelOptions = getSkillLevelOptions(skillLevels);
+  const InstrumentOptions = getInstrumentOptions(allArtists);
+  const GenreOptions = getGenreOptions(allArtists);
 
   const handleInputChange = (event, key) => {
     const { value } = event.target;
     setFormData((prevData) => ({ ...prevData, [key]: value }));
   };
 
-  const handleArrayInputChange = (event, key) => {
-    const { value } = event.target;
-    const arr = value.split(',').map(v => v.trim());
-    setFormData((prevData) => ({ ...prevData, [key]: arr }));
+  const handleSelectChange = (selected, key, isMulti = false) => {
+    if (isMulti) {
+      setFormData((prevData) => ({ ...prevData, [key]: selected }));
+    } else {
+      setFormData((prevData) => ({ ...prevData, [key]: selected.value }));
+    }
   };
 
   useEffect(() => {
@@ -62,10 +132,11 @@ const EditProfile = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     const updatedArtist = {
       ...currentArtist,
       ...formData,
+      instruments: formData.instruments.map((instrument) => (instrument && instrument.value ? instrument.value : instrument)),
+      genres: formData.genres.map((genre) => (genre && genre.value ? genre.value : genre)),
     };
 
     Meteor.call('artists.update', currentArtist._id, updatedArtist, (error) => {
@@ -77,6 +148,12 @@ const EditProfile = () => {
         console.log('Artist updated successfully!');
       }
     });
+  };
+
+  const handleArrayInputChange = (event, key) => {
+    const { value } = event.target;
+    const arr = value.split(',').map(v => v.trim());
+    setFormData((prevData) => ({ ...prevData, [key]: arr }));
   };
 
   return (isReady ? (
@@ -115,7 +192,8 @@ const EditProfile = () => {
 
                 {/* SECOND ROW */}
                 <Row>
-                  <Col xs={6}>
+                  {/* IMAGE URL */}
+                  <Col>
                     <Form.Label>Image URL:</Form.Label>
                     <Form.Control
                       value={formData.image}
@@ -124,47 +202,51 @@ const EditProfile = () => {
                   </Col>
 
                   {/* SKILL LEVEL */}
-                  <Col xs={4}>
+                  <Col>
                     <Form.Label>Skill Level:</Form.Label>
-                    <InputGroup>
-                      <Form.Control
-                        value={formData.skillLevel}
-                        onChange={(event) => handleInputChange(event, 'skillLevel')}
-                        disabled
-                      />
-                      <DropdownButton
-                        variant="outline-secondary"
-                        title={formData.skillLevel || 'Skill Level'}
-                        align="end"
-                      >
-                        <Dropdown.Item onClick={() => handleInputChange({ target: { value: 'Beginner' } }, 'skillLevel')}>Beginner</Dropdown.Item>
-                        <Dropdown.Item onClick={() => handleInputChange({ target: { value: 'Intermediate' } }, 'skillLevel')}>Intermediate</Dropdown.Item>
-                        <Dropdown.Item onClick={() => handleInputChange({ target: { value: 'Advanced' } }, 'skillLevel')}>Advanced</Dropdown.Item>
-                      </DropdownButton>
-                    </InputGroup>
+                    <Select
+                      options={SkillLevelOptions}
+                      className="singleSelect"
+                      styles={generalSelectStyle}
+                      value={formData.skillLevel && { value: formData.skillLevel, label: formData.skillLevel }}
+                      onChange={(selected) => handleSelectChange(selected, 'skillLevel', false)}
+                    />
                   </Col>
-                </Row>
+
+                </Row> {/* End of Second Row */}
 
                 {/* INSTRUMENTS */}
                 <Row>
                   <Form.Label>Instrument(s):</Form.Label>
-                  <InputGroup>
-                    <FormControl
-                      value={formData.instruments.join(', ')}
-                      onChange={(event) => handleArrayInputChange(event, 'instruments')}
-                    />
-                  </InputGroup>
+                  <Select
+                    isMulti
+                    name="instruments"
+                    options={InstrumentOptions}
+                    className="multiSelect"
+                    styles={generalSelectStyle}
+                    value={formData.instruments.map((instrument) => ({
+                      value: instrument,
+                      label: instrument,
+                    }))}
+                    onChange={(selected) => handleSelectChange(selected, 'instruments', true)}
+                  />
                 </Row>
 
                 {/* GENRES */}
                 <Row>
                   <Form.Label>Genre(s):</Form.Label>
-                  <InputGroup>
-                    <FormControl
-                      value={formData.genres.join(', ')}
-                      onChange={(event) => handleArrayInputChange(event, 'genres')}
-                    />
-                  </InputGroup>
+                  <Select
+                    isMulti
+                    name="genres"
+                    options={GenreOptions}
+                    className="multiSelect"
+                    styles={generalSelectStyle}
+                    value={formData.genres.map((genre) => ({
+                      value: genre,
+                      label: genre,
+                    }))}
+                    onChange={(selected) => handleSelectChange(selected, 'genres', true)}
+                  />
                 </Row>
 
                 {/* INFLUENCES */}
