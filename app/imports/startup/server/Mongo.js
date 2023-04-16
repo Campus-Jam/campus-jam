@@ -58,7 +58,7 @@ const linkEmailToGig = (email, title) => {
       if (error) {
         console.error(`Failed to link artist to gig: ${error.message}`);
       } else {
-        console.log(`Successfully linked artist with email '${email}' to gig with title '${title}'`);
+        console.log(`Linked '${email}' to '${title}'`);
       }
     });
   } else {
