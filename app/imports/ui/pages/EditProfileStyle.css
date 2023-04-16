@@ -31,16 +31,16 @@
   font-size: 18px;
 }
 
-/*.editProfile .multiSelect {*/
-/*  border-color: black;*/
-/*}*/
-
 .editProfile button[type="submit"] {
   width: 200px;
   height: 50px;
+  margin-right: 40px;
+  margin-bottom: 20px;
   background-color: var(--button-color2);
   border-color: black;
   box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.5);
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .editProfile button[type="submit"]:active {

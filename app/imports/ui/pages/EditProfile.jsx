@@ -273,7 +273,7 @@ const EditProfile = () => {
                   </Col>
                 </Row>
 
-                <Row className="justify-content-center">
+                <Row className="justify-content-end">
                   <Button type="submit">Submit</Button>
                 </Row>
               </Form>
