@@ -7,7 +7,9 @@ import { PageIDs } from '../utilities/ids';
 const SignOut = () => {
   Meteor.logout();
   return (
-    <Col id={PageIDs.signOutPage} className="text-center"><h2>You are signed out.</h2></Col>
+    <Col id={PageIDs.signOutPage} className="d-flex align-items-center justify-content-center h-100">
+      <h2>You are signed out.</h2>
+    </Col>
   );
 };
 
