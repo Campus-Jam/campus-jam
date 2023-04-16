@@ -34,6 +34,8 @@
 // export const Gigs = new ArtistsCollection();
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
+import { Meteor } from 'meteor/meteor';
+import { check, Match } from 'meteor/check';
 
 class GigsCollection {
   constructor() {
@@ -64,3 +66,32 @@ class GigsCollection {
 }
 
 export const Gigs = new GigsCollection();
+
+Meteor.methods({
+  'gigs.insert'(title, image, date, skillLevel, genres, instruments, venue, about) {
+    // Validate the input fields against the Gigs schema.
+    check(title, String);
+    check(image, String);
+    check(date, String);
+    check(skillLevel, Match.Maybe(String));
+    check(genres, Array);
+    check(genres[0], String);
+    check(instruments, Match.Maybe(Array));
+    check(venue, Match.Maybe(String));
+    check(about, Match.Maybe(String));
+
+    // Insert the new gig document into the collection.
+    const gigId = Gigs.collection.insert({
+      title,
+      image,
+      date,
+      skillLevel,
+      genres,
+      instruments,
+      venue,
+      about,
+    });
+
+    return gigId;
+  },
+});

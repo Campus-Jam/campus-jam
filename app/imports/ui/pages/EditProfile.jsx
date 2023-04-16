@@ -10,7 +10,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 
 const SUBMIT_BUTTON_TIMEOUT_MS = 1000;
 
-export const generalSelectStyle = {
+export const globalSelectStyle = {
   control: (provided) => ({
     ...provided,
     backgroundColor: 'var(--page-background-color1)',
@@ -112,10 +112,17 @@ const EditProfile = () => {
 
   const handleSelectChange = (selected, key, isMulti = false) => {
     if (isMulti) {
-      setFormData((prevData) => ({
-        ...prevData,
-        [key]: selected.map((item) => item.value),
-      }));
+      if (Array.isArray(selected)) {
+        setFormData((prevData) => ({
+          ...prevData,
+          [key]: selected.map((item) => item.value),
+        }));
+      } else {
+        setFormData((prevData) => ({
+          ...prevData,
+          [key]: [],
+        }));
+      }
     } else {
       setFormData((prevData) => ({ ...prevData, [key]: selected.value }));
     }
@@ -169,10 +176,13 @@ const EditProfile = () => {
   };
 
   return (isReady ? (
-    <div className="editProfile">
+    <div className="createJamSession">
       <Container className="justify-content-center">
         <Col>
-          <Col className="justify-content-center text-center py-2"><h2>Edit Profile</h2></Col>
+          <Col className="justify-content-center text-center py-2">
+            <h2>Edit Profile</h2>
+          </Col>
+
           <Card>
             <Card.Body>
               <Form onSubmit={handleSubmit}>
@@ -219,7 +229,7 @@ const EditProfile = () => {
                     <Select
                       options={SkillLevelOptions}
                       className="singleSelect"
-                      styles={generalSelectStyle}
+                      styles={globalSelectStyle}
                       value={formData.skillLevel && { value: formData.skillLevel, label: formData.skillLevel }}
                       onChange={(selected) => handleSelectChange(selected, 'skillLevel', false)}
                     />
@@ -235,8 +245,8 @@ const EditProfile = () => {
                     name="instruments"
                     options={InstrumentOptions}
                     className="multiSelect"
-                    styles={generalSelectStyle}
-                    value={formData.instruments.map((instrument) => ({
+                    styles={globalSelectStyle}
+                    value={[...formData.instruments].map((instrument) => ({
                       value: instrument,
                       label: instrument,
                     }))}
@@ -252,7 +262,7 @@ const EditProfile = () => {
                     name="genres"
                     options={GenreOptions}
                     className="multiSelect"
-                    styles={generalSelectStyle}
+                    styles={globalSelectStyle}
                     value={formData.genres.map((genre) => ({
                       value: genre,
                       label: genre,

@@ -29,21 +29,27 @@ const App = () => (
       <NavBar />
       <Routes>
         <Route exact path="/" element={<Landing />} />
+
+        <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+
+        <Route path="/signInLanding" element={<ProtectedRoute><SignInLanding /></ProtectedRoute>} />
+
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signout" element={<SignOut />} />
-        <Route path="/interests" element={<Interests />} />
+
         <Route path="/artists" element={<BrowseArtists />} />
-        <Route path="/jam-sessions" element={<BrowseGigs />} />
-        <Route path="/edit-profile" element={<EditProfile />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-        <Route path="/signInLanding" element={<ProtectedRoute><SignInLanding /></ProtectedRoute>} />
+        <Route path="/jamSessions" element={<BrowseGigs />} />
+
+        <Route path="/editProfile" element={<ProtectedRoute><EditProfile /></ProtectedRoute>} />
+
         <Route path="/createJamSession" element={<ProtectedRoute><CreateJamSession /></ProtectedRoute>} />
-        <Route path="/filter" element={<ProtectedRoute><Filter /></ProtectedRoute>} />
-        <Route path="/addproject" element={<ProtectedRoute><AddProject /></ProtectedRoute>} />
+
         <Route path="/notauthorized" element={<NotAuthorized />} />
+
+        <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<NotFound />} />
+
       </Routes>
       <Footer />
     </div>
