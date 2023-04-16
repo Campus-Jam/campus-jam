@@ -1,12 +1,14 @@
-.navBarStyle .logo {
-  box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.5);
+.navBarStyle .navbar {
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px
+
 }
 
 .navBarStyle .navbar-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 200px;
+  width: 175px;
   height: 30px;
   background-color: var(--button-color1);
   color: black !important;
@@ -26,13 +28,16 @@
   color: white;
 }
 
+/* For when button is being pressed */
 .navBarStyle .navbar-button:active {
   background-color: var(--button-color-pressed);
   color: black !important;
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
 }
 
-.navBarStyle .navbar-button.active-nav-link {
+/* For when button page is active page */
+.navBarStyle .navbar-button.activeBtn {
   background-color: var(--button-color2);
   color: black !important;
+  font-weight: bolder;
 }

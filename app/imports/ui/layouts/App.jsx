@@ -39,14 +39,14 @@ const App = () => {
             <Route exact path="/" element={<Landing />} />
           )}
 
-          <Route path="/signInLanding" element={<ProtectedRoute><SignInLanding /></ProtectedRoute>} />
+          <Route path="/signinlanding" element={<ProtectedRoute><SignInLanding /></ProtectedRoute>} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signout" element={<SignOut />} />
           <Route path="/artists" element={<BrowseArtists />} />
-          <Route path="/jamSessions" element={<BrowseGigs />} />
-          <Route path="/editProfile" element={<ProtectedRoute><EditProfile /></ProtectedRoute>} />
-          <Route path="/createJamSession" element={<ProtectedRoute><CreateJamSession /></ProtectedRoute>} />
+          <Route path="/jamsessions" element={<BrowseGigs />} />
+          <Route path="/editprofile" element={<ProtectedRoute><EditProfile /></ProtectedRoute>} />
+          <Route path="/createjamsession" element={<ProtectedRoute><CreateJamSession /></ProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="/404" element={<NotFound />} />
           <Route path="*" element={<NotFound />} />

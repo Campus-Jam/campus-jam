@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { NavLink } from 'react-router-dom';
@@ -14,6 +14,13 @@ const NavBar = () => {
     loggedIn: !!Meteor.user(),
   }), []);
 
+  const [activePage, setActivePage] = useState('home');
+
+  const handleNavClick = (page) => {
+    setActivePage(page);
+    console.log(`active page set to ${page}`);
+  };
+
   // Define styles for the navbar
   const menuStyle = { marginBottom: '0px' };
   const navbarClassName = loggedIn ? 'bg-dark' : 'bg-light';
@@ -22,8 +29,9 @@ const NavBar = () => {
     <div className="navBarStyle">
       <Navbar expand="lg" style={menuStyle} className={navbarClassName}>
         <Container>
+
           {/* Logo and title */}
-          <Navbar.Brand as={NavLink} to="/" className="align-items-center">
+          <Navbar.Brand as={NavLink} to="/" className="align-items-center" onClick={() => handleNavClick('/')}>
             <span style={{ fontWeight: 800, fontSize: '24px' }}>
               <Image src="/images/logo-transparent.png" width={80} style={{ marginBottom: 3 }} />
               jamb-UH-ree
@@ -39,18 +47,48 @@ const NavBar = () => {
             <Nav className="me-auto justify-content-start">
 
               {/* ARTISTS */}
-              <Button className="navbar-button" activeClassName="active-nav-link">
-                <Nav.Link as={NavLink} id={ComponentIDs.artistsMenuItem} to="/artists" key="artists">Artists</Nav.Link>
+              <Button
+                className={`${activePage === '/artists' ? 'activeBtn' : ''} navbar-button`}
+              >
+                <Nav.Link
+                  as={NavLink}
+                  id={ComponentIDs.artistsMenuItem}
+                  to="/artists"
+                  key="artists"
+                  onClick={() => handleNavClick('/artists')}
+                >
+                  Artists
+                </Nav.Link>
               </Button>
 
               {/* ADD JAM SESSION */}
-              <Button className="navbar-button" activeClassName="active-nav-link">
-                <Nav.Link as={NavLink} id={ComponentIDs.createJamSession} to="/createJamSession" key="createJamSession">Add Jam Session</Nav.Link>
+              <Button
+                className={`${activePage === '/createJamSession' ? 'activeBtn' : ''} navbar-button`}
+              >
+                <Nav.Link
+                  as={NavLink}
+                  id={ComponentIDs.createJamSession}
+                  to="/createJamSession"
+                  key="createJamSession"
+                  onClick={() => handleNavClick('/createJamSession')}
+                >
+                  Add Jam Session
+                </Nav.Link>
               </Button>
 
               {/* EDIT PROFILE */}
-              <Button className="navbar-button" activeClassName="active-nav-link">
-                <Nav.Link as={NavLink} id={ComponentIDs.editProfile} to="/editProfile" key="editProfile">Edit Profile</Nav.Link>
+              <Button
+                className={`${activePage === '/editProfile' ? 'activeBtn' : ''} navbar-button`}
+              >
+                <Nav.Link
+                  as={NavLink}
+                  id={ComponentIDs.editProfile}
+                  to="/editProfile"
+                  key="editProfile"
+                  onClick={() => handleNavClick('/editProfile')}
+                >
+                  Edit Profile
+                </Nav.Link>
               </Button>
             </Nav>
 
@@ -59,19 +97,19 @@ const NavBar = () => {
               {/* Show login dropdown if user is not logged in */}
               {currentUser === '' ? (
                 <NavDropdown id={ComponentIDs.loginDropdown} title="Login">
-                  <NavDropdown.Item id={ComponentIDs.loginDropdownSignIn} as={NavLink} to="/signin">
+                  <NavDropdown.Item id={ComponentIDs.loginDropdownSignIn} as={NavLink} to="/signin" onClick={() => handleNavClick('/signin')}>
                     <PersonFill />
                     Sign-in
                   </NavDropdown.Item>
-                  <NavDropdown.Item id={ComponentIDs.loginDropdownSignUp} as={NavLink} to="/signup">
+                  <NavDropdown.Item id={ComponentIDs.loginDropdownSignUp} as={NavLink} to="/signup" onClick={() => handleNavClick('/signup')}>
                     <PersonPlusFill />
                     Sign-up
                   </NavDropdown.Item>
                 </NavDropdown>
               ) : (
-              // Show user dropdown if user is logged in
+                // Show user dropdown if user is logged in
                 <NavDropdown id={ComponentIDs.currentUserDropdown} title={currentUser}>
-                  <NavDropdown.Item id={ComponentIDs.currentUserDropdownSignOut} as={NavLink} to="/signout">
+                  <NavDropdown.Item id={ComponentIDs.currentUserDropdownSignOut} as={NavLink} to="/signout" onClick={() => handleNavClick('/signout')}>
                     <BoxArrowRight />
                     {' '}
                     Sign-out

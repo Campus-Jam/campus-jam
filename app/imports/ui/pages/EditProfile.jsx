@@ -234,7 +234,6 @@ const EditProfile = () => {
                       onChange={(selected) => handleSelectChange(selected, 'skillLevel', false)}
                     />
                   </Col>
-
                 </Row> {/* End of Second Row */}
 
                 {/* INSTRUMENTS */}
