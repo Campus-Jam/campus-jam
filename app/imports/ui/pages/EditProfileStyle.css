@@ -43,6 +43,11 @@
   font-weight: bold;
 }
 
+.editProfile button.isSubmitting {
+  background-color: var(--button-color1);
+  opacity: 100;
+}
+
 .editProfile button[type="submit"]:active {
   width: 200px;
   height: 50px;

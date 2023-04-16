@@ -8,6 +8,8 @@ import Select from 'react-select';
 import { Artists, getUniqueInstruments, getUniqueGenres, skillLevels } from '../../api/artists/Artists';
 import LoadingSpinner from '../components/LoadingSpinner';
 
+const SUBMIT_BUTTON_TIMEOUT_MS = 1000;
+
 export const generalSelectStyle = {
   control: (provided) => ({
     ...provided,
@@ -84,19 +86,17 @@ const EditProfile = () => {
   }));
 
   const getInstrumentOptions = (artists) => {
-    const uniqueInstruments = getUniqueInstruments(artists);
-    const instrumentOptions = uniqueInstruments.map((instrument) => ({
-      value: instrument,
-      label: instrument,
+    const instrumentOptions = getUniqueInstruments(artists).map((instrument) => ({
+      value: instrument, // Use the instrument itself as the value
+      label: instrument, // Use the instrument itself as the label
     }));
     return instrumentOptions;
   };
 
   const getGenreOptions = (artists) => {
-    const uniqueGenres = getUniqueGenres(artists);
-    const genreOptions = uniqueGenres.map((genre) => ({
-      value: genre,
-      label: genre,
+    const genreOptions = getUniqueGenres(artists).map((genre) => ({
+      value: genre, // Use the genre itself as the value
+      label: genre, // Use the genre itself as the label
     }));
     return genreOptions;
   };
@@ -112,7 +112,10 @@ const EditProfile = () => {
 
   const handleSelectChange = (selected, key, isMulti = false) => {
     if (isMulti) {
-      setFormData((prevData) => ({ ...prevData, [key]: selected }));
+      setFormData((prevData) => ({
+        ...prevData,
+        [key]: selected.map((item) => item.value),
+      }));
     } else {
       setFormData((prevData) => ({ ...prevData, [key]: selected.value }));
     }
@@ -136,6 +139,8 @@ const EditProfile = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setSubmitting(true);
+
     const updatedArtist = {
       ...currentArtist,
       ...formData,
@@ -151,14 +156,10 @@ const EditProfile = () => {
         // eslint-disable-next-line no-console
         console.log('Artist updated successfully!');
       }
+      setTimeout(() => {
+        setSubmitting(false);
+      }, SUBMIT_BUTTON_TIMEOUT_MS);
     });
-  };
-
-  const handleSubmitButtonClick = () => {
-    setSubmitting(true);
-    setTimeout(() => {
-      setSubmitting(false);
-    }, 1500); // 1500ms
   };
 
   const handleArrayInputChange = (event, key) => {
@@ -284,15 +285,11 @@ const EditProfile = () => {
                   </Col>
                 </Row>
 
+                {/* SUBMIT BUTTON */}
                 <Row className="justify-content-end">
-                  <Button
-                    type="submit"
-                    onClick={handleSubmitButtonClick}
-                    disabled={submitting}
-                  >
+                  <Button type="submit" disabled={submitting} className={submitting ? 'isSubmitting' : ''}>
                     {submitting ? 'Please wait...' : 'Submit'}
                   </Button>
-
                 </Row>
               </Form>
             </Card.Body>
