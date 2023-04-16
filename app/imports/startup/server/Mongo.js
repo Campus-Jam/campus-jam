@@ -3,7 +3,7 @@ import { Artists } from '../../api/artists/Artists';
 import { Gigs } from '../../api/gigs/Gigs';
 import { ArtistsToGigs } from '../../api/artistsToGigs/ArtistsToGigs';
 
-const addArtist = (artist) => {
+export const addArtist = (artist) => {
   // eslint-disable-next-line no-console
   console.log(`    Adding: ${artist.firstName} (${artist.email})`);
   Artists.collection.insert(artist);

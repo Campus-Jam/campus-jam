@@ -13,8 +13,8 @@ class ArtistsCollection {
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      firstName: { type: String, optional: false },
-      lastName: { type: String, optional: false },
+      firstName: { type: String, optional: true },
+      lastName: { type: String, optional: true },
       email: { type: String, optional: false },
       image: { type: String, optional: true },
       instruments: { type: Array, optional: true },
@@ -39,6 +39,7 @@ export const Artists = new ArtistsCollection();
 
 if (Meteor.isServer) {
   Meteor.methods({
+    // ARTISTS UPDATE METHOD
     'artists.update'(artistId, updatedArtist) {
       check(artistId, String);
       check(updatedArtist, Object);
@@ -64,6 +65,27 @@ if (Meteor.isServer) {
       }).validate(artistWithoutId);
 
       Artists.collection.update({ _id: artistId }, { $set: artistWithoutId });
+    },
+
+    // ARTISTS CREATE METHOD
+    'artists.create'(email) {
+      check(email, String);
+
+      if (!this.userId) {
+        throw new Meteor.Error('not-authorized');
+      }
+
+      const artist = {
+        email,
+        firstName: '',
+        lastName: '',
+        instruments: [],
+        genres: [],
+        influences: [],
+        bio: '',
+      };
+
+      Artists.collection.insert(artist);
     },
   });
 }

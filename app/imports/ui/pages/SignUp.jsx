@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import React, { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { Accounts } from 'meteor/accounts-base';
@@ -8,35 +9,47 @@ import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstra
 import { ComponentIDs, PageIDs } from '../utilities/ids';
 import './SignUpStyle.css';
 
-/*
- * SignUp component is similar to signin component, but we create a new user instead.
- */
 const SignUp = () => {
   const [error, setError] = useState('');
-  const [redirectToReferer, setRedirectToRef] = useState(false);
+  const [redirectToRef, setRedirectToRef] = useState(false);
 
   const schema = new SimpleSchema({
     email: String,
     password: String,
+    verifyPassword: {
+      type: String,
+      custom() {
+        if (this.value !== this.field('password').value) {
+          return 'passwordMismatch';
+        }
+        return undefined; // add this line
+      },
+    },
   });
+
   const bridge = new SimpleSchema2Bridge(schema);
 
-  /* Handle SignUp submission. Create user account and a profile entry, then redirect to the home page. */
   const submit = (doc) => {
     const { email, password } = doc;
-    Accounts.createUser({ email, username: email, password }, (err) => {
-      if (err) {
-        setError(err.reason);
+    Accounts.createUser({ email, username: email, password }, (createUserErr) => {
+      if (createUserErr) {
+        setError(createUserErr.reason);
       } else {
         setError('');
-        setRedirectToRef(true);
+        Meteor.call('artists.create', email, (callErr) => {
+          if (callErr) {
+            setError(callErr.reason);
+          } else {
+            setRedirectToRef(true);
+          }
+        });
       }
     });
   };
 
-  // if correct authentication, redirect to from: page instead of signup screen
-  if (redirectToReferer) {
-    return (<Navigate to="/home" />);
+  // if correct authentication, redirect to editprofile page
+  if (redirectToRef) {
+    return (<Navigate to="/editprofile" />);
   }
   return (
     <div id={PageIDs.signUpPage} className="signUp">
@@ -51,6 +64,7 @@ const SignUp = () => {
               <Card.Body>
                 <TextField id={ComponentIDs.signUpFormEmail} name="email" placeholder="E-mail address" />
                 <TextField id={ComponentIDs.signUpFormPassword} name="password" placeholder="Password" type="password" />
+                <TextField id={ComponentIDs.signUpFormVerifyPassword} name="verifyPassword" placeholder="Verify Password" type="password" />
                 <ErrorsField />
                 <SubmitField id={ComponentIDs.signUpFormSubmit} value="Sign Up" />
               </Card.Body>
@@ -66,7 +80,7 @@ const SignUp = () => {
           ) : (
             <Alert variant="danger">
               <Alert.Heading>Registration was not successful</Alert.Heading>
-              {error}
+              {error === 'passwordMismatch' ? 'Passwords do not match' : error}
             </Alert>
           )}
         </Col>
