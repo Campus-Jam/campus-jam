@@ -37,16 +37,19 @@ const NavBar = () => {
           <Navbar.Collapse id={ComponentIDs.basicNavbarNav}>
             {/* Left-aligned items */}
             <Nav className="me-auto justify-content-start">
-              {/* Button wrapper for each link to style as a button */}
-              <Button className="navbar-button">
+
+              {/* ARTISTS */}
+              <Button className="navbar-button" activeClassName="active-nav-link">
                 <Nav.Link as={NavLink} id={ComponentIDs.artistsMenuItem} to="/artists" key="artists">Artists</Nav.Link>
               </Button>
 
-              <Button className="navbar-button">
+              {/* ADD JAM SESSION */}
+              <Button className="navbar-button" activeClassName="active-nav-link">
                 <Nav.Link as={NavLink} id={ComponentIDs.createJamSession} to="/createJamSession" key="createJamSession">Add Jam Session</Nav.Link>
               </Button>
 
-              <Button className="navbar-button">
+              {/* EDIT PROFILE */}
+              <Button className="navbar-button" activeClassName="active-nav-link">
                 <Nav.Link as={NavLink} id={ComponentIDs.editProfile} to="/editProfile" key="editProfile">Edit Profile</Nav.Link>
               </Button>
             </Nav>
