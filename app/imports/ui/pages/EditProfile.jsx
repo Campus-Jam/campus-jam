@@ -8,7 +8,7 @@ import Select from 'react-select';
 import { Artists, getUniqueInstruments, getUniqueGenres, skillLevels } from '../../api/artists/Artists';
 import LoadingSpinner from '../components/LoadingSpinner';
 
-const generalSelectStyle = {
+export const generalSelectStyle = {
   control: (provided) => ({
     ...provided,
     backgroundColor: 'var(--page-background-color1)',
@@ -61,6 +61,8 @@ const EditProfile = () => {
     skillLevel: '',
     bio: '',
   });
+
+  const [submitting, setSubmitting] = useState(false);
 
   const { currentArtist, allArtists, isReady } = useTracker(() => {
     const artistsSub = Meteor.subscribe(Artists.userPublicationName);
@@ -150,6 +152,13 @@ const EditProfile = () => {
         console.log('Artist updated successfully!');
       }
     });
+  };
+
+  const handleSubmitButtonClick = () => {
+    setSubmitting(true);
+    setTimeout(() => {
+      setSubmitting(false);
+    }, 1500); // 1500ms
   };
 
   const handleArrayInputChange = (event, key) => {
@@ -276,7 +285,14 @@ const EditProfile = () => {
                 </Row>
 
                 <Row className="justify-content-end">
-                  <Button type="submit">Submit</Button>
+                  <Button
+                    type="submit"
+                    onClick={handleSubmitButtonClick}
+                    disabled={submitting}
+                  >
+                    {submitting ? 'Please wait...' : 'Submit'}
+                  </Button>
+
                 </Row>
               </Form>
             </Card.Body>
