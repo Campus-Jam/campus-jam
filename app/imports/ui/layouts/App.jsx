@@ -38,18 +38,24 @@ const App = () => {
           ) : (
             <Route exact path="/" element={<Landing />} />
           )}
-
-          <Route path="/signinlanding" element={<ProtectedRoute><ViewProfile /></ProtectedRoute>} />
+          {/* UNPROTECTED PUBLIC FACING ROUTES */}
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signout" element={<SignOut />} />
-          <Route path="/artists" element={<BrowseArtists />} />
-          <Route path="/jamsessions" element={<BrowseGigs />} />
+
+          {/* REGULAR USER ROUTES, MUST BE SIGNED IN */}
+          <Route path="/artists" element={<ProtectedRoute><BrowseArtists /></ProtectedRoute>} />
+          <Route path="/jamsessions" element={<ProtectedRoute><BrowseGigs /></ProtectedRoute>} />
           <Route path="/editprofile" element={<ProtectedRoute><EditProfile /></ProtectedRoute>} />
           <Route path="/createjamsession" element={<ProtectedRoute><CreateJamSession /></ProtectedRoute>} />
+
+          {/* ADMIN ROUTES */}
+
+          {/* PAGES FOR STUFF GOING WRONG */}
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="/404" element={<NotFound />} />
           <Route path="*" element={<NotFound />} />
+
         </Routes>
         <Footer />
       </div>
