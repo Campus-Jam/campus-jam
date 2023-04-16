@@ -16,6 +16,11 @@
   --button-color2: #d94000;
   --button-color-pressed: var(--text-color1);
 
+  --filter-dropdown-background-color: var(--page-background-color2);
+  --filter-text-color: #fff;
+  --filter-option-background-color: var(--page-background-color1);
+  --filter-option-text-color: #fff;
+  --filter-option-and-button-border-color: var(--button-color2);
 }
 /* Change bootstrap variable values.
  See https://getbootstrap.com/docs/5.2/customize/css-variables/

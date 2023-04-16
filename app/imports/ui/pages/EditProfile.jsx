@@ -18,6 +18,8 @@ const generalSelectStyle = {
   menu: (provided) => ({
     ...provided,
     backgroundColor: 'var(--page-background-color1)',
+    borderColor: 'black',
+    borderWidth: '2px',
   }),
   option: () => ({
     color: 'var(--text-color1)',
