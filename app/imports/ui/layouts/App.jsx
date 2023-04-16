@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
+import { useTracker } from 'meteor/react-meteor-data';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
@@ -19,37 +20,42 @@ import CreateJamSession from '../pages/CreateJamSession';
 import SignInLanding from '../pages/SignInLanding';
 
 /* Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
-const App = () => (
-  <Router>
-    <div className="d-flex flex-column min-vh-100">
-      <NavBar />
-      <Routes>
-        <Route exact path="/" element={<Landing />} />
+const App = () => {
+  const { currentUser, loggedIn } = useTracker(() => ({
+    currentUser: Meteor.user() ? Meteor.user().username : '',
+    loggedIn: !!Meteor.user(),
+  }));
 
-        <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+  return (
+    <Router>
+      <div className="d-flex flex-column min-vh-100">
+        <NavBar />
 
-        <Route path="/signInLanding" element={<ProtectedRoute><SignInLanding /></ProtectedRoute>} />
+        {/* Conditional Root Directory */}
+        <Routes>
+          {loggedIn ? (
+            <Route exact path="/" element={<BrowseGigs />} />
+          ) : (
+            <Route exact path="/" element={<Landing />} />
+          )}
 
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/signout" element={<SignOut />} />
-
-        <Route path="/artists" element={<BrowseArtists />} />
-        <Route path="/jamSessions" element={<BrowseGigs />} />
-
-        <Route path="/editProfile" element={<ProtectedRoute><EditProfile /></ProtectedRoute>} />
-        <Route path="/createJamSession" element={<ProtectedRoute><CreateJamSession /></ProtectedRoute>} />
-
-        <Route path="/notauthorized" element={<NotAuthorized />} />
-
-        <Route path="/404" element={<NotFound />} />
-        <Route path="*" element={<NotFound />} />
-
-      </Routes>
-      <Footer />
-    </div>
-  </Router>
-);
+          <Route path="/signInLanding" element={<ProtectedRoute><SignInLanding /></ProtectedRoute>} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/signout" element={<SignOut />} />
+          <Route path="/artists" element={<BrowseArtists />} />
+          <Route path="/jamSessions" element={<BrowseGigs />} />
+          <Route path="/editProfile" element={<ProtectedRoute><EditProfile /></ProtectedRoute>} />
+          <Route path="/createJamSession" element={<ProtectedRoute><CreateJamSession /></ProtectedRoute>} />
+          <Route path="/notauthorized" element={<NotAuthorized />} />
+          <Route path="/404" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
+  );
+};
 
 /*
  * ProtectedRoute (see React Router v6 sample)
