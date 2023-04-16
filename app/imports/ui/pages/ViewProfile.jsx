@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Col, Container, Image, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 
-const SignInLanding = () => (
+const ViewProfile = () => (
   <div style={{ backgroundImage: 'url(/images/background.jpg)' }}>
     <Container className="py-4">
       <Card>
@@ -62,4 +62,4 @@ const SignInLanding = () => (
     </Container>
   </div>
 );
-export default SignInLanding;
+export default ViewProfile;
