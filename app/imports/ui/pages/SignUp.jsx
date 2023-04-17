@@ -7,25 +7,47 @@ import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { ComponentIDs, PageIDs } from '../utilities/ids';
-import './SignUpStyle.css';
+import './SignXStyle.css';
 
 const SignUp = () => {
   const [error, setError] = useState('');
   const [redirectToRef, setRedirectToRef] = useState(false);
 
   const schema = new SimpleSchema({
-    email: String,
-    password: String,
+    email: {
+      type: String,
+      custom() {
+        if (!this.value) {
+          return SimpleSchema.ErrorTypes.REQUIRED;
+        }
+        return undefined;
+      },
+    },
+    password: {
+      type: String,
+      custom() {
+        if (!this.value) {
+          return SimpleSchema.ErrorTypes.REQUIRED;
+        }
+        return undefined;
+      },
+    },
     verifyPassword: {
       type: String,
-      custom(value, { parent }) {
-        if (value !== parent.password) {
+      custom() {
+        const email = this.field('email').value;
+        const password = this.field('password').value;
+
+        if (!email || !password) {
+          return 'missingCredentials';
+        }
+        if (this.value !== password) {
           return 'passwordMismatch';
         }
         return undefined;
       },
     },
-  });
+  }, { messages: { required: 'This field is required', passwordMismatch: 'Passwords do not match', missingCredentials: 'Please provide username credentials for sign-up' } });
 
   const bridge = new SimpleSchema2Bridge(schema);
 
@@ -52,7 +74,7 @@ const SignUp = () => {
     return (<Navigate to="/editprofile" />);
   }
   return (
-    <div id={PageIDs.signUpPage} className="signUp">
+    <div id={PageIDs.signUpPage} className="signX">
       <Row className="justify-content-center">
         <Col xs={6}>
           <Col className="text-center">
@@ -66,7 +88,9 @@ const SignUp = () => {
                 <TextField id={ComponentIDs.signUpFormPassword} name="password" placeholder="Password" type="password" />
                 <TextField id={ComponentIDs.signUpFormVerifyPassword} name="verifyPassword" placeholder="Verify Password" type="password" />
                 <ErrorsField />
-                <SubmitField id={ComponentIDs.signUpFormSubmit} value="Sign Up" />
+                <div className="text-center"> {/* center the submit button */}
+                  <SubmitField id={ComponentIDs.signUpFormSubmit} value="Sign Up" />
+                </div>
               </Card.Body>
             </Card>
           </AutoForm>

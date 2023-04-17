@@ -1,9 +1,0 @@
-.signUp {
-  background-color: var(--page-background-color1);
-  color: white;
-  min-height: 90vh;
-}
-
-.signUp .card {
-  color: black;
-}

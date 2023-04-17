@@ -5,7 +5,7 @@ import { Alert, Card, Col, Row } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
-import './SignUpStyle.css';
+import './SignXStyle.css';
 
 /**
  * Signin page overrides the form’s submit event and call Meteor’s loginWithPassword().
@@ -42,7 +42,7 @@ const SignIn = () => {
   }
   // Otherwise return the Login form.
   return (
-    <div id="signin-page" className="signUp">
+    <div id="signin-page" className="signX">
       <Row className="justify-content-center">
         <Col xs={6}>
           <Col className="text-center">
