@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { NavLink } from 'react-router-dom';
-import { Button, Container, Image, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Container, Image, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { BoxArrowRight, PersonFill, PersonPlusFill } from 'react-bootstrap-icons';
 import { ComponentIDs } from '../utilities/ids';
 import './NavbarStyle.css';
@@ -41,6 +41,16 @@ const NavBar = () => {
 
               {loggedIn && (
                 <>
+                  <Nav.Link
+                    className={`${activePage === '/viewProfile' ? 'activeBtn' : ''} navbar-button`}
+                    as={NavLink}
+                    id={ComponentIDs.artistsMenuItem}
+                    to="/viewProfile"
+                    key="viewProfile"
+                    onClick={() => handleNavClick('/viewProfile')}
+                  >
+                    Profile
+                  </Nav.Link>
                   <Nav.Link
                     className={`${activePage === '/artists' ? 'activeBtn' : ''} navbar-button`}
                     as={NavLink}
@@ -81,6 +91,15 @@ const NavBar = () => {
                 </NavDropdown>
               ) : (
                 <NavDropdown id={ComponentIDs.currentUserDropdown} title={currentUser}>
+                  <NavDropdown.Item
+                    id={ComponentIDs.viewProfile}
+                    as={NavLink}
+                    to="/viewProfile"
+                    key="ViewProfile"
+                    onClick={() => handleNavClick('/viewProfile')}
+                  >
+                    Profile
+                  </NavDropdown.Item>
                   <NavDropdown.Item
                     id={ComponentIDs.editProfile}
                     as={NavLink}

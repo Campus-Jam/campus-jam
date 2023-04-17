@@ -1,18 +1,19 @@
 import React from 'react';
-import { Card, Col, Container, Image, Row } from 'react-bootstrap';
+import { Button, Card, Col, Container, Image, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
+import './ViewProfileStyle.css';
 
 const ViewProfile = () => (
-  <div style={{ backgroundImage: 'url(/images/background.jpg)' }}>
+  <div className="signInLandingBackground">
     <Container className="py-4">
-      <Card>
+      <Card className="card">
         <Col className="px-4">
           <Row>
             <Container className="p-3">
               <h1 className="text-center">User Profile</h1>
             </Container>
             <Col>
-              <Image className="rounded mx-auto d-block" src="/images/headshot.jpg" width="300px" />
+              <Image className="rounded mx-auto d-block" src="/images/profileImagePlaceholder.png" width="300px" />
             </Col>
             <Col>
               <Row>
@@ -56,6 +57,11 @@ const ViewProfile = () => (
                 </Row>
               </Form.Group>
             </Row>
+          </Row>
+          <Row>
+            <Col className="p-3">
+              <Button className="editProfileButton" size="lg">Edit Profile</Button>
+            </Col>
           </Row>
         </Col>
       </Card>
