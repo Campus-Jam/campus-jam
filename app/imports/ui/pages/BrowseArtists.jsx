@@ -5,7 +5,7 @@ import { Container, Button } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Filter } from 'react-bootstrap-icons';
 import LoadingSpinner from '../components/LoadingSpinner';
-import ArtistCard from '../components/ArtistCard';
+import ArtistCard, { isValidArtist } from '../components/ArtistCard';
 import ArtistFilterForm from '../components/ArtistFilterForm';
 import { Artists } from '../../api/artists/Artists';
 
@@ -73,7 +73,7 @@ const BrowseArtists = () => {
         <div className="artist-grid">
           {artists
             .filter((artist) => {
-              if (filter.instrument && !artist.instruments.includes(filter.instrument)) {
+              if (!isValidArtist(artist)) {
                 return false;
               }
               if (filter.genre && !artist.genres.includes(filter.genre)) {

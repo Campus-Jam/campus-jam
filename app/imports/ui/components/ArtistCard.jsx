@@ -16,7 +16,7 @@ const MAX_CARD_BIO_LEN = 135;
 
 // A function used to truncate card data to a length specified by maxlen
 const truncateTo = (data, maxlen) => {
-  if (data.length <= maxlen) {
+  if (!data || data.length <= maxlen) {
     return data;
   }
   const truncatedData = data.slice(0, maxlen);
@@ -25,59 +25,82 @@ const truncateTo = (data, maxlen) => {
   return `${truncatedDataWord}...`;
 };
 
-const ArtistCard = ({ artistEntry }) => (
-  <div className="artistCard">
-    <Card className="h-100">
-      <Card.Header>
-        <div className="d-flex justify-content-center">
-          <Card.Title>{artistEntry.firstName} {artistEntry.lastName}</Card.Title>
-        </div>
-        <div className="d-flex justify-content-center">
-          <Image src={artistEntry.image} height={100} className="image-shadow" />
-        </div>
-      </Card.Header>
+const artistEntrySchema = PropTypes.shape({
+  firstName: PropTypes.string,
+  lastName: PropTypes.string,
+  image: PropTypes.string,
+  genres: PropTypes.arrayOf(PropTypes.string),
+  instruments: PropTypes.arrayOf(PropTypes.string),
+  skillLevel: PropTypes.string,
+  bio: PropTypes.string,
+  _id: PropTypes.string,
+});
 
-      <ListGroup variant="flush">
-
-        <ListGroup.Item className="d-flex justify-content-between align-items-center genres">
-          <span className="label fw-bold d-flex justify-content-start">Genre(s): </span>
-          <span className="content">{truncateTo(artistEntry.genres.join(', '), MAX_CARD_GENRES_LEN)}</span>
-        </ListGroup.Item>
-
-        <ListGroup.Item className="d-flex justify-content-between align-items-center instruments">
-          <span className="label fw-bold d-flex justify-content-start">Instrument(s): </span>
-          <span className="content">{truncateTo(artistEntry.instruments.join(', '), MAX_CARD_INSTRUMENTS_LEN)}</span>
-        </ListGroup.Item>
-
-        <ListGroup.Item className="d-flex justify-content-between align-items-center skillLevel">
-          <span className="label fw-bold d-flex justify-content-start">Skill Level: </span>
-          <span className="content">{artistEntry.skillLevel}</span>
-        </ListGroup.Item>
-
-        <ListGroup.Item className="d-flex justify-content-between align-items-start bio">
-          <div className="label fw-bold d-flex justify-content-start">Bio:</div>
-          <br />
-          {truncateTo(artistEntry.bio, MAX_CARD_BIO_LEN)}
-        </ListGroup.Item>
-
-      </ListGroup>
-
-    </Card>
-  </div>
-);
-
-// Require a document to be passed to this component.
-ArtistCard.propTypes = {
-  artistEntry: PropTypes.shape({
-    firstName: PropTypes.string,
-    lastName: PropTypes.string,
-    image: PropTypes.string,
-    genres: PropTypes.arrayOf(PropTypes.string),
-    instruments: PropTypes.arrayOf(PropTypes.string),
-    skillLevel: PropTypes.string,
-    bio: PropTypes.string,
-    _id: PropTypes.string,
-  }).isRequired,
+export const isValidArtist = (artistToValidate) => {
+  if (
+    artistToValidate &&
+    artistToValidate.firstName &&
+    artistToValidate.lastName &&
+    artistToValidate.image &&
+    Array.isArray(artistToValidate.genres) &&
+    Array.isArray(artistToValidate.instruments) &&
+    artistToValidate.skillLevel &&
+    artistToValidate.bio
+  ) {
+    return true;
+  } else {
+    return false;
+  }
 };
+
+const ArtistCard = ({ artistEntry }) => {
+  if (!isValidArtist(artistEntry)) {
+    return null;
+  }
+  return (
+    <div className="artistCard">
+      <Card className="h-100">
+        <Card.Header>
+          <div className="d-flex justify-content-center">
+            <Card.Title>{artistEntry.firstName} {artistEntry.lastName}</Card.Title>
+          </div>
+          <div className="d-flex justify-content-center">
+            <Image src={artistEntry.image} height={100} className="image-shadow" />
+          </div>
+        </Card.Header>
+
+        <ListGroup variant="flush">
+
+          <ListGroup.Item className="d-flex justify-content-between align-items-center genres">
+            <span className="label fw-bold d-flex justify-content-start">Genre(s): </span>
+            <span className="content">{truncateTo(artistEntry.genres.join(', '), MAX_CARD_GENRES_LEN)}</span>
+          </ListGroup.Item>
+
+          <ListGroup.Item className="d-flex justify-content-between align-items-center instruments">
+            <span className="label fw-bold d-flex justify-content-start">Instrument(s): </span>
+            <span className="content">{truncateTo(artistEntry.instruments.join(', '), MAX_CARD_INSTRUMENTS_LEN)}</span>
+          </ListGroup.Item>
+
+          <ListGroup.Item className="d-flex justify-content-between align-items-center skillLevel">
+            <span className="label fw-bold d-flex justify-content-start">Skill Level: </span>
+            <span className="content">{artistEntry.skillLevel}</span>
+          </ListGroup.Item>
+
+          <ListGroup.Item className="d-flex justify-content-between align-items-start bio">
+            <div className="label fw-bold d-flex justify-content-start">Bio:</div>
+            <br />
+            {truncateTo(artistEntry.bio, MAX_CARD_BIO_LEN)}
+          </ListGroup.Item>
+
+        </ListGroup>
+
+      </Card>
+    </div>
+  );
+};
+
+ArtistCard.propTypes = {
+  artistEntry: artistEntrySchema,
+}.isRequired;
 
 export default ArtistCard;

@@ -46,7 +46,7 @@ const SignIn = () => {
       <Row className="justify-content-center">
         <Col xs={6}>
           <Col className="text-center">
-            <h2 style={{ paddingTop: '120px', paddingBottom: '10px' }}>Login</h2>
+            <h2 style={{ paddingTop: '120px', paddingBottom: '10px' }}>Sign In</h2>
           </Col>
           <AutoForm schema={bridge} onSubmit={data => submit(data)}>
             <Card className="card">
@@ -54,7 +54,9 @@ const SignIn = () => {
                 <TextField id="signin-form-email" name="email" placeholder="E-mail address" />
                 <TextField id="signin-form-password" name="password" placeholder="Password" type="password" />
                 <ErrorsField />
-                <SubmitField value="Login" id="signin-form-submit" />
+                <div className="text-center" style={{ marginTop: '20px' }}>
+                  <SubmitField value="Sign In" id="signin-form-submit" />
+                </div>
               </Card.Body>
             </Card>
           </AutoForm>

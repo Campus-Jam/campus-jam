@@ -88,7 +88,7 @@ const SignUp = () => {
                 <TextField id={ComponentIDs.signUpFormPassword} name="password" placeholder="Password" type="password" />
                 <TextField id={ComponentIDs.signUpFormVerifyPassword} name="verifyPassword" placeholder="Verify Password" type="password" />
                 <ErrorsField />
-                <div className="text-center"> {/* center the submit button */}
+                <div className="text-center" style={{ marginTop: '20px' }}>
                   <SubmitField id={ComponentIDs.signUpFormSubmit} value="Sign Up" />
                 </div>
               </Card.Body>

@@ -19,16 +19,21 @@
 }
 
 .signX .btn {
-  align-items: end;
+  width: 100px;
+  height: 35px;
+  align-items: center;
   background-color: var(--button-color1);
   box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.5);
 }
+
 
 .signX .btn:hover {
   background-color: var(--button-color2);
 }
 
 .signX .btn:active {
-  background-color: var(--button-color-pressed);
+  background-color: var(--button-color-pressed) !important;
+  color: black !important;
+  font-weight: bolder;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
 }
