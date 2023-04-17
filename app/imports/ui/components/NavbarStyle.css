@@ -1,27 +1,37 @@
 .navBarStyle .navbar {
   box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.5);
-  margin-bottom: 20px
-
+  margin-bottom: 20px;
 }
 
-.navBarStyle .navbar-button {
+.navBarStyle .navbar-link {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 175px;
   height: 30px;
+  margin-left: 15px;
+  margin-top: 10px;
+}
+
+.navBarStyle .navbar-button {
+  width: 150px;
+  height: 35px;
   background-color: var(--button-color3);
-  color: black !important;
+  color: #e3e3e3;
   font-size: 16px;
   font-weight: bold;
   border-radius: 15px;
+  border-width: 3px !important;
+  border-color: black !important;
   padding: 6px 12px;
-  margin-left: 15px;
-  margin-top: 10px;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.5);
 }
 
-.navBarStyle .navbar-button:hover {
+.navBarStyle .navbar-button .btn:hover {
   background-color: var(--button-color2);
   color: white;
 }
@@ -34,7 +44,7 @@
 }
 
 /* For when button page is active page */
-.navBarStyle .navbar-button.activeBtn {
+.navBarStyle .navbar-link.activeBtn .navbar-button {
   background-color: var(--button-color2);
   color: black !important;
   font-weight: bolder;

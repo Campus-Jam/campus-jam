@@ -41,33 +41,27 @@ const NavBar = () => {
 
               {loggedIn && (
                 <>
-                  <Button
+                  <Nav.Link
                     className={`${activePage === '/artists' ? 'activeBtn' : ''} navbar-button`}
+                    as={NavLink}
+                    id={ComponentIDs.artistsMenuItem}
+                    to="/artists"
+                    key="artists"
+                    onClick={() => handleNavClick('/artists')}
                   >
-                    <Nav.Link
-                      as={NavLink}
-                      id={ComponentIDs.artistsMenuItem}
-                      to="/artists"
-                      key="artists"
-                      onClick={() => handleNavClick('/artists')}
-                    >
-                      Artists
-                    </Nav.Link>
-                  </Button>
+                    Artists
+                  </Nav.Link>
 
-                  <Button
+                  <Nav.Link
                     className={`${activePage === '/createJamSession' ? 'activeBtn' : ''} navbar-button`}
+                    as={NavLink}
+                    id={ComponentIDs.createJamSession}
+                    to="/createJamSession"
+                    key="createJamSession"
+                    onClick={() => handleNavClick('/createJamSession')}
                   >
-                    <Nav.Link
-                      as={NavLink}
-                      id={ComponentIDs.createJamSession}
-                      to="/createJamSession"
-                      key="createJamSession"
-                      onClick={() => handleNavClick('/createJamSession')}
-                    >
-                      Add Jam Session
-                    </Nav.Link>
-                  </Button>
+                    Add Jam Session
+                  </Nav.Link>
                 </>
               )}
 
