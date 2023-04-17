@@ -21,8 +21,6 @@
   font-size: 16px;
   font-weight: bold;
   border-radius: 15px;
-  border-width: 3px !important;
-  border-color: black !important;
   padding: 6px 12px;
   margin-left: 20px;
   display: flex;
@@ -44,7 +42,7 @@
 }
 
 /* For when button page is active page */
-.navBarStyle .navbar-link.activeBtn .navbar-button {
+.navBarStyle .navbar-button.activeBtn {
   background-color: var(--button-color2);
   color: black !important;
   font-weight: bolder;
