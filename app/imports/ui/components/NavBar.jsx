@@ -42,16 +42,6 @@ const NavBar = () => {
               {loggedIn && (
                 <>
                   <Nav.Link
-                    className={`${activePage === '/viewProfile' ? 'activeBtn' : ''} navbar-button`}
-                    as={NavLink}
-                    id={ComponentIDs.artistsMenuItem}
-                    to="/viewProfile"
-                    key="viewProfile"
-                    onClick={() => handleNavClick('/viewProfile')}
-                  >
-                    Profile
-                  </Nav.Link>
-                  <Nav.Link
                     className={`${activePage === '/artists' ? 'activeBtn' : ''} navbar-button`}
                     as={NavLink}
                     id={ComponentIDs.artistsMenuItem}
