@@ -2,15 +2,10 @@ import { Meteor } from 'meteor/meteor';
 import { Artists } from '../../api/artists/Artists';
 import { Gigs } from '../../api/gigs/Gigs';
 import { ArtistsToGigs } from '../../api/artistsToGigs/ArtistsToGigs';
+import { addArtist, addGig, linkEmailToGig } from '../both/collectionHelpers';
 
-export const addArtist = (artist) => {
-  // eslint-disable-next-line no-console
-  console.log(`    Adding: ${artist.firstName} (${artist.email})`);
-  Artists.collection.insert(artist);
 
-};
-
-// Add default Artists upon meteor initialization, and create default user accounts
+// Initialize app with default artists
 if (Artists.collection.find().count() === 0) {
   if (Meteor.settings.defaultArtists) {
     // eslint-disable-next-line no-console
@@ -19,12 +14,7 @@ if (Artists.collection.find().count() === 0) {
   }
 }
 
-const addGig = (gig) => {
-  // eslint-disable-next-line no-console
-  console.log(`    Adding: ${gig.title} (${gig.date})`);
-  Gigs.collection.insert(gig);
-};
-
+// Initialize app with default gigs
 if (Gigs.collection.find().count() === 0) {
   if (Meteor.settings.defaultGigs) {
     // eslint-disable-next-line no-console
@@ -33,40 +23,7 @@ if (Gigs.collection.find().count() === 0) {
   }
 }
 
-const findArtistByEmail = (email) => {
-  const artist = Artists.collection.findOne({ email });
-  if (artist) {
-    return artist._id;
-  }
-  return null;
-};
-
-const findGigByTitle = (title) => {
-  const gig = Gigs.collection.findOne({ title });
-  if (title) {
-    return gig._id;
-  }
-  return null;
-};
-
-const linkEmailToGig = (email, title) => {
-  const artistId = findArtistByEmail(email);
-  const gigId = findGigByTitle(title);
-
-  if (artistId && gigId) {
-    Meteor.call('artistsToGigs.insert', artistId, gigId, (error) => {
-      if (error) {
-        console.error(`Failed to link artist to gig: ${error.message}`);
-      } else {
-        console.log(`Linked '${email}' to '${title}'`);
-      }
-    });
-  } else {
-    console.error('Failed to find artist or gig for linking');
-  }
-};
-
-// Add default data to ArtistsToGigsCollection
+// Initialize app with default artist to gig links
 Meteor.startup(() => {
   if (ArtistsToGigs.collection.find().count() === 0) {
     const albert_email = 'albert.h@foo.com';

@@ -9,6 +9,7 @@ import { Gigs } from '../../api/gigs/Gigs';
 import LoadingSpinner from '../components/LoadingSpinner';
 import './CreateJamSessionStyle.css';
 import { globalSelectStyle } from './EditProfile';
+import { linkEmailToGig } from '../../startup/both/collectionHelpers';
 
 const SUBMIT_BUTTON_TIMEOUT_MS = 1000;
 
@@ -44,18 +45,28 @@ const CreateJamSession = () => {
     setSubmitting(true);
     Meteor.call('gigs.insert', title, image, date, skillLevel, genres, instruments, venue, about, (error, result) => {
       if (error) {
+        // eslint-disable-next-line no-console
         console.log(error);
         handleFormReset();
       } else {
+        // eslint-disable-next-line no-console
         console.log(result);
         handleFormReset();
       }
+
+      const currentUser = Meteor.user();
+      const currentUserEmail = currentUser.emails[0].address;
+      console.log(currentUserEmail);
+      linkEmailToGig(currentUserEmail, formData.title);
+      // const currentUser = Meteor.user();
+      // const currentUserEmail = currentUser.emails[0].address;
+      // linkEmailToGig(currentUserEmail, formData.title);
+
       setTimeout(() => {
         setSubmitting(false);
       }, SUBMIT_BUTTON_TIMEOUT_MS);
     });
   };
-
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
