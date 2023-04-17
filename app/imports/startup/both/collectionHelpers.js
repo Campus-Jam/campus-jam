@@ -50,7 +50,6 @@ export const findGigByTitle = (title) => {
 
 export const linkEmailToGig = (email, title) => {
   // eslint-disable-next-line no-console
-  console.log(`email:${email}, title:${title}`);
   const artistId = findArtistByEmail(email);
   const gigId = findGigByTitle(title);
 

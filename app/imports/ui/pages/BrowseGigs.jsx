@@ -59,11 +59,13 @@ const BrowseGigs = () => {
               if (filter.instrument && !gig.instruments.includes(filter.instrument)) {
                 return false;
               }
+              if (filter.instrument && !gig.instruments.includes(filter.instrument)) {
+                return false;
+              }
               if (filter.genre && !gig.genres.includes(filter.genre)) {
                 return false;
               }
               return !(filter.skillLevel && gig.skillLevel !== filter.skillLevel);
-
             })
             .map((gig) => (
               <div key={gig._id}>

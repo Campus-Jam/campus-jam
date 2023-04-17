@@ -37,7 +37,16 @@ Meteor.methods({
   'artistsToGigs.remove'(artistId, gigId) {
     check(artistId, String);
     check(gigId, String);
+    // Remove the artist from the gig.
     ArtistsToGigs.collection.remove({ artist_id: artistId, gig_id: gigId });
+
+    // Check if there are any artists left in the gig.
+    const artistsInGigCount = ArtistsToGigs.collection.find({ gig_id: gigId }).count();
+
+    // If there are no artists left in the gig, remove the gig document.
+    if (artistsInGigCount === 0) {
+      Gigs.collection.remove({ _id: gigId });
+    }
   },
 
   'artistsToGigs.getGigsForArtist'(artistId) {
