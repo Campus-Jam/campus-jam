@@ -177,7 +177,7 @@ const EditProfile = () => {
 
   return (isReady ? (
     <div className="createJamSession">
-      <Container className="justify-content-center">
+      <Container className="justify-content-center pb-3">
         <Col>
           <Col className="justify-content-center text-center py-2">
             <h2>Edit Profile</h2>
