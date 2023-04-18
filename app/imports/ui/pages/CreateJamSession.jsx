@@ -130,55 +130,55 @@ const CreateJamSession = () => {
                     </Col>
                   </Row>
 
-                  {/* IMAGE URL */}
                   <Row>
-                    <Col>
+                    {/* IMAGE URL */}
+                    <Col xs={6}>
                       <Form.Label>Image URL:</Form.Label>
                       <Form.Control name="image" onChange={handleInputChange} />
                     </Col>
-                  </Row>
 
-                  {/* INSTRUMENTS */}
-                  <Row>
-                    <Form.Label>Instrument(s):</Form.Label>
-                    <Select
-                      isMulti
-                      name="instruments"
-                      options={allArtists && allArtists.length > 0 ? InstrumentOptions : []}
-                      className="multiSelect"
-                      styles={globalSelectStyle}
-                      value={formData.instruments.map((instr) => ({
-                        value: instr,
-                        label: instr,
-                      }))}
-                      onChange={(selected) => handleSelectChange(selected, 'instruments', true)}
-                    />
-                  </Row>
-
-                  {/* GENRES */}
-                  <Row>
-                    <Form.Label>Genre(s):</Form.Label>
-                    <Select
-                      isMulti
-                      name="genres"
-                      options={allArtists && allArtists.length > 0 ? GenreOptions : []}
-                      className="multiSelect"
-                      styles={globalSelectStyle}
-                      value={formData.genres.map((genre) => ({
-                        value: genre,
-                        label: genre,
-                      }))}
-                      onChange={(selected) => handleSelectChange(selected, 'genres', true)}
-                    />
-                  </Row>
-
-                  {/* VENUE */}
-                  <Row>
-                    <Col>
+                    {/* VENUE */}
+                    <Col xs={6}>
                       <Form.Label>Venue:</Form.Label>
                       <InputGroup>
                         <FormControl name="venue" onChange={handleInputChange} />
                       </InputGroup>
+                    </Col>
+                  </Row>
+
+                  <Row>
+                    {/* INSTRUMENTS */}
+                    <Col xs={6}>
+                      <Form.Label>Instrument(s):</Form.Label>
+                      <Select
+                        isMulti
+                        name="instruments"
+                        options={allArtists && allArtists.length > 0 ? InstrumentOptions : []}
+                        className="multiSelect"
+                        styles={globalSelectStyle}
+                        value={formData.instruments.map((instr) => ({
+                          value: instr,
+                          label: instr,
+                        }))}
+                        onChange={(selected) => handleSelectChange(selected, 'instruments', true)}
+                      />
+                    </Col>
+
+                    {/* GENRES */}
+                    <Col xs={6}>
+                      <Form.Label>Genre(s):</Form.Label>
+                      <Select
+                        isMulti
+                        name="genres"
+                        options={allArtists && allArtists.length > 0 ? GenreOptions : []}
+                        className="multiSelect"
+                        styles={globalSelectStyle}
+                        value={formData.genres.map((genre) => ({
+                          value: genre,
+                          label: genre,
+                        }))}
+                        onChange={(selected) => handleSelectChange(selected, 'genres', true)}
+                      />
                     </Col>
                   </Row>
 
@@ -191,7 +191,7 @@ const CreateJamSession = () => {
                   </Row>
 
                   {/* SUBMIT BUTTON */}
-                  <Row className="justify-content-end">
+                  <Row className="justify-content-center">
                     <Button type="submit" disabled={submitting} className={submitting ? 'isSubmitting' : ''}>
                       {submitting ? 'Please wait...' : 'Submit'}
                     </Button>
