@@ -1,12 +1,54 @@
-.card{
-  background-color: #256440;
+.viewProfile {
+  background-color: var(--page-background-color1);
+  color: var(--text-color1);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  border-color: black;
+  border-width: 3px;
 }
-.editProfileButton {
-  background-color: #d73f00;
-  color: white;
+.viewProfile .card{
+  border-radius: 40px;
+  background-color: var(--page-background-color2);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
-.signInLandingBackground {
-  background-color: #404f3c;
-  color: #fcf80a;
+.viewProfile .card .row {
+  padding-top: 20px;
+}
+.viewProfile .card .form-label {
+  margin-left: 10px;
+  font-size: 18px;
   font-weight: bold;
+}
+
+.viewProfile .card .form-control {
+  background-color: var(--page-background-color1);
+  color: var(--text-color2);
+  border-color: black;
+  font-size: 18px;
+}
+
+.viewProfile .editProfileButton {
+  width: 200px;
+  height: 50px;
+  margin-right: 40px;
+  margin-bottom: 20px;
+  background-color: var(--button-color2);
+  border-color: black;
+  box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.5);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.viewProfile .editProfileButton:active {
+  background-color: var(--button-color-pressed);
+  border-color: black;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+  color: black;
+}
+.viewProfile .editProfileButton:hover {
+  background-color: var(--button-color1);
+  border-color: black;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+  color: black;
 }

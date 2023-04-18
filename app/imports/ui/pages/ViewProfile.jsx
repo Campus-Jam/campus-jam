@@ -1,10 +1,12 @@
 import React from 'react';
-import { Button, Card, Col, Container, Image, Row } from 'react-bootstrap';
+import { Button, Card, Col, Container, Image, Nav, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import './ViewProfileStyle.css';
+import { NavLink } from 'react-router-dom';
+import { ComponentIDs } from '../utilities/ids';
 
 const ViewProfile = () => (
-  <div className="signInLandingBackground">
+  <div className="viewProfile">
     <Container className="py-4">
       <Card className="card">
         <Col className="px-4">
@@ -60,7 +62,17 @@ const ViewProfile = () => (
           </Row>
           <Row>
             <Col className="p-3">
-              <Button className="editProfileButton" size="lg">Edit Profile</Button>
+              <Button className="editProfileButton">
+                <Nav.Link
+                  className="EditProfileStyle.css"
+                  as={NavLink}
+                  id={ComponentIDs.createJamSession}
+                  to="/editProfile"
+                  key="editProfile"
+                >
+                  Add Jam Session
+                </Nav.Link>
+              </Button>
             </Col>
           </Row>
         </Col>
