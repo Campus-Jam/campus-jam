@@ -238,36 +238,38 @@ const EditProfile = () => {
 
                 {/* INSTRUMENTS */}
                 <Row>
-                  <Form.Label>Instrument(s):</Form.Label>
-                  <Select
-                    isMulti
-                    name="instruments"
-                    options={InstrumentOptions}
-                    className="multiSelect"
-                    styles={globalSelectStyle}
-                    value={[...formData.instruments].map((instrument) => ({
-                      value: instrument,
-                      label: instrument,
-                    }))}
-                    onChange={(selected) => handleSelectChange(selected, 'instruments', true)}
-                  />
-                </Row>
+                  <Col xs={6}>
+                    <Form.Label>Instrument(s):</Form.Label>
+                    <Select
+                      isMulti
+                      name="instruments"
+                      options={InstrumentOptions}
+                      className="multiSelect"
+                      styles={globalSelectStyle}
+                      value={[...formData.instruments].map((instrument) => ({
+                        value: instrument,
+                        label: instrument,
+                      }))}
+                      onChange={(selected) => handleSelectChange(selected, 'instruments', true)}
+                    />
+                  </Col>
 
-                {/* GENRES */}
-                <Row>
-                  <Form.Label>Genre(s):</Form.Label>
-                  <Select
-                    isMulti
-                    name="genres"
-                    options={GenreOptions}
-                    className="multiSelect"
-                    styles={globalSelectStyle}
-                    value={formData.genres.map((genre) => ({
-                      value: genre,
-                      label: genre,
-                    }))}
-                    onChange={(selected) => handleSelectChange(selected, 'genres', true)}
-                  />
+                  {/* GENRES */}
+                  <Col>
+                    <Form.Label>Genre(s):</Form.Label>
+                    <Select
+                      isMulti
+                      name="genres"
+                      options={GenreOptions}
+                      className="multiSelect"
+                      styles={globalSelectStyle}
+                      value={formData.genres.map((genre) => ({
+                        value: genre,
+                        label: genre,
+                      }))}
+                      onChange={(selected) => handleSelectChange(selected, 'genres', true)}
+                    />
+                  </Col>
                 </Row>
 
                 {/* INFLUENCES */}
