@@ -3,9 +3,23 @@ import { Button, Card, Col, Container, Image, Nav, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import './ViewProfileStyle.css';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { ComponentIDs } from '../utilities/ids';
+import { isValidArtist } from '../components/ArtistCard';
+import LoadingSpinner from '../components/LoadingSpinner';
 
-const ViewProfile = () => (
+const artistEntrySchema = PropTypes.shape({
+  firstName: PropTypes.string,
+  lastName: PropTypes.string,
+  image: PropTypes.string,
+  genres: PropTypes.arrayOf(PropTypes.string),
+  instruments: PropTypes.arrayOf(PropTypes.string),
+  skillLevel: PropTypes.string,
+  bio: PropTypes.string,
+  _id: PropTypes.string,
+});
+
+const ViewProfile = ({ artistEntry }) => ((isValidArtist(artistEntry)) ? (
   <div className="viewProfile">
     <Container className="py-4">
       <Card className="card">
@@ -79,5 +93,12 @@ const ViewProfile = () => (
       </Card>
     </Container>
   </div>
+) :
+  <LoadingSpinner />
 );
+
+ViewProfile.propTypes = {
+  artistEntry: artistEntrySchema,
+}.isRequired;
+
 export default ViewProfile;
