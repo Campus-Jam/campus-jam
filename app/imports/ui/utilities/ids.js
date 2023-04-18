@@ -47,4 +47,5 @@ export const PageIDs = {
   signOutPage: 'signOutPage',
   signUpPage: 'signUpPage',
   createJamSessionPage: 'CreateJamSessionPage',
+  viewProfile: 'ViewProfile',
 };

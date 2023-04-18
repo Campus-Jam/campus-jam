@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import './BrowseGigsStyle.css';
 import { Button, Container } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Filter } from 'react-bootstrap-icons';
+import { Filter, Plus } from 'react-bootstrap-icons';
 import LoadingSpinner from '../components/LoadingSpinner';
 import GigCard from '../components/GigCard';
 import GigFilterForm from '../components/GigFilterForm';
@@ -40,6 +40,9 @@ const BrowseGigs = () => {
         <div>
           <Button onClick={handleFilterClick} className="filterButton">
             <Filter size="24px" />
+          </Button>
+          <Button className="addJamButton">
+            <Plus size="24px" />
           </Button>
           {showFilter && (
             <GigFilterForm

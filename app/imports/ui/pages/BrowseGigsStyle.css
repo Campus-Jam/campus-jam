@@ -18,6 +18,19 @@
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.8);
 }
 
+.browseGigs .addJamButton {
+  position: fixed;
+  right: .75vh;
+  top: 92vh;
+  z-index: 9998;
+  background-color: var(--button-color2);
+  border: white;
+  height: 48px; /* Changed from 4vw */
+  width: 60px; /* Changed from 5vw */
+  border-radius: 10px; /* Changed from 1vw */
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.8);
+}
+
 .browseGigs .gig-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, 600px);
