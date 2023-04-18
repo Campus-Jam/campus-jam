@@ -36,22 +36,14 @@ const artistEntrySchema = PropTypes.shape({
   _id: PropTypes.string,
 });
 
-export const isValidArtist = (artistToValidate) => {
-  if (
-    artistToValidate &&
+export const isValidArtist = (artistToValidate) => !!(artistToValidate &&
     artistToValidate.firstName &&
     artistToValidate.lastName &&
     artistToValidate.image &&
     Array.isArray(artistToValidate.genres) &&
     Array.isArray(artistToValidate.instruments) &&
     artistToValidate.skillLevel &&
-    artistToValidate.bio
-  ) {
-    return true;
-  } else {
-    return false;
-  }
-};
+    artistToValidate.bio);
 
 const ArtistCard = ({ artistEntry }) => {
   if (!isValidArtist(artistEntry)) {

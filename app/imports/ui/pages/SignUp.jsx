@@ -17,6 +17,7 @@ const SignUp = () => {
     email: {
       type: String,
       custom() {
+        // eslint-disable-next-line react/no-this-in-sfc
         if (!this.value) {
           return SimpleSchema.ErrorTypes.REQUIRED;
         }
@@ -26,6 +27,7 @@ const SignUp = () => {
     password: {
       type: String,
       custom() {
+        // eslint-disable-next-line react/no-this-in-sfc
         if (!this.value) {
           return SimpleSchema.ErrorTypes.REQUIRED;
         }
@@ -35,12 +37,15 @@ const SignUp = () => {
     verifyPassword: {
       type: String,
       custom() {
+        // eslint-disable-next-line react/no-this-in-sfc
         const email = this.field('email').value;
+        // eslint-disable-next-line react/no-this-in-sfc
         const password = this.field('password').value;
 
         if (!email || !password) {
           return 'missingCredentials';
         }
+        // eslint-disable-next-line react/no-this-in-sfc
         if (this.value !== password) {
           return 'passwordMismatch';
         }

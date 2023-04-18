@@ -21,7 +21,7 @@ import ViewProfile from '../pages/ViewProfile';
 
 /* Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
-  const { currentUser, loggedIn } = useTracker(() => ({
+  const { loggedIn } = useTracker(() => ({
     currentUser: Meteor.user() ? Meteor.user().username : '',
     loggedIn: !!Meteor.user(),
   }));
