@@ -60,7 +60,7 @@ export const linkEmailToGig = (email, title) => {
         console.error(`Failed to link artist to gig: ${error.message}`);
       } else {
         // eslint-disable-next-line no-console
-        console.log(`Linked '${email}' to '${title}'`);
+        console.log(`    Linked '${email}' to '${title}'`);
       }
     });
   } else {

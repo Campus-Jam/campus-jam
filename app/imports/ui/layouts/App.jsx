@@ -11,7 +11,6 @@ import SignOut from '../pages/SignOut';
 import NavBar from '../components/NavBar';
 import SignIn from '../pages/SignIn';
 import NotAuthorized from '../pages/NotAuthorized';
-import Home from '../pages/Home';
 import BrowseArtists from '../pages/BrowseArtists';
 import BrowseGigs from '../pages/BrowseGigs';
 import EditProfile from '../pages/EditProfile';
@@ -80,7 +79,7 @@ ProtectedRoute.propTypes = {
 };
 
 ProtectedRoute.defaultProps = {
-  children: <Home />,
+  children: <Landing />,
 };
 
 export default App;
