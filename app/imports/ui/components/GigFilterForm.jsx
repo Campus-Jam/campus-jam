@@ -1,6 +1,8 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import Select from 'react-select';
+import { globalSelectStyle } from '../utilities/ReactSelectStyle';
 import './FilterFormStyle.css';
 
 const GigFilterForm = ({
@@ -10,46 +12,50 @@ const GigFilterForm = ({
   genres,
   skillLevels,
 }) => {
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFilter({ ...filter, [name]: value });
+  const handleInputChange = (selectedOption, { name }) => {
+    setFilter({ ...filter, [name]: selectedOption ? selectedOption.value : '' });
   };
 
   const clearFilters = () => {
     setFilter({ instrument: '', genre: '', skillLevel: '' });
   };
 
+  const toSelectOptions = (arr) => arr.map((value) => ({ value, label: value }));
+
   return (
     <div className="filterForm">
       <Form>
         <Form.Group controlId="filterInstrument">
           <Form.Label className="filterLabel">Instrument</Form.Label>
-          <Form.Control as="select" name="instrument" value={filter.instruments} onChange={handleInputChange}>
-            <option value="">Any</option>
-            {instruments.map((instrument, index) => (
-              <option key={index} value={instrument}>{instrument}</option>
-            ))}
-          </Form.Control>
+          <Select
+            name="instrument"
+            styles={globalSelectStyle}
+            value={filter.instrument ? { label: filter.instrument, value: filter.instrument } : null}
+            onChange={handleInputChange}
+            options={[{ value: '', label: 'Any' }, ...toSelectOptions(instruments)]}
+          />
         </Form.Group>
 
         <Form.Group controlId="filterGenre">
           <Form.Label className="filterLabel">Genre</Form.Label>
-          <Form.Control as="select" name="genre" value={filter.genres} onChange={handleInputChange}>
-            <option value="">Any</option>
-            {genres.map((genre, index) => (
-              <option key={index} value={genre}>{genre}</option>
-            ))}
-          </Form.Control>
+          <Select
+            name="genre"
+            styles={globalSelectStyle}
+            value={filter.genre ? { label: filter.genre, value: filter.genre } : null}
+            onChange={handleInputChange}
+            options={[{ value: '', label: 'Any' }, ...toSelectOptions(genres)]}
+          />
         </Form.Group>
 
         <Form.Group controlId="filterSkillLevel">
           <Form.Label className="filterLabel">Skill Level</Form.Label>
-          <Form.Control as="select" name="skillLevel" value={filter.skillLevel} onChange={handleInputChange}>
-            <option value="">Any</option>
-            {skillLevels.map((skillLevel, index) => (
-              <option key={index} value={skillLevel}>{skillLevel}</option>
-            ))}
-          </Form.Control>
+          <Select
+            name="skillLevel"
+            styles={globalSelectStyle}
+            value={filter.skillLevel ? { label: filter.skillLevel, value: filter.skillLevel } : null}
+            onChange={handleInputChange}
+            options={[{ value: '', label: 'Any' }, ...toSelectOptions(skillLevels)]}
+          />
         </Form.Group>
 
         <div className="d-flex justify-content-center">
@@ -62,8 +68,8 @@ const GigFilterForm = ({
 
 GigFilterForm.propTypes = {
   filter: PropTypes.shape({
-    instruments: PropTypes.string,
-    genres: PropTypes.string,
+    instrument: PropTypes.string,
+    genre: PropTypes.string,
     skillLevel: PropTypes.string,
   }),
   setFilter: PropTypes.func,
