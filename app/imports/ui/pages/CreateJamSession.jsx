@@ -8,7 +8,7 @@ import { Artists, skillLevels } from '../../api/artists/Artists';
 import { Gigs } from '../../api/gigs/Gigs';
 import LoadingSpinner from '../components/LoadingSpinner';
 import './CreateJamSessionStyle.css';
-import { globalSelectStyle } from './EditProfile';
+import { globalSelectStyle } from '../utilities/ReactSelectStyle';
 import { linkEmailToGig } from '../../startup/both/collectionHelpers';
 
 const SUBMIT_BUTTON_TIMEOUT_MS = 1000;
@@ -123,7 +123,7 @@ const CreateJamSession = () => {
                       <Form.Label>Skill Level:</Form.Label>
                       <Select
                         options={SkillLevelOptions}
-                        isSearchable={false}
+                        isSearchable
                         styles={globalSelectStyle}
                         onChange={(selected) => setFormData({ ...formData, skillLevel: selected.value })}
                       />
