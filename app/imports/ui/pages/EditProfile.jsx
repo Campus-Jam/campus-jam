@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Card, Col, Container, Row, InputGroup, Button, FormControl } from 'react-bootstrap';
+import { Card, Col, Container, Row, Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import './EditProfileStyle.css';
 import { useTracker } from 'meteor/react-meteor-data';
 import Select from 'react-select';
+import Creatable from 'react-select/creatable';
 import { globalSelectStyle } from '../utilities/ReactSelectStyle';
 import { Artists, getUniqueInstruments, getUniqueGenres, skillLevels } from '../../api/artists/Artists';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -129,12 +130,6 @@ const EditProfile = () => {
     });
   };
 
-  const handleArrayInputChange = (event, key) => {
-    const { value } = event.target;
-    const arr = value.split(',').map(v => v.trim());
-    setFormData((prevData) => ({ ...prevData, [key]: arr }));
-  };
-
   return (isReady ? (
     <div className="createJamSession">
       <Container className="justify-content-center pb-3">
@@ -235,12 +230,20 @@ const EditProfile = () => {
                 {/* INFLUENCES */}
                 <Row>
                   <Form.Label>Influences:</Form.Label>
-                  <InputGroup>
-                    <FormControl
-                      value={formData.influences.join(', ')}
-                      onChange={(event) => handleArrayInputChange(event, 'influences')}
+                  <Col>
+                    <Creatable
+                      isMulti
+                      name="influences"
+                      options={[]}
+                      className="multiSelect"
+                      styles={globalSelectStyle}
+                      value={formData.influences.map((influence) => ({
+                        value: influence,
+                        label: influence,
+                      }))}
+                      onChange={(selected) => handleSelectChange(selected, 'influences', true)}
                     />
-                  </InputGroup>
+                  </Col>
                 </Row>
 
                 {/* BIO */}
