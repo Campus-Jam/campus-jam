@@ -195,7 +195,7 @@ const EditProfile = () => {
                 <Row>
                   <Col xs={6}>
                     <Form.Label>Instrument(s):</Form.Label>
-                    <Select
+                    <Creatable
                       isMulti
                       name="instruments"
                       options={InstrumentOptions}
@@ -212,7 +212,7 @@ const EditProfile = () => {
                   {/* GENRES */}
                   <Col>
                     <Form.Label>Genre(s):</Form.Label>
-                    <Select
+                    <Creatable
                       isMulti
                       name="genres"
                       options={GenreOptions}
