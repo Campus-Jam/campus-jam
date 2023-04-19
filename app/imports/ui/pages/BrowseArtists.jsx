@@ -76,6 +76,9 @@ const BrowseArtists = () => {
               if (!isValidArtist(artist)) {
                 return false;
               }
+              if (filter.instrument && !artist.instruments.includes(filter.instrument)) {
+                return false;
+              }
               if (filter.genre && !artist.genres.includes(filter.genre)) {
                 return false;
               }
