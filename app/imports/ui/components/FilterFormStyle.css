@@ -1,7 +1,7 @@
 .filterForm {
   position:fixed;
-  right: 3.5vh;
-  top: 16vh;
+  right: 0vh;
+  top: 17vh;
   width: 175px;
   padding: 10px;
   border-radius: 15px;
@@ -16,7 +16,7 @@
   margin-top: 7px;
   margin-bottom: 0;
   margin-left: 7px;
-  color: var(--text-color2);
+  color: var(--text-color1);
   font-weight: bold;
 }
 

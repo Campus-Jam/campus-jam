@@ -55,7 +55,10 @@ const BrowseArtists = () => {
       <Container className="py-3">
         {/* FILTER BUTTON */}
         <div>
-          <Button onClick={handleFilterClick} className="filterButton">
+          <Button
+            onClick={handleFilterClick}
+            className={`filterButton ${showFilter ? 'activeFilterStyle' : ''}`}
+          >
             <Filter size="24px" />
           </Button>
           {showFilter && (

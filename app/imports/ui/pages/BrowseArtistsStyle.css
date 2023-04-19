@@ -10,12 +10,22 @@
   right: .75vh;
   top: 12vh;
   z-index: 9998;
-  background-color: var(--button-color2);
+  background-color: var(--button-color1);
   border: white;
   height: 48px; /* Changed from 4vw */
   width: 60px; /* Changed from 5vw */
   border-radius: 10px; /* Changed from 1vw */
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.8);
+}
+
+.browseArtist .filterButton:active {
+  background-color: var(--button-color-pressed);
+  color: black;
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.8);
+}
+
+.browseArtist .activeFilterStyle{
+  background-color:var(--button-color2);
 }
 
 .browseArtist .artist-grid {
