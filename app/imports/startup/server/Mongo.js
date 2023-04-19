@@ -4,7 +4,6 @@ import { Gigs } from '../../api/gigs/Gigs';
 import { ArtistsToGigs } from '../../api/artistsToGigs/ArtistsToGigs';
 import { addArtist, addGig, linkEmailToGig } from '../both/collectionHelpers';
 
-
 // Initialize app with default artists
 if (Artists.collection.find().count() === 0) {
   if (Meteor.settings.defaultArtists) {

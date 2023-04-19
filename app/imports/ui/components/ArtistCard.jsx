@@ -40,17 +40,14 @@ export const isValidArtist = (artistToValidate) => {
   if (
     artistToValidate &&
     artistToValidate.firstName &&
-    artistToValidate.lastName &&
-    artistToValidate.image &&
     Array.isArray(artistToValidate.genres) &&
     Array.isArray(artistToValidate.instruments) &&
-    artistToValidate.skillLevel &&
-    artistToValidate.bio
+    artistToValidate.skillLevel
   ) {
     return true;
-  } else {
-    return false;
   }
+  return false;
+
 };
 
 const ArtistCard = ({ artistEntry }) => {

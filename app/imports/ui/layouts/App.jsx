@@ -21,6 +21,7 @@ import ViewProfile from '../pages/ViewProfile';
 
 /* Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
+  // eslint-disable-next-line no-unused-vars
   const { currentUser, loggedIn } = useTracker(() => ({
     currentUser: Meteor.user() ? Meteor.user().username : '',
     loggedIn: !!Meteor.user(),
@@ -54,7 +55,6 @@ const App = () => {
 
           {/* PAGES FOR STUFF GOING WRONG */}
           <Route path="/notauthorized" element={<NotAuthorized />} />
-          <Route path="/404" element={<NotFound />} />
           <Route path="*" element={<NotFound />} />
 
         </Routes>
