@@ -8,12 +8,26 @@ import { ComponentIDs } from '../utilities/ids';
 import './NavbarStyle.css';
 
 const NavBar = () => {
-  const { currentUser, loggedIn, userID } = useTracker(() => ({
+  const { currentUser, loggedIn } = useTracker(() => ({
     currentUser: Meteor.user() ? Meteor.user().username : '',
     loggedIn: !!Meteor.user(),
-    userID: Meteor.userId(),
   }), []);
+  const artistID = currentUser;
+  // might have to use this code somehow if the email in the url doesn't work
+  /*
+  const { currentArtist } = useTracker(() => {
+    const artistsSub = Meteor.subscribe(Artists.userPublicationName);
 
+    const rdy = artistsSub.ready();
+    const curr = rdy && currentUser && Artists.collection.findOne({ email: currentUser.emails[0].address });
+
+    return {
+      currentArtist: curr,
+      isReady: rdy,
+    };
+  });
+  */
+  // artistID = currentArtist._id;
   const [activePage, setActivePage] = useState('home');
 
   const handleNavClick = (page) => {
@@ -85,7 +99,7 @@ const NavBar = () => {
                   <NavDropdown.Item
                     id={ComponentIDs.viewProfile}
                     as={NavLink}
-                    to={`/viewProfile/${userID}`}
+                    to={`/viewProfile/${artistID}`}
                     key="ViewProfile"
                   >
                     Profile
