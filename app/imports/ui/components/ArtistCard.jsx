@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './ArtistCardStyle.css';
 import { Card, Image, ListGroup } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 // import { List } from 'react-bootstrap-icons';
 
@@ -55,44 +56,46 @@ const ArtistCard = ({ artistEntry }) => {
     return null;
   }
   return (
-    <div className="artistCard">
-      <Card className="h-100">
-        <Card.Header>
-          <div className="d-flex justify-content-center">
-            <Card.Title>{artistEntry.firstName} {artistEntry.lastName}</Card.Title>
-          </div>
-          <div className="d-flex justify-content-center">
-            <Image src={artistEntry.image} height={100} className="image-shadow" />
-          </div>
-        </Card.Header>
+    <Link to={`/viewProfile/${artistEntry._id}`}>
+      <div className="artistCard">
+        <Card className="h-100">
+          <Card.Header>
+            <div className="d-flex justify-content-center">
+              <Card.Title>{artistEntry.firstName} {artistEntry.lastName}</Card.Title>
+            </div>
+            <div className="d-flex justify-content-center">
+              <Image src={artistEntry.image} height={100} className="image-shadow" />
+            </div>
+          </Card.Header>
 
-        <ListGroup variant="flush">
+          <ListGroup variant="flush">
 
-          <ListGroup.Item className="d-flex justify-content-between align-items-center genres">
-            <span className="label fw-bold d-flex justify-content-start">Genre(s): </span>
-            <span className="content">{truncateTo(artistEntry.genres.join(', '), MAX_CARD_GENRES_LEN)}</span>
-          </ListGroup.Item>
+            <ListGroup.Item className="d-flex justify-content-between align-items-center genres">
+              <span className="label fw-bold d-flex justify-content-start">Genre(s): </span>
+              <span className="content">{truncateTo(artistEntry.genres.join(', '), MAX_CARD_GENRES_LEN)}</span>
+            </ListGroup.Item>
 
-          <ListGroup.Item className="d-flex justify-content-between align-items-center instruments">
-            <span className="label fw-bold d-flex justify-content-start">Instrument(s): </span>
-            <span className="content">{truncateTo(artistEntry.instruments.join(', '), MAX_CARD_INSTRUMENTS_LEN)}</span>
-          </ListGroup.Item>
+            <ListGroup.Item className="d-flex justify-content-between align-items-center instruments">
+              <span className="label fw-bold d-flex justify-content-start">Instrument(s): </span>
+              <span className="content">{truncateTo(artistEntry.instruments.join(', '), MAX_CARD_INSTRUMENTS_LEN)}</span>
+            </ListGroup.Item>
 
-          <ListGroup.Item className="d-flex justify-content-between align-items-center skillLevel">
-            <span className="label fw-bold d-flex justify-content-start">Skill Level: </span>
-            <span className="content">{artistEntry.skillLevel}</span>
-          </ListGroup.Item>
+            <ListGroup.Item className="d-flex justify-content-between align-items-center skillLevel">
+              <span className="label fw-bold d-flex justify-content-start">Skill Level: </span>
+              <span className="content">{artistEntry.skillLevel}</span>
+            </ListGroup.Item>
 
-          <ListGroup.Item className="d-flex justify-content-between align-items-start bio">
-            <div className="label fw-bold d-flex justify-content-start">Bio:</div>
-            <br />
-            {truncateTo(artistEntry.bio, MAX_CARD_BIO_LEN)}
-          </ListGroup.Item>
+            <ListGroup.Item className="d-flex justify-content-between align-items-start bio">
+              <div className="label fw-bold d-flex justify-content-start">Bio:</div>
+              <br />
+              {truncateTo(artistEntry.bio, MAX_CARD_BIO_LEN)}
+            </ListGroup.Item>
 
-        </ListGroup>
+          </ListGroup>
 
-      </Card>
-    </div>
+        </Card>
+      </div>
+    </Link>
   );
 };
 
