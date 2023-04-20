@@ -8,9 +8,10 @@ import { ComponentIDs } from '../utilities/ids';
 import './NavbarStyle.css';
 
 const NavBar = () => {
-  const { currentUser, loggedIn } = useTracker(() => ({
+  const { currentUser, loggedIn, userID } = useTracker(() => ({
     currentUser: Meteor.user() ? Meteor.user().username : '',
     loggedIn: !!Meteor.user(),
+    userID: Meteor.userId(),
   }), []);
 
   const [activePage, setActivePage] = useState('home');
@@ -84,9 +85,8 @@ const NavBar = () => {
                   <NavDropdown.Item
                     id={ComponentIDs.viewProfile}
                     as={NavLink}
-                    to="/viewProfile"
+                    to={`/viewProfile/${userID}`}
                     key="ViewProfile"
-                    onClick={() => handleNavClick('/viewProfile')}
                   >
                     Profile
                   </NavDropdown.Item>
