@@ -4,6 +4,7 @@ import './GigCardStyle.css';
 import { Card, Image, ListGroup, Button } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
+import moment from 'moment';
 import { Artists } from '../../api/artists/Artists';
 import { ArtistsToGigs } from '../../api/artistsToGigs/ArtistsToGigs';
 
@@ -112,7 +113,7 @@ const GigCard = ({ gigEntry }) => {
           {/* SKILL LEVEL */}
           <ListGroup.Item className="d-flex justify-content-between align-items-center skill-level">
             <span className="label fw-bold d-flex justify-content-start">Date: </span>
-            <span className="content">{gigEntry.date}</span>
+            <span className="content">{moment(gigEntry.date).format('MMMM Do YYYY, h:mm a')}</span>
             <span className="label fw-bold d-flex justify-content-start">Skill Level: </span>
             <span className="content">{gigEntry.skillLevel}</span>
           </ListGroup.Item>

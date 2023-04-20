@@ -4,12 +4,14 @@ import Select from 'react-select';
 import { Button, Card, Col, Container, FormControl, InputGroup, Row } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import Form from 'react-bootstrap/Form';
+import DatePicker from 'react-datepicker';
 import { Artists, skillLevels } from '../../api/artists/Artists';
 import { Gigs } from '../../api/gigs/Gigs';
 import LoadingSpinner from '../components/LoadingSpinner';
 import './CreateJamSessionStyle.css';
 import { globalSelectStyle } from '../utilities/ReactSelectStyle';
 import { linkEmailToGig } from '../../startup/both/collectionHelpers';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const SUBMIT_BUTTON_TIMEOUT_MS = 1000;
 
@@ -35,7 +37,7 @@ const CreateJamSession = () => {
   }, []);
 
   const handleFormReset = () => {
-    setFormData({ instruments: [], genres: [], title: '', image: '', date: '', skillLevel: '' });
+    setFormData({ instruments: [], genres: [], title: '', image: '', date: new Date(), skillLevel: '' });
     setFormResetKey(Date.now().toString());
   };
 
@@ -116,7 +118,16 @@ const CreateJamSession = () => {
 
                     <Col>
                       <Form.Label>Date:</Form.Label>
-                      <Form.Control name="date" onChange={handleInputChange} />
+                      <DatePicker
+                        name="date"
+                        selected={formData.date}
+                        onChange={date => setFormData({ ...formData, date })}
+                        showTimeSelect
+                        timeFormat="HH:mm"
+                        timeIntervals={15}
+                        dateFormat="MMMM d, yyyy h:mm aa"
+                        placeholderText="Select date and time"
+                      />
                     </Col>
 
                     <Col>
