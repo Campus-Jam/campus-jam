@@ -38,7 +38,7 @@ const CreateJamSession = () => {
   }, []);
 
   const handleFormReset = () => {
-    setFormData({ instruments: [], genres: [], title: '', image: '', date: new Date(), skillLevel: '' });
+    setFormData({ instruments: [], genres: [], title: '', image: '', date: null, skillLevel: '', venue: '', about: '' });
     setFormResetKey(Date.now().toString());
   };
 

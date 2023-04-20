@@ -49,22 +49,28 @@
   background-color: var(--page-background-color1);
   border-color: var(--text-color2);
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-.react-datepicker-popper {
-  border: 2px solid black;
-  border-radius: 5px;
 }
 
 .react-datepicker__header {
-  background-color: var(--page-background-color2);
-  border: 0;
+  background-color: var(--page-background-color2) !important;
+  border-bottom: solid black 1px !important;
+}
+
+.react-datepicker {
+  background-color: var(--page-background-color1);
+  border: solid black 1px !important;
+  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.5);
 }
 
 .react-datepicker__month-container {
   background-color: var(--page-background-color1);
-  border: 0;
+  border: solid black 1px !important;
+  border-bottom: none !important;
+ }
+
+.react-datepicker__time-container {
+  background-color: var(--page-background-color1);
+  border: solid black 1px !important;
 }
 
 .react-datepicker__day {
@@ -73,17 +79,10 @@
 
 .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list {
   background-color: var(--page-background-color1);
-  border: 0;
 }
 
 .react-datepicker__time-list-item {
   color:var(--text-color1);
-}
-
-.react-datepicker__month,
-.react-datepicker__time-list {
-  scrollbar-width: 14px;
-  scrollbar-color: dimgrey;
 }
 
 .react-datepicker__month::-webkit-scrollbar,
