@@ -71,7 +71,7 @@ const ViewProfile = () => {
                     </Col>
                     <Col>
                       <Form.Label>Instrument Played</Form.Label>
-                      <Form.Control as="textarea" placeholder={artistToView.instruments} disabled />
+                      <Form.Control as="textarea" placeholder={artistToView.instruments.join(', ')} disabled />
                     </Col>
                   </Row>
                 </Form.Group>
