@@ -47,7 +47,7 @@ class GigsCollection {
     this.schema = new SimpleSchema({
       title: { type: String, optional: false },
       image: { type: String, optional: false },
-      date: { type: String, optional: false },
+      date: { type: Date, optional: false },
       skillLevel: { type: String, allowedValues: ['Beginner', 'Intermediate', 'Advanced'], optional: true },
       genres: { type: Array },
       'genres.$': { type: String, optional: true },
@@ -72,7 +72,7 @@ Meteor.methods({
     // Validate the input fields against the Gigs schema.
     check(title, String);
     check(image, String);
-    check(date, String);
+    check(date, Date);
     check(skillLevel, Match.Maybe(String));
     check(genres, Array);
     check(genres[0], String);
