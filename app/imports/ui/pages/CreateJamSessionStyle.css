@@ -31,11 +31,72 @@
   font-size: 18px;
 }
 
-.createJamSession .card .datepicker {
-  background-color: var(--page-background-color1);
+.datePickerStyle {
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
   color: var(--text-color2);
+  background-color: var(--page-background-color1);
+  background-clip: padding-box;
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.datePickerStyle:focus {
+  color: var(--text-color2);
+  background-color: var(--page-background-color1);
+  border-color: var(--text-color2);
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.react-datepicker-popper {
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.react-datepicker__header {
+  background-color: var(--page-background-color2);
+  border: 0;
+}
+
+.react-datepicker__month-container {
+  background-color: var(--page-background-color1);
+  border: 0;
+}
+
+.react-datepicker__day {
+  color: var(--text-color1);
+}
+
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list {
+  background-color: var(--page-background-color1);
+  border: 0;
+}
+
+.react-datepicker__time-list-item {
+  color:var(--text-color1);
+}
+
+.react-datepicker__month,
+.react-datepicker__time-list {
+  scrollbar-width: 14px;
+  scrollbar-color: dimgrey;
+}
+
+.react-datepicker__month::-webkit-scrollbar,
+.react-datepicker__time-list::-webkit-scrollbar {
+  width: 14px;
+  background-color: dimgrey;
+}
+
+.react-datepicker__month::-webkit-scrollbar-thumb,
+.react-datepicker__time-list::-webkit-scrollbar-thumb {
+  background-color: var(--button-color2);
+  border-radius: 10px;
   border-color: black;
-  font-size: 18px;
 }
 
 .createJamSession button[type="submit"] {

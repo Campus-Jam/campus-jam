@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
 import Select from 'react-select';
+import Creatable from 'react-select/creatable';
 import { Button, Card, Col, Container, FormControl, InputGroup, Row } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import Form from 'react-bootstrap/Form';
@@ -108,14 +109,16 @@ const CreateJamSession = () => {
 
             <Card>
               <Card.Body>
-                <Form key={formResetKey} onSubmit={handleSubmit}>
+                <Form key={formResetKey} onSubmit={handleSubmit} autocomplete="off">
 
+                  {/* TITLE */}
                   <Row>
                     <Col>
                       <Form.Label>Title</Form.Label>
                       <Form.Control name="title" onChange={handleInputChange} />
                     </Col>
 
+                    {/* DATE */}
                     <Col>
                       <Form.Label>Date:</Form.Label>
                       <DatePicker
@@ -127,9 +130,11 @@ const CreateJamSession = () => {
                         timeIntervals={15}
                         dateFormat="MMMM d, yyyy h:mm aa"
                         placeholderText="Select date and time"
+                        className="datePickerStyle"
                       />
                     </Col>
 
+                    {/* SKILL LEVEL */}
                     <Col>
                       <Form.Label>Skill Level:</Form.Label>
                       <Select
@@ -161,7 +166,7 @@ const CreateJamSession = () => {
                     {/* INSTRUMENTS */}
                     <Col xs={6}>
                       <Form.Label>Instrument(s):</Form.Label>
-                      <Select
+                      <Creatable
                         isMulti
                         name="instruments"
                         options={allArtists && allArtists.length > 0 ? InstrumentOptions : []}
@@ -178,7 +183,7 @@ const CreateJamSession = () => {
                     {/* GENRES */}
                     <Col xs={6}>
                       <Form.Label>Genre(s):</Form.Label>
-                      <Select
+                      <Creatable
                         isMulti
                         name="genres"
                         options={allArtists && allArtists.length > 0 ? GenreOptions : []}
