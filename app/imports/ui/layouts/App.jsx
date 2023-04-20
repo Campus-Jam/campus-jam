@@ -48,7 +48,7 @@ const App = () => {
           <Route path="/jamsessions" element={<ProtectedRoute><BrowseGigs /></ProtectedRoute>} />
           <Route path="/editprofile" element={<ProtectedRoute><EditProfile /></ProtectedRoute>} />
           <Route path="/createjamsession" element={<ProtectedRoute><CreateJamSession /></ProtectedRoute>} />
-          <Route path="/viewProfile" element={<ProtectedRoute><ViewProfile /></ProtectedRoute>} />
+          <Route path="/viewProfile/:id" element={<ProtectedRoute><ViewProfile /></ProtectedRoute>} />
 
           {/* ADMIN ROUTES */}
 
