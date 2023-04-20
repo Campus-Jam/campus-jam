@@ -18,6 +18,9 @@ const ViewProfile = () => {
       ready: rdy,
     };
   }, []);
+  const { currentUser } = useTracker(() => ({
+    currentUser: Meteor.user() ? Meteor.user().username : '',
+  }), []);
   const artistToView = Artists.collection.findOne({ email: id });
   return (ready ? (
     <div className="viewProfile">
@@ -29,7 +32,7 @@ const ViewProfile = () => {
                 <h1 className="text-center"> User Profile </h1>
               </Container>
               <Col>
-                <Image className="rounded mx-auto d-block" src="/images/profileImagePlaceholder.png" width="300px" />
+                <Image className="rounded mx-auto d-block" src={artistToView.image} width="300px" />
               </Col>
               <Col>
                 <Row>
@@ -58,7 +61,7 @@ const ViewProfile = () => {
               </Col>
               <Row>
                 <Form.Group className="mb-3">
-                  <Form.Label>DescriptionBio</Form.Label>
+                  <Form.Label>Biography</Form.Label>
                   <Form.Control as="textarea" placeholder={artistToView.bio} disabled />
                   <br />
                   <Row>
@@ -76,17 +79,19 @@ const ViewProfile = () => {
             </Row>
             <Row>
               <Col className="p-3">
-                <Button className="editProfileButton">
-                  <Nav.Link
-                    className="EditProfileStyle.css"
-                    as={NavLink}
-                    id={ComponentIDs.createJamSession}
-                    to="/editProfile"
-                    key="editProfile"
-                  >
-                    Add Jam Session
-                  </Nav.Link>
-                </Button>
+                { currentUser === id && (
+                  <Button className="editProfileButton">
+                    <Nav.Link
+                      className="EditProfileStyle.css"
+                      as={NavLink}
+                      id={ComponentIDs.createJamSession}
+                      to="/editProfile"
+                      key="editProfile"
+                    >
+                      Edit Profile
+                    </Nav.Link>
+                  </Button>
+                )}
               </Col>
             </Row>
           </Col>
