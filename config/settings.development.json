@@ -93,7 +93,7 @@
   {
     "title": "Summer Festival",
     "image": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Bluegrass_Band.jpg",
-    "date": "Sat. July 15, 5:00 pm to 10:00 pm",
+    "date": "2017-07-15T17:00:00.000Z",
     "attendees": [ "Sarah", "Tom", "Karen", "James", "Lila", "Eva", "Nathan", "Hannah", "Max", "Olivia", "Samantha", "Juan", "Landon", "Avery", "Mia", "David", "Ava", "Sophie", "Lucas", "Zoe", "Grace", "Leo", "Isabella", "Jacob", "Emma" ],
     "skillLevel": "Advanced",
     "genres": [ "Bluegrass", "Folk", "Americana", "Country", "Rockabilly", "Blues", "Jazz", "Gospel", "World Music", "Soul", "Funk", "Reggae", "Hip-Hop", "Electronic", "Classical", "Pop", "Alternative"],
@@ -104,7 +104,7 @@
   {
     "title": "Acoustic Night",
     "image": "https://static.vecteezy.com/system/resources/previews/002/100/548/original/an-acoustic-guitar-cubist-surrealism-painting-modern-abstract-design-a-musical-instrument-abstract-colorful-music-cubism-minimalist-style-guitar-and-music-theme-illustration-vector.jpg",
-    "date": "Fri. May 12, 7:30 pm to 9:00 pm",
+    "date": "2017-07-15T17:00:00.000Z",
     "attendees": [
       "Samantha",
       "Kai",
@@ -126,7 +126,7 @@
   {
     "title": "Rock and Metal",
     "image": "https://decibelpro.app/content/images/2021/06/how-loud-is-a-rock-concert.jpg",
-    "date": "Sat. July 15, 5:00 pm to 10:00 pm",
+    "date": "2017-07-15T17:00:00.000Z",
     "attendees": [
       "Mike",
       "Lisa",
@@ -148,7 +148,7 @@
   {
     "title": "Jazz Night",
     "image": "https://www.gannett-cdn.com/-mm-/fe540925f187d73c8a91c93ece4e29936ea358fc/c=0-885-3804-3034/local/-/media/2015/07/16/MIGroup/Lansing/635726564289570272-ThinkstockPhotos-486813379-1-.jpg",
-    "date": "Sat. July 15, 5:00 pm to 10:00 pm",
+    "date": "2017-07-15T17:00:00.000Z",
     "attendees": [
       "David",
       "Emily",

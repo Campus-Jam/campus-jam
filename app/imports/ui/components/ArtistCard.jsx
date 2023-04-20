@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './ArtistCardStyle.css';
 import { Card, Image, ListGroup } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 // import { List } from 'react-bootstrap-icons';
 
@@ -51,6 +52,9 @@ export const isValidArtist = (artistToValidate) => {
 };
 
 const ArtistCard = ({ artistEntry }) => {
+  // old code when i thought artistEntry was different than Artists :( actually ended up wasting like 2 hours on this so i don't want to delete it lol
+  // const artistToView = Artists.collection.findOne({ email: artistEntry.email });
+  // const artistId = artistEntry._id;
   if (!isValidArtist(artistEntry)) {
     return null;
   }
@@ -58,14 +62,15 @@ const ArtistCard = ({ artistEntry }) => {
     <div className="artistCard">
       <Card className="h-100">
         <Card.Header>
-          <div className="d-flex justify-content-center">
-            <Card.Title>{artistEntry.firstName} {artistEntry.lastName}</Card.Title>
-          </div>
-          <div className="d-flex justify-content-center">
-            <Image src={artistEntry.image} height={100} className="image-shadow" />
-          </div>
+          <Link to={`/viewProfile/${artistEntry.email}`}>
+            <div className="d-flex justify-content-center">
+              <Card.Title>{artistEntry.firstName} {artistEntry.lastName}</Card.Title>
+            </div>
+            <div className="d-flex justify-content-center">
+              <Image src={artistEntry.image} height={100} className="image-shadow" />
+            </div>
+          </Link>
         </Card.Header>
-
         <ListGroup variant="flush">
 
           <ListGroup.Item className="d-flex justify-content-between align-items-center genres">
