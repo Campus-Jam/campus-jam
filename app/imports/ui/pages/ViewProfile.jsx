@@ -8,20 +8,35 @@ import { NavLink, useParams } from 'react-router-dom';
 import { ComponentIDs } from '../utilities/ids';
 import { Artists } from '../../api/artists/Artists';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { ArtistsToGigs } from '../../api/artistsToGigs/ArtistsToGigs';
+import { Gigs } from '../../api/gigs/Gigs';
 
 const ViewProfile = () => {
-  const { id } = useParams();
+  const id = useParams(); // this grabs the email address from the URL
   const { ready } = useTracker(() => {
     const subscription = Meteor.subscribe(Artists.userPublicationName);
+    const subscription2 = Meteor.subscribe(ArtistsToGigs.userPublicationName);
+    const subscription3 = Meteor.subscribe(Gigs.userPublicationName);
+
     const rdy = subscription.ready();
+    const rdy2 = subscription2.ready();
+    const rdy3 = subscription3.ready();
     return {
-      ready: rdy,
+      ready: rdy && rdy2 && rdy3,
     };
   }, []);
   const { currentUser } = useTracker(() => ({
     currentUser: Meteor.user() ? Meteor.user().username : '',
   }), []);
-  const artistToView = Artists.collection.findOne({ email: id });
+  const artistToView = Artists.collection.findOne({ email: id }); // find the artist using the URL email
+  console.log('dfdsfsdf', artistToView);
+  const gigIds = ArtistsToGigs.collection.find({ artist_id: artistToView._id }).map((doc) => doc.gig_id);
+  console.log(gigIds);
+  const gigs = Gigs.collection.find({ _id: { $in: gigIds } }).fetch();
+  console.log('actual', gigs);
+  const gigNames = gigs.map((gig) => gig.title);
+  console.log('names', gigNames);
+
   return (ready ? (
     <div className="viewProfile">
       <Container className="py-4">
@@ -67,7 +82,7 @@ const ViewProfile = () => {
                   <Row>
                     <Col>
                       <Form.Label>Jam Session</Form.Label>
-                      <Form.Control as="textarea" placeholder="Disabled input" disabled />
+                      <Form.Control as="textarea" placeholder={gigNames} disabled />
                     </Col>
                     <Col>
                       <Form.Label>Instrument Played</Form.Label>
