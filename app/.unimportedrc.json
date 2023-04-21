@@ -21,6 +21,8 @@
     "core-js",
     "graphql",
     "meteor-node-stubs",
+    "simpler-state",
+    "sweetalert",
     "uniforms"
   ],
   "ignorePatterns": [
@@ -41,7 +43,8 @@
     "tests/**"
   ],
   "ignoreUnimported": [
-    "imports/api/base/BaseUtilities.js",
-    "imports/test-utilities/test-utilities.js"
+    "imports/ui/pages/scratch.jsx",
+    "imports/ui/utilities/StickyState.js",
+    "imports/ui/utilities/pageStyles.js"
   ]
 }

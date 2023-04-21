@@ -6,6 +6,7 @@ import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import './SignXStyle.css';
+import { ComponentIDs, PageIDs } from '../utilities/ids';
 
 /**
  * Signin page overrides the form’s submit event and call Meteor’s loginWithPassword().
@@ -42,7 +43,7 @@ const SignIn = () => {
   }
   // Otherwise return the Login form.
   return (
-    <div id="signin-page" className="signX">
+    <div id={PageIDs.signInPage} className="signX">
       <Row className="justify-content-center">
         <Col xs={6}>
           <Col className="text-center">
@@ -51,11 +52,11 @@ const SignIn = () => {
           <AutoForm schema={bridge} onSubmit={data => submit(data)}>
             <Card className="card">
               <Card.Body>
-                <TextField id="signin-form-email" name="email" placeholder="E-mail address" />
-                <TextField id="signin-form-password" name="password" placeholder="Password" type="password" />
+                <TextField id={ComponentIDs.signInFormEmail} name="email" placeholder="E-mail address" />
+                <TextField id={ComponentIDs.signInFormPassword} name="password" placeholder="Password" type="password" />
                 <ErrorsField />
                 <div className="text-center" style={{ marginTop: '20px' }}>
-                  <SubmitField value="Sign In" id="signin-form-submit" />
+                  <SubmitField value="Sign In" id={ComponentIDs.signInFormSubmit} />
                 </div>
               </Card.Body>
             </Card>
