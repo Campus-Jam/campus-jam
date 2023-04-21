@@ -5,7 +5,7 @@ import { signIn } from './helpers';
 const sessionData = null;
 
 fixture`BrowseArtists`
-  .page`http://localhost:3000/`
+  .page`http://localhost:3000/artists`
   .beforeEach(async (t) => {
     // eslint-disable-next-line no-unused-vars
     await signIn(t, sessionData);
@@ -38,7 +38,7 @@ test('Filter button toggles filter form', async t => {
     .notOk();
 });
 
-test('Gig Cards are being populated', async t => {
+test('Artist Cards are being populated', async t => {
   const artistCards = Selector('.artist-grid > div');
 
   await t

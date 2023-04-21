@@ -13,6 +13,7 @@ import './CreateJamSessionStyle.css';
 import { globalSelectStyle } from '../utilities/ReactSelectStyle';
 import { linkEmailToGig } from '../../startup/both/collectionHelpers';
 import 'react-datepicker/dist/react-datepicker.css';
+import { PageIDs } from '../utilities/ids';
 
 const SUBMIT_BUTTON_TIMEOUT_MS = 1000;
 
@@ -100,7 +101,7 @@ const CreateJamSession = () => {
 
   return (
     ready ? (
-      <div className="createJamSession">
+      <div id={PageIDs.createJamSessionPage} className="createJamSession">
         <Container className="justify-content-center">
           <Col>
             <Col className="justify-content-center text-center py-2">
