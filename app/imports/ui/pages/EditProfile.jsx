@@ -149,21 +149,37 @@ const EditProfile = () => {
                     <Form.Control
                       value={formData.firstName}
                       onChange={(event) => handleInputChange(event, 'firstName')}
+                      type="text"
+                      required
+                      isInvalid={!formData.firstName}
                     />
+                    <Form.Control.Feedback type="invalid">
+                      Please enter your first name.
+                    </Form.Control.Feedback>
                   </Col>
                   <Col xs={4}>
                     <Form.Label>Last Name:</Form.Label>
                     <Form.Control
                       value={formData.lastName}
                       onChange={(event) => handleInputChange(event, 'lastName')}
+                      required
+                      isInvalid={!formData.lastName}
                     />
+                    <Form.Control.Feedback type="invalid">
+                      Please enter your last name.
+                    </Form.Control.Feedback>
                   </Col>
                   <Col xs={4}>
                     <Form.Label>Email:</Form.Label>
                     <Form.Control
                       value={formData.email}
                       onChange={(event) => handleInputChange(event, 'email')}
+                      required
+                      isInvalid={!formData.email}
                     />
+                    <Form.Control.Feedback type="invalid">
+                      Please enter your last email.
+                    </Form.Control.Feedback>
                   </Col>
                 </Row>
 
