@@ -68,6 +68,17 @@ const NavBar = () => {
                   </Nav.Link>
 
                   <Nav.Link
+                    className={`${activePage === '/jamsessions' ? 'activeBtn' : ''} navbar-button`}
+                    as={NavLink}
+                    id={ComponentIDs.createJamSession}
+                    to="/jamsessions"
+                    key="jamsessions"
+                    onClick={() => handleNavClick('/jamsessions')}
+                  >
+                    Jam Sessions
+                  </Nav.Link>
+
+                  <Nav.Link
                     className={`${activePage === '/createJamSession' ? 'activeBtn' : ''} navbar-button`}
                     as={NavLink}
                     id={ComponentIDs.createJamSession}
