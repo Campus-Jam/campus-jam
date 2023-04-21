@@ -13,6 +13,7 @@ import { Gigs } from '../../api/gigs/Gigs';
 
 const ViewProfile = () => {
   const id = useParams(); // this grabs the email address from the URL
+  console.log('email', id.id);
   const { ready } = useTracker(() => {
     const subscription = Meteor.subscribe(Artists.userPublicationName);
     const subscription2 = Meteor.subscribe(ArtistsToGigs.userPublicationName);
@@ -28,7 +29,7 @@ const ViewProfile = () => {
   const { currentUser } = useTracker(() => ({
     currentUser: Meteor.user() ? Meteor.user().username : '',
   }), []);
-  const artistToView = Artists.collection.findOne({ email: id }); // find the artist using the URL email
+  const artistToView = Artists.collection.findOne({ email: id.id }); // find the artist using the URL email
   console.log('dfdsfsdf', artistToView);
   const gigIds = ArtistsToGigs.collection.find({ artist_id: artistToView._id }).map((doc) => doc.gig_id);
   console.log(gigIds);
@@ -67,7 +68,7 @@ const ViewProfile = () => {
                 <Row>
                   <Form.Group className="mb-3">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control placeholder={id} disabled />
+                    <Form.Control placeholder={id.id} disabled />
                     <br />
                     <Form.Label>Music Skill</Form.Label>
                     <Form.Control placeholder={artistToView.skillLevel} disabled />
@@ -82,7 +83,7 @@ const ViewProfile = () => {
                   <Row>
                     <Col>
                       <Form.Label>Jam Session</Form.Label>
-                      <Form.Control as="textarea" placeholder={gigNames} disabled />
+                      <Form.Control as="textarea" placeholder={gigNames.join(', ')} disabled />
                     </Col>
                     <Col>
                       <Form.Label>Instrument Played</Form.Label>
