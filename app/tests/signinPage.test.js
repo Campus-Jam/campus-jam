@@ -1,15 +1,12 @@
 import { Selector } from 'testcafe';
-import { testEmail, testPW1, testPW2 } from './signupPage.test';
+import { creds } from './helpers';
 
 /* global fixture:false, test:false */
 
 // SIGNIN PAGE TESTS
 // eslint-disable-next-line no-unused-expressions
 fixture`SignIn`
-  .page`http://localhost:3000/signin`
-  .beforeEach(async (t) => {
-    await t.setPageLoadTimeout(5000); // Set a page load timeout of 5000ms
-  });
+  .page`http://localhost:3000/signin`;
 
 test('SignIn page renders correctly', async (t) => {
   await t
@@ -42,7 +39,7 @@ test('User cannot submit form without filling out all required fields', async (t
 
   // Check for case when only email is entered
   await t
-    .typeText(emailInput, testEmail)
+    .typeText(emailInput, creds.email)
     .click(signInButton);
   await t.expect(await t.eval(() => document.location.href)).eql(initialUrl);
 
@@ -50,7 +47,7 @@ test('User cannot submit form without filling out all required fields', async (t
   await t
     .click(emailInput)
     .pressKey('ctrl+a delete')
-    .typeText(pwInput, testPW1)
+    .typeText(pwInput, creds.pwRight)
     .click(signInButton);
   await t.expect(await t.eval(() => document.location.href)).eql(initialUrl);
 });
@@ -73,8 +70,8 @@ test('User cannot sign in with incorrect password', async (t) => {
 
   // Enter email and incorrect PW
   await t
-    .typeText(emailInput, testEmail)
-    .typeText(pwInput, testPW2)
+    .typeText(emailInput, creds.email)
+    .typeText(pwInput, creds.pwWrong)
     .click(signInButton);
   await t.expect(await t.eval(() => document.location.href)).eql(initialUrl);
 });
@@ -86,8 +83,8 @@ test('User can successfully sign in', async (t) => {
 
   // Enter email and PW
   await t
-    .typeText(emailInput, testEmail)
-    .typeText(pwInput, testPW1)
+    .typeText(emailInput, creds.email)
+    .typeText(pwInput, creds.pwRight)
     .click(signInButton)
     .wait(4000);
 

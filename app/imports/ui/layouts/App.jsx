@@ -45,6 +45,7 @@ const App = () => {
 
           {/* REGULAR USER ROUTES, MUST BE SIGNED IN */}
           <Route path="/artists" element={<ProtectedRoute><BrowseArtists /></ProtectedRoute>} />
+          <Route path="/gigs" element={<ProtectedRoute><BrowseGigs /></ProtectedRoute>} />
           <Route path="/jamsessions" element={<ProtectedRoute><BrowseGigs /></ProtectedRoute>} />
           <Route path="/editprofile" element={<ProtectedRoute><EditProfile /></ProtectedRoute>} />
           <Route path="/createjamsession" element={<ProtectedRoute><CreateJamSession /></ProtectedRoute>} />

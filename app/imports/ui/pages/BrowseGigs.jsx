@@ -9,6 +9,7 @@ import GigCard from '../components/GigCard';
 import GigFilterForm from '../components/GigFilterForm';
 import { Gigs } from '../../api/gigs/Gigs';
 import { getUniqueGenres, getUniqueInstruments, getUniqueSkillLevels } from '../../api/artists/Artists';
+import { ComponentIDs, PageIDs } from '../utilities/ids';
 
 const BrowseGigs = () => {
   const [showFilter, setShowFilter] = useState(false);
@@ -34,21 +35,20 @@ const BrowseGigs = () => {
   const uniqueSkillLevels = getUniqueSkillLevels(gigs);
 
   return (ready ? (
-    <div className="browseGigs">
+    <div id={PageIDs.browseGigsPage} className="browseGigs">
       <Container className="py-3">
         {/* FILTER BUTTON */}
         <div>
           <Button
+            id={ComponentIDs.browseGigsFilterButton}
             onClick={handleFilterClick}
             className={`filterButton ${showFilter ? 'activeFilterStyle' : ''}`}
           >
             <Filter size="24px" />
           </Button>
-          <Button className="addJamButton">
-            <Plus size="24px" />
-          </Button>
           {showFilter && (
             <GigFilterForm
+              id={ComponentIDs.browseGigsFilterForm}
               filter={filter}
               setFilter={setFilter}
               instruments={uniqueInstruments}
@@ -57,6 +57,11 @@ const BrowseGigs = () => {
             />
           )}
         </div>
+
+        {/* ADD JAM SESSION BUTTON */}
+        <Button className="addJamButton">
+          <Plus size="24px" />
+        </Button>
 
         {/* GIG CARDS */}
         <div className="gig-grid">

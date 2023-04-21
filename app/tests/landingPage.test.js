@@ -8,9 +8,7 @@ fixture`Landing Page`
   .page`http://localhost:3000/`;
 
 test('LandingPage renders correctly', async (t) => {
-  await t
-    .navigateTo('http://localhost:3000/')
-    .wait(10000).expect(Selector('#landingPage').exists).ok();
+  await t.expect(Selector('#landingPage').exists).ok();
 });
 
 test('Create an account and start jamming today! redirects to signup page', async (t) => {
@@ -18,7 +16,7 @@ test('Create an account and start jamming today! redirects to signup page', asyn
   const createAccountButton = Selector('a').withText('Create an account and start jamming today!');
   await t.click(createAccountButton);
   // Check that the user is redirected to the Signup page
-  await t.wait(10000).expect(Selector('h2').withText('Sign up for Jamb-UH-ree').exists).ok();
+  await t.expect(Selector('h2').withText('Sign up for Jamb-UH-ree').exists).ok();
 });
 
 test('Log In link redirects to signin page', async (t) => {

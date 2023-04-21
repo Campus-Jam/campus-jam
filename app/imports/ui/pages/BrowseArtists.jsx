@@ -8,6 +8,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import ArtistCard, { isValidArtist } from '../components/ArtistCard';
 import ArtistFilterForm from '../components/ArtistFilterForm';
 import { Artists } from '../../api/artists/Artists';
+import { ComponentIDs, PageIDs } from '../utilities/ids';
 
 export const getUniqueInstruments = (artists) => {
   const instruments = new Set();
@@ -51,11 +52,12 @@ const BrowseArtists = () => {
   const uniqueGenres = getUniqueGenres(artists);
 
   return (ready ? (
-    <div className="browseArtist">
+    <div id={PageIDs.browseArtistsPage} className="browseArtist">
       <Container className="py-3">
         {/* FILTER BUTTON */}
         <div>
           <Button
+            id={ComponentIDs.browseArtistsFilterButton}
             onClick={handleFilterClick}
             className={`filterButton ${showFilter ? 'activeFilterStyle' : ''}`}
           >
