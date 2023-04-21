@@ -44,7 +44,7 @@ const BrowseGigs = () => {
           >
             <Filter size="24px" />
           </Button>
-          <Button className="addJamButton">
+          <Button className="addJamButton" href="/createJamSession">
             <Plus size="24px" />
           </Button>
           {showFilter && (
