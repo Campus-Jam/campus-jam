@@ -15,7 +15,7 @@ fixture`BrowseGigs`
 test('BrowseGigs page loads successfully', async (t) => {
   // Check that the user is redirected to the correct URL after successful login
   await t
-    .expect(await t.eval(() => document.location.href)).eql('http://localhost:3000/')
+    .expect(await t.eval(() => document.location.href)).eql('http://localhost:3000/gigs')
     .expect(Selector('#browseGigsPage').exists)
     .ok()
     .expect(Selector('.gig-grid').exists)
