@@ -42,7 +42,7 @@ const NavBar = () => {
       <Navbar expand="lg" style={menuStyle} className={navbarClassName}>
         <Container>
 
-          <Navbar.Brand as={NavLink} to="/" className="align-items-center" onClick={() => handleNavClick('/')}>
+          <Navbar.Brand as={NavLink} to="/jamsessions" className="align-items-center" onClick={() => handleNavClick('/jamsessions')}>
             <span style={{ fontWeight: 800, fontSize: '24px' }}>
               <Image src="/images/logo-transparent.png" width={80} style={{ marginBottom: 3 }} />
               jamb-UH-ree
