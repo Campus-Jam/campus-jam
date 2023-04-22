@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Button, Card, Col, Container, Image, Nav, Row } from 'react-bootstrap';
@@ -29,15 +29,36 @@ const ViewProfile = () => {
   const { currentUser } = useTracker(() => ({
     currentUser: Meteor.user() ? Meteor.user().username : '',
   }), []);
-  const artistToView = Artists.collection.findOne({ email: id.id }); // find the artist using the URL email
-  console.log('dfdsfsdf', artistToView);
+  const [setReady] = useState(false);
+  const [artistToView, setArtistToView] = useState(null);
+  const [gigs, setGigs] = useState([]);
+  useEffect(() => {
+    const fetchArtist = async () => {
+      if (Meteor.isClient && Artists.collection.find().observe({})._subscriptionId === null && Gigs.collection.find().observe({})._subscriptionId === null && ArtistsToGigs.collection.find().observe({})._subscriptionId === null) {
+        // Wait for the database connection to be ready
+        console.log('Waiting for database connection...');
+        return;
+      }
+      console.log('id', id.id);
+      const artist = await Artists.collection.findOne({ email: id.id });
+      setArtistToView(artist);
+      console.log('artist', artist);
+      const gigIds = ArtistsToGigs.collection.find({ artist_id: artist._id }).map((doc) => doc.gig_id);
+      console.log('gigs', gigIds);
+      const gig = Gigs.collection.find({ _id: { $in: gigIds } }).fetch();
+      console.log('gigs', gig);
+      const gigTitles = gig.map(obj => obj.title);
+      console.log('gigs', gigTitles);
+      setGigs(gigTitles);
+      setReady(true);
+    };
+    fetchArtist();
+  }, [id]);
+  /*
+  const artistToView = Artists.collection.findOne({ email: id.id });
   const gigIds = ArtistsToGigs.collection.find({ artist_id: artistToView._id }).map((doc) => doc.gig_id);
-  console.log(gigIds);
   const gigs = Gigs.collection.find({ _id: { $in: gigIds } }).fetch();
-  console.log('actual', gigs);
-  const gigNames = gigs.map((gig) => gig.title);
-  console.log('names', gigNames);
-
+   */
   return (ready ? (
     <div className="viewProfile">
       <Container className="py-4">
@@ -83,7 +104,7 @@ const ViewProfile = () => {
                   <Row>
                     <Col>
                       <Form.Label>Jam Session</Form.Label>
-                      <Form.Control as="textarea" placeholder={gigNames.join(', ')} disabled />
+                      <Form.Control as="textarea" placeholder={gigs.join(', ')} disabled />
                     </Col>
                     <Col>
                       <Form.Label>Instrument Played</Form.Label>
