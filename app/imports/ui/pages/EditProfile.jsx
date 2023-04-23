@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Card, Col, Container, Row, Button } from 'react-bootstrap';
+import { Card, Col, Container, Row, Button, Nav } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import './EditProfileStyle.css';
 import { useTracker } from 'meteor/react-meteor-data';
 import Select from 'react-select';
 import Creatable from 'react-select/creatable';
+import { NavLink } from 'react-router-dom';
 import { globalSelectStyle } from '../utilities/ReactSelectStyle';
 import { Artists, getUniqueInstruments, getUniqueGenres, skillLevels } from '../../api/artists/Artists';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { ComponentIDs } from '../utilities/ids';
 
 const SUBMIT_BUTTON_TIMEOUT_MS = 1000;
 
@@ -27,7 +29,7 @@ const EditProfile = () => {
 
   const [submitting, setSubmitting] = useState(false);
 
-  const { currentArtist, allArtists, isReady } = useTracker(() => {
+  const { currentArtist, allArtists, isReady, currUser } = useTracker(() => {
     const artistsSub = Meteor.subscribe(Artists.userPublicationName);
     const currentUser = Meteor.user();
     const artists = Artists.collection.find().fetch();
@@ -37,6 +39,7 @@ const EditProfile = () => {
     return {
       currentArtist: curr,
       allArtists: artists,
+      currUser: currentUser,
       isReady: rdy,
     };
   });
@@ -261,9 +264,20 @@ const EditProfile = () => {
 
                 {/* SUBMIT BUTTON */}
                 <Row className="justify-content-end">
-                  <Button type="submit" disabled={submitting} className={submitting ? 'isSubmitting' : ''}>
-                    {submitting ? 'Please wait...' : 'Submit'}
-                  </Button>
+                  <Col className="justify-content-center">
+                    <Button className="viewProfileButton">
+                      <Nav.Link
+                        type="submit"
+                        className={submitting ? 'isSubmitting' : ''}
+                        as={NavLink}
+                        id={ComponentIDs.viewProfile}
+                        to={`/viewProfile/${currUser.emails[0].address}`}
+                        key="viewProfile"
+                      >
+                        Submit
+                      </Nav.Link>
+                    </Button>
+                  </Col>
                 </Row>
               </Form>
             </Card.Body>

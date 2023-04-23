@@ -70,7 +70,7 @@ const ViewProfile = () => (
                   to="/editProfile"
                   key="editProfile"
                 >
-                  Add Jam Session
+                  Edit Profile
                 </Nav.Link>
               </Button>
             </Col>
