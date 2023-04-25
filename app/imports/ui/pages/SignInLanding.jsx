@@ -12,15 +12,18 @@ const Landing = () => (
           <Col xs={6}>
             <Container>
               <h1 style={{ paddingTop: '150px', paddingBottom: '10px', color: 'white', fontSize: '36pt' }}>
-                Ready to Jam With Jamb-UH-ree?
+                The Best and Easiest Way to Connect with Artists and Jam Out!
               </h1>
-              <h3 style={{ paddingBottom: '70px', color: 'white' }}>
-                Find musicians and plan jam sessions at UH Manoa
-              </h3>
-              <Button as={NavLink} to="/signup" variant="success">Create an account and start jamming today!</Button>
-              <p style={{ paddingTop: '5px', paddingBottom: '150px', color: 'white' }}>
-                Already have an account? <NavLink as={NavLink} to="/signin">Log In</NavLink>
-              </p>
+              <Row className="pt-5">
+                <Col xs={6}>
+                  <Button as={NavLink} to="/artists" className="m-2" variant="success" style={{ width: '100%' }}>Connect with Artists</Button>
+                  <Button as={NavLink} to="/editProfile" className="m-2" variant="success" style={{ width: '100%' }}>Edit Your Profile</Button>
+                </Col>
+                <Col xs={6}>
+                  <Button as={NavLink} to="/jamsessions" className="m-2" variant="success" style={{ width: '100%' }}>Join Jam Sessions</Button>
+                  <Button as={NavLink} to="/addJamSessions" className="m-2" variant="success" style={{ width: '100%' }}>Add a Jam Session</Button>
+                </Col>
+              </Row>
             </Container>
           </Col>
           <Col>
