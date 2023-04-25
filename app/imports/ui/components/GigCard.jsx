@@ -158,7 +158,7 @@ GigCard.propTypes = {
   gigEntry: PropTypes.shape({
     title: PropTypes.string,
     image: PropTypes.string,
-    date: PropTypes.string,
+    date: PropTypes.instanceOf(Date),
     attendees: PropTypes.arrayOf(PropTypes.string),
     skillLevel: PropTypes.string,
     genres: PropTypes.arrayOf(PropTypes.string),

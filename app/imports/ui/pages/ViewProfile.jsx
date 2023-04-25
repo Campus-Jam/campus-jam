@@ -1,83 +1,130 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
+import { useTracker } from 'meteor/react-meteor-data';
 import { Button, Card, Col, Container, Image, Nav, Row } from 'react-bootstrap';
-import Form from 'react-bootstrap/Form';
 import './ViewProfileStyle.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import { ComponentIDs } from '../utilities/ids';
+import { Artists } from '../../api/artists/Artists';
+import LoadingSpinner from '../components/LoadingSpinner';
+import { ArtistsToGigs } from '../../api/artistsToGigs/ArtistsToGigs';
+import { Gigs } from '../../api/gigs/Gigs';
+import GigCard from '../components/GigCard';
 
-const ViewProfile = () => (
-  <div className="viewProfile">
-    <Container className="py-4">
-      <Card className="card">
-        <Col className="px-4">
-          <Row>
-            <Container className="p-3">
-              <h1 className="text-center">User Profile</h1>
-            </Container>
-            <Col>
-              <Image className="rounded mx-auto d-block" src="/images/profileImagePlaceholder.png" width="300px" />
-            </Col>
-            <Col>
-              <Row>
-                <Col>
-                  <Form.Group className="mb-3">
-                    <Form.Label>First Name</Form.Label>
-                    <Form.Control placeholder="User" disabled />
-                  </Form.Group>
-                </Col>
-                <Col>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Last Name</Form.Label>
-                    <Form.Control placeholder="User" disabled />
-                  </Form.Group>
-                </Col>
-              </Row>
-              <Row>
-                <Form.Group className="mb-3">
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control placeholder="User@hawaii.edu" disabled />
-                  <br />
-                  <Form.Label>Music Skill</Form.Label>
-                  <Form.Control placeholder="Skill" disabled />
-                </Form.Group>
-              </Row>
-            </Col>
-            <Row>
-              <Form.Group className="mb-3">
-                <Form.Label>DescriptionBio</Form.Label>
-                <Form.Control as="textarea" placeholder="Disabled input" disabled />
-                <br />
+const ViewProfile = () => {
+  const id = useParams();
+  console.log('email', id.id);
+  const { ready } = useTracker(() => {
+    const artistSub = Meteor.subscribe(Artists.userPublicationName);
+    const artistToGigSub = Meteor.subscribe(ArtistsToGigs.userPublicationName);
+    const gigSub = Meteor.subscribe(Gigs.userPublicationName);
+
+    return {
+      ready: artistSub.ready() && artistToGigSub.ready() && gigSub.ready(),
+    };
+  }, []);
+
+  const { currentUser } = useTracker(() => ({
+    currentUser: Meteor.user() ? Meteor.user().username : '',
+  }), []);
+
+  const artistToView = Artists.collection.findOne({ email: id.id });
+
+  if (!ready || !artistToView) {
+    return <LoadingSpinner />;
+  }
+
+  const gigIds = ArtistsToGigs.collection.find({ artist_id: artistToView._id }).map((doc) => doc.gig_id);
+  const gigObj = Gigs.collection.find({ _id: { $in: gigIds } }).fetch();
+
+  return (ready ? (
+    <div className="viewProfile">
+      <Container className="py-4">
+        <Card className="card">
+          <Card.Body>
+
+            {/* NAME TITLE AND EMAIL */}
+            <h1 className="text-center py-4">
+              {artistToView.firstName} {artistToView.lastName}
+            </h1>
+            <p className="cardText text-center">{id.id}</p>
+            <Row className="align-items-center">
+              {/* IMAGE */}
+              <Col md={4} className="text-center image-col">
+                <Image className="mx-auto d-block img-fluid image align-self-center" src={artistToView.image} height="400px" />
+              </Col>
+
+              {/* DETAILS */}
+              <Col md={8}>
                 <Row>
+                  {/* SKILL LEVEL */}
                   <Col>
-                    <Form.Label>Jam Session</Form.Label>
-                    <Form.Control as="textarea" placeholder="Disabled input" disabled />
-                  </Col>
-                  <Col>
-                    <Form.Label>Instrument Played</Form.Label>
-                    <Form.Control as="textarea" placeholder="Disabled input" disabled />
+                    <p className="cardText text-center">
+                      Skill Level: {artistToView.skillLevel}
+                    </p>
                   </Col>
                 </Row>
-              </Form.Group>
+
+                {/* BIO */}
+                <Row>
+                  <Col className="text-center">
+                    <h4>Biography</h4>
+                    <p className="cardText">{artistToView.bio}</p>
+                  </Col>
+                </Row>
+
+                {/* INSTRUMENTS AND INFLUENCES */}
+                <Row>
+                  <Col className="text-center">
+                    <h4>Instrument Played</h4>
+                    <p className="cardText">{artistToView.instruments.join(', ')}</p>
+                  </Col>
+                  <Col>
+                    <h4>Influences</h4>
+                    <p className="cardText">{artistToView.influences.join(', ')}</p>
+                  </Col>
+                </Row>
+              </Col>
             </Row>
-          </Row>
-          <Row>
-            <Col className="p-3">
-              <Button className="editProfileButton">
-                <Nav.Link
-                  className="EditProfileStyle.css"
-                  as={NavLink}
-                  id={ComponentIDs.createJamSession}
-                  to="/editProfile"
-                  key="editProfile"
-                >
-                  Add Jam Session
-                </Nav.Link>
-              </Button>
-            </Col>
-          </Row>
-        </Col>
-      </Card>
-    </Container>
-  </div>
-);
+
+            {/* EDIT PROFILE BUTTON */}
+            {currentUser === id.id && (
+              <Row>
+                <Col className="text-end mt-3">
+                  <Button className="editProfileButton">
+                    <Nav.Link
+                      className="EditProfileStyle.css"
+                      as={NavLink}
+                      id={ComponentIDs.createJamSession}
+                      to="/editProfile"
+                      key="editProfile"
+                    >
+                      Edit Profile
+                    </Nav.Link>
+                  </Button>
+                </Col>
+              </Row>
+            )}
+          </Card.Body>
+        </Card>
+
+        <br />
+        <h3 className="text-center"> Jam Sessions that {artistToView.firstName} has joined:</h3>
+        <br />
+
+        {/* JOINED GIGS */}
+        <div className="gig-grid">
+          {gigObj.map((gig) => (
+            <div key={gig._id}>
+              <GigCard gigEntry={gig} />
+            </div>
+          ))}
+        </div>
+
+      </Container>
+    </div>
+  ) :
+    <LoadingSpinner />
+  );
+};
 export default ViewProfile;

@@ -4,38 +4,43 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  border-color: black;
-  border-width: 3px;
 }
-.viewProfile .card{
+
+.viewProfile .card {
   border-radius: 40px;
   background-color: var(--page-background-color2);
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.5);
 }
+
 .viewProfile .card .row {
   padding-top: 20px;
 }
-.viewProfile .card .form-label {
-  margin-left: 10px;
-  font-size: 18px;
-  font-weight: bold;
+
+.viewProfile .card h2,
+.viewProfile .card h5 {
+  color: var(--text-color1);
 }
 
-.viewProfile .card .form-control {
-  background-color: var(--page-background-color1);
+.viewProfile .card .cardText {
   color: var(--text-color2);
-  border-color: black;
-  font-size: 18px;
+  font-size: 24px;
+}
+
+.viewProfile .image {
+  width: 350px;
+  border-radius: 40px;
+  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.5);
+  border: 2px solid black;
 }
 
 .viewProfile .editProfileButton {
   width: 200px;
   height: 50px;
-  margin-right: 40px;
   margin-bottom: 20px;
+  margin-right: 20px;
   background-color: var(--button-color2);
   border-color: black;
-  box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.5);
   font-size: 20px;
   font-weight: bold;
 }
@@ -46,9 +51,27 @@
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
   color: black;
 }
+
 .viewProfile .editProfileButton:hover {
   background-color: var(--button-color1);
   border-color: black;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
   color: black;
 }
+
+.viewProfile .rightCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.viewProfile .gig-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 600px);
+  grid-gap: 15px;
+  row-gap: 25px;
+  justify-content: center;
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+}
+
