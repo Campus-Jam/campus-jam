@@ -110,7 +110,6 @@ const GigCard = ({ gigEntry }) => {
               height={150}
               className="image-shadow"
               onError={handleImageError}
-              style={{ backgroundColor: '#565' }}
             />
           </div>
         </Card.Header>
