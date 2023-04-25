@@ -46,10 +46,10 @@
 }
 
 .viewProfile .editProfileButton:active {
-  background-color: var(--button-color-pressed);
-  border-color: black;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
-  color: black;
+  background-color: var(--button-color-pressed) !important;
+  border-color: black !important;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5) !important;
+  color: black !important;
 }
 
 .viewProfile .editProfileButton:hover {
