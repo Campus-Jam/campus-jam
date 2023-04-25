@@ -50,7 +50,7 @@ const ViewProfile = () => {
             <p className="cardText text-center">{id.id}</p>
             <Row className="align-items-center image-row">
               {/* IMAGE */}
-              <Col md={4} className="text-center image-col d-flex align-items-center">
+              <Col md={4} className="text-center image-col d-flex align-items-center px-4">
                 <Image className="mx-auto d-block img-fluid image" src={artistToView.image} height="400px" />
               </Col>
 
