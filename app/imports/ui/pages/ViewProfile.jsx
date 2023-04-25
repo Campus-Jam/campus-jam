@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+// { useState, useEffect } add these to react import if going to use
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Button, Card, Col, Container, Image, Nav, Row } from 'react-bootstrap';
@@ -29,7 +30,7 @@ const ViewProfile = () => {
   const { currentUser } = useTracker(() => ({
     currentUser: Meteor.user() ? Meteor.user().username : '',
   }), []);
-  const [setReady] = useState(false);
+  /*
   const [artistToView, setArtistToView] = useState(null);
   const [gigs, setGigs] = useState([]);
   useEffect(() => {
@@ -43,22 +44,21 @@ const ViewProfile = () => {
       const artist = await Artists.collection.findOne({ email: id.id });
       setArtistToView(artist);
       console.log('artist', artist);
-      const gigIds = ArtistsToGigs.collection.find({ artist_id: artist._id }).map((doc) => doc.gig_id);
+      const gigIds = await ArtistsToGigs.collection.find({ artist_id: artist._id }).map((doc) => doc.gig_id);
       console.log('gigs', gigIds);
-      const gig = Gigs.collection.find({ _id: { $in: gigIds } }).fetch();
+      const gig = await Gigs.collection.find({ _id: { $in: gigIds } }).fetch();
       console.log('gigs', gig);
-      const gigTitles = gig.map(obj => obj.title);
+      const gigTitles = await gig.map(obj => obj.title);
       console.log('gigs', gigTitles);
       setGigs(gigTitles);
-      setReady(true);
     };
     fetchArtist();
   }, [id]);
-  /*
+   */
   const artistToView = Artists.collection.findOne({ email: id.id });
   const gigIds = ArtistsToGigs.collection.find({ artist_id: artistToView._id }).map((doc) => doc.gig_id);
-  const gigs = Gigs.collection.find({ _id: { $in: gigIds } }).fetch();
-   */
+  const gigObj = Gigs.collection.find({ _id: { $in: gigIds } }).fetch();
+  const gigs = gigObj.map(obj => obj.title);
   return (ready ? (
     <div className="viewProfile">
       <Container className="py-4">
@@ -109,6 +109,10 @@ const ViewProfile = () => {
                     <Col>
                       <Form.Label>Instrument Played</Form.Label>
                       <Form.Control as="textarea" placeholder={artistToView.instruments.join(', ')} disabled />
+                    </Col>
+                    <Col>
+                      <Form.Label>Influences</Form.Label>
+                      <Form.Control as="textarea" placeholder={artistToView.influences.join(', ')} disabled />
                     </Col>
                   </Row>
                 </Form.Group>
