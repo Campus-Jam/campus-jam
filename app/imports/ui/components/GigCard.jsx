@@ -55,6 +55,12 @@ const GigCard = ({ gigEntry }) => {
   const [joined, setJoined] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
+  const [imageSrc, setImageSrc] = useState(gigEntry.image);
+  const defaultImageSrc = '/images/default_jamsession_image.png';
+  const handleImageError = () => {
+    setImageSrc(defaultImageSrc);
+  };
+
   useEffect(() => {
     if (artistData && ArtistsToGigs.collection.find({ artist_id: artistData._id, gig_id: gigEntry._id }).count() > 0) {
       setJoined(true);
@@ -99,7 +105,13 @@ const GigCard = ({ gigEntry }) => {
             <Card.Title>{gigEntry.title}</Card.Title>
           </div>
           <div className="d-flex justify-content-center">
-            <Image src={gigEntry.image} height={150} className="image-shadow" />
+            <Image
+              src={imageSrc}
+              height={150}
+              className="image-shadow"
+              onError={handleImageError}
+              style={{ backgroundColor: '#565' }}
+            />
           </div>
         </Card.Header>
         <ListGroup variant="flush">
