@@ -53,7 +53,7 @@ class GigsCollection {
       'genres.$': { type: String, optional: true },
       instruments: { type: Array, optional: true },
       'instruments.$': { type: String },
-      venue: { type: String, optional: true },
+      venue: { type: String, optional: false },
       about: { type: String, optional: true },
     });
 

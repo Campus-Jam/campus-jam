@@ -140,13 +140,12 @@ const CreateJamSession = () => {
 
                     {/* SKILL LEVEL */}
                     <Col>
-                      <Form.Label>Skill Level<span className="required-field">*</span></Form.Label>
+                      <Form.Label>Skill Level</Form.Label>
                       <Select
                         options={SkillLevelOptions}
                         isSearchable
                         styles={globalSelectStyle}
                         onChange={(selected) => setFormData({ ...formData, skillLevel: selected.value })}
-                        required
                       />
                     </Col>
                   </Row>
@@ -176,7 +175,7 @@ const CreateJamSession = () => {
                   <Row>
                     {/* INSTRUMENTS */}
                     <Col xs={6}>
-                      <Form.Label>Instrument(s)<span className="required-field">*</span></Form.Label>
+                      <Form.Label>Instrument(s)</Form.Label>
                       <Creatable
                         isMulti
                         name="instruments"
@@ -188,13 +187,12 @@ const CreateJamSession = () => {
                           label: instr,
                         }))}
                         onChange={(selected) => handleSelectChange(selected, 'instruments', true)}
-                        required
                       />
                     </Col>
 
                     {/* GENRES */}
                     <Col xs={6}>
-                      <Form.Label>Genre(s)<span className="required-field">*</span></Form.Label>
+                      <Form.Label>Genre(s)</Form.Label>
                       <Creatable
                         isMulti
                         name="genres"
@@ -206,7 +204,6 @@ const CreateJamSession = () => {
                           label: genre,
                         }))}
                         onChange={(selected) => handleSelectChange(selected, 'genres', true)}
-                        required
                       />
                     </Col>
                   </Row>
@@ -214,8 +211,8 @@ const CreateJamSession = () => {
                   {/* ABOUT */}
                   <Row>
                     <Col>
-                      <Form.Label>About<span className="required-field">*</span></Form.Label>
-                      <Form.Control name="about" onChange={handleInputChange} placeholder="Description of Jam Session" required isInvalid={!formData.about} />
+                      <Form.Label>About</Form.Label>
+                      <Form.Control name="about" onChange={handleInputChange} placeholder="Description of Jam Session" />
                     </Col>
                     <Form.Control.Feedback type="invalid">
                       Please enter the instruments you would prefer at this jam session.
