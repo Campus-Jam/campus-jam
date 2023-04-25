@@ -44,7 +44,7 @@ const ViewProfile = () => {
           <Card.Body>
 
             {/* NAME TITLE AND EMAIL */}
-            <h1 className="text-center py-4">
+            <h1 className="text-center nameTitle">
               {artistToView.firstName} {artistToView.lastName}
             </h1>
             <p className="cardText text-center">{id.id}</p>

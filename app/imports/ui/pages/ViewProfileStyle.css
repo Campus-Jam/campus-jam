@@ -12,13 +12,17 @@
   box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.5);
 }
 
-.viewProfile .card .row {
-  padding-top: 20px;
-}
-
+.viewProfile .card h1,
 .viewProfile .card h2,
+.viewProfile .card h3,
+.viewProfile .card h4,
 .viewProfile .card h5 {
   color: var(--text-color1);
+}
+
+.viewProfile .nameTitle{
+  margin-top: 10px;
+  margin-bottom: 0;
 }
 
 .viewProfile .card .cardText {
