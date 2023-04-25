@@ -48,10 +48,10 @@ const ViewProfile = () => {
               {artistToView.firstName} {artistToView.lastName}
             </h1>
             <p className="cardText text-center">{id.id}</p>
-            <Row className="align-items-center">
+            <Row className="align-items-center image-row">
               {/* IMAGE */}
-              <Col md={4} className="text-center image-col">
-                <Image className="mx-auto d-block img-fluid image align-self-center" src={artistToView.image} height="400px" />
+              <Col md={4} className="text-center image-col d-flex align-items-center">
+                <Image className="mx-auto d-block img-fluid image" src={artistToView.image} height="400px" />
               </Col>
 
               {/* DETAILS */}
@@ -59,8 +59,11 @@ const ViewProfile = () => {
                 <Row>
                   {/* SKILL LEVEL */}
                   <Col>
-                    <p className="cardText text-center">
+                    <p className="cardText text-end px-3">
                       Skill Level: {artistToView.skillLevel}
+                      <br />
+                      <br />
+                      <br />
                     </p>
                   </Col>
                 </Row>
@@ -108,9 +111,7 @@ const ViewProfile = () => {
           </Card.Body>
         </Card>
 
-        <br />
-        <h3 className="text-center"> Jam Sessions that {artistToView.firstName} has joined:</h3>
-        <br />
+        <h3 className="text-center py-2"> Jam Sessions that {artistToView.firstName} has joined:</h3>
 
         {/* JOINED GIGS */}
         <div className="gig-grid">
