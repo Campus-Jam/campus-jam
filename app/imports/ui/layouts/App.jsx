@@ -17,6 +17,7 @@ import EditProfile from '../pages/EditProfile';
 
 import CreateJamSession from '../pages/CreateJamSession';
 import ViewProfile from '../pages/ViewProfile';
+import SignInLanding from '../pages/SignInLanding';
 
 /* Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -34,7 +35,7 @@ const App = () => {
         {/* Conditional Root Directory */}
         <Routes>
           {loggedIn ? (
-            <Route exact path="/" element={<BrowseGigs />} />
+            <Route exact path="/" element={<SignInLanding />} />
           ) : (
             <Route exact path="/" element={<Landing />} />
           )}
@@ -44,6 +45,7 @@ const App = () => {
           <Route path="/signout" element={<SignOut />} />
 
           {/* REGULAR USER ROUTES, MUST BE SIGNED IN */}
+          <Route path="/signinlanding" element={<ProtectedRoute><SignInLanding /></ProtectedRoute>} />
           <Route path="/artists" element={<ProtectedRoute><BrowseArtists /></ProtectedRoute>} />
           <Route path="/gigs" element={<ProtectedRoute><BrowseGigs /></ProtectedRoute>} />
           <Route path="/jamsessions" element={<ProtectedRoute><BrowseGigs /></ProtectedRoute>} />

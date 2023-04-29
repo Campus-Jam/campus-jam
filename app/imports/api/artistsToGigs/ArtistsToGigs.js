@@ -55,6 +55,12 @@ Meteor.methods({
     return Gigs.collection.find({ _id: { $in: gigIds } }).fetch();
   },
 
+  'artistsToGigs.getGigsForArtistEmail'(email) {
+    check(email, String);
+    const gigIds = ArtistsToGigs.collection.find({ email: email }).map((doc) => doc.gig_id);
+    return Gigs.collection.find({ _id: { $in: gigIds } }).fetch();
+  },
+
   'artistsToGigs.getArtistsForGig'(gigId) {
     check(gigId, String);
     const artistIds = ArtistsToGigs.collection.find({ gig_id: gigId }).map((doc) => doc.artist_id);

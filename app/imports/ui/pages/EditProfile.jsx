@@ -182,28 +182,23 @@ const EditProfile = () => {
                 <Row>
                   {/* IMAGE URL */}
                   <Col>
-                    <Form.Label>Image URL<span className="required-field">*</span></Form.Label>
+                    <Form.Label>Image URL</Form.Label>
                     <Form.Control
                       value={formData.image}
                       onChange={(event) => handleInputChange(event, 'image')}
-                      required
                       isInvalid={!formData.image}
                     />
-                    <Form.Control.Feedback type="invalid">
-                      Please enter your profile image.
-                    </Form.Control.Feedback>
                   </Col>
 
                   {/* SKILL LEVEL */}
                   <Col>
-                    <Form.Label>Skill Level<span className="required-field">*</span></Form.Label>
+                    <Form.Label>Skill Level</Form.Label>
                     <Select
                       options={SkillLevelOptions}
                       className="singleSelect"
                       styles={globalSelectStyle}
                       value={formData.skillLevel && { value: formData.skillLevel, label: formData.skillLevel }}
                       onChange={(selected) => handleSelectChange(selected, 'skillLevel', false)}
-                      required
                     />
                   </Col>
                 </Row> {/* End of Second Row */}
@@ -211,7 +206,7 @@ const EditProfile = () => {
                 {/* INSTRUMENTS */}
                 <Row>
                   <Col xs={6}>
-                    <Form.Label>Instrument(s)<span className="required-field">*</span></Form.Label>
+                    <Form.Label>Instrument(s)</Form.Label>
                     <Creatable
                       isMulti
                       name="instruments"
@@ -223,13 +218,12 @@ const EditProfile = () => {
                         label: instrument,
                       }))}
                       onChange={(selected) => handleSelectChange(selected, 'instruments', true)}
-                      required
                     />
                   </Col>
 
                   {/* GENRES */}
                   <Col>
-                    <Form.Label>Genre(s)<span className="required-field">*</span></Form.Label>
+                    <Form.Label>Genre(s)</Form.Label>
                     <Creatable
                       isMulti
                       name="genres"
@@ -247,7 +241,7 @@ const EditProfile = () => {
 
                 {/* INFLUENCES */}
                 <Row>
-                  <Form.Label>Influences<span className="required-field">*</span></Form.Label>
+                  <Form.Label>Influences</Form.Label>
                   <Col>
                     <Creatable
                       isMulti
@@ -260,7 +254,6 @@ const EditProfile = () => {
                         label: influence,
                       }))}
                       onChange={(selected) => handleSelectChange(selected, 'influences', true)}
-                      required
                     />
                   </Col>
                 </Row>
@@ -268,15 +261,19 @@ const EditProfile = () => {
                 {/* BIO */}
                 <Row>
                   <Col xs={12}>
-                    <Form.Label>Biography<span className="required-field">*</span></Form.Label>
+                    <Form.Label>Biography</Form.Label>
                     <Form.Control
                       as="textarea"
                       placeholder="Enter Text Here"
                       value={formData.bio}
                       onChange={(event) => handleInputChange(event, 'bio')}
-                      required
                     />
                   </Col>
+                </Row>
+
+                {/* NOTE */}
+                <Row>
+                  <h9>* indicates required field</h9>
                 </Row>
 
                 {/* SUBMIT BUTTON */}
