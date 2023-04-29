@@ -4,7 +4,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { Button, Card, Col, Container, Image, Nav, Row } from 'react-bootstrap';
 import './ViewProfileStyle.css';
 import { NavLink, useParams } from 'react-router-dom';
-import { ComponentIDs } from '../utilities/ids';
+import { ComponentIDs, PageIDs } from '../utilities/ids';
 import { Artists } from '../../api/artists/Artists';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { ArtistsToGigs } from '../../api/artistsToGigs/ArtistsToGigs';
@@ -13,7 +13,6 @@ import GigCard from '../components/GigCard';
 
 const ViewProfile = () => {
   const id = useParams();
-  console.log('email', id.id);
   const { ready } = useTracker(() => {
     const artistSub = Meteor.subscribe(Artists.userPublicationName);
     const artistToGigSub = Meteor.subscribe(ArtistsToGigs.userPublicationName);
@@ -38,9 +37,9 @@ const ViewProfile = () => {
   const gigObj = Gigs.collection.find({ _id: { $in: gigIds } }).fetch();
 
   return (ready ? (
-    <div className="viewProfile">
+    <div id={PageIDs.viewProfilePage} className="viewProfile">
       <Container className="py-4">
-        <Card className="card">
+        <Card id={ComponentIDs.viewProfileForm} className="card">
 
           <Card.Title>
             {/* NAME TITLE AND EMAIL */}

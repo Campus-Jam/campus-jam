@@ -28,6 +28,7 @@ export const ComponentIDs = {
   loginDropdown: 'loginDropdown',
   loginDropdownSignIn: 'loginDropdownSignIn',
   loginDropdownSignUp: 'loginDropdownSignUp',
+  signInLandingButtonCluster: 'signInLandingButtonCluster',
   signInFormEmail: 'signInFormEmail',
   signInFormPassword: 'signInFormPassword',
   signInFormSubmit: 'signInFormSubmit',
@@ -35,6 +36,7 @@ export const ComponentIDs = {
   signUpFormPassword: 'signUpFormPassword',
   signUpFormVerifyPassword: 'signUpFormVerifyPassword',
   signUpFormSubmit: 'signUpFormSubmit',
+  viewProfileForm: 'viewProfileForm',
 };
 
 export const PageIDs = {
@@ -51,8 +53,9 @@ export const PageIDs = {
   notFoundPage: 'notFoundPage',
   profilesPage: 'profilesPage',
   projectsPage: 'projectsPage',
+  signInLandingPage: 'signInLandingPage',
   signInPage: 'signInPage',
   signUpPage: 'signUpPage',
   signOutPage: 'signOutPage',
-  viewProfile: 'ViewProfile',
+  viewProfilePage: 'viewProfilePage',
 };

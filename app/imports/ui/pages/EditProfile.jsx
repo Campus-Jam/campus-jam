@@ -9,7 +9,7 @@ import Creatable from 'react-select/creatable';
 import { globalSelectStyle } from '../utilities/ReactSelectStyle';
 import { Artists, getUniqueGenres, getUniqueInstruments, skillLevels } from '../../api/artists/Artists';
 import LoadingSpinner from '../components/LoadingSpinner';
-import { PageIDs } from '../utilities/ids';
+import { ComponentIDs, PageIDs } from '../utilities/ids';
 
 const SUBMIT_BUTTON_TIMEOUT_MS = 1000;
 
@@ -273,7 +273,7 @@ const EditProfile = () => {
 
                 {/* NOTE */}
                 <Row>
-                  <h9>* indicates required field</h9>
+                  <h5>* indicates required field</h5>
                 </Row>
 
                 {/* SUBMIT BUTTON */}

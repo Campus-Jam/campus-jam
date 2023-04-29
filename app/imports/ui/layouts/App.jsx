@@ -5,12 +5,10 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
-import NotFound from '../pages/NotFound';
 import SignUp from '../pages/SignUp';
 import SignOut from '../pages/SignOut';
 import NavBar from '../components/NavBar';
 import SignIn from '../pages/SignIn';
-import NotAuthorized from '../pages/NotAuthorized';
 import BrowseArtists from '../pages/BrowseArtists';
 import BrowseGigs from '../pages/BrowseGigs';
 import EditProfile from '../pages/EditProfile';
@@ -54,10 +52,6 @@ const App = () => {
           <Route path="/viewProfile/:id" element={<ProtectedRoute><ViewProfile /></ProtectedRoute>} />
 
           {/* ADMIN ROUTES */}
-
-          {/* PAGES FOR STUFF GOING WRONG */}
-          <Route path="/notauthorized" element={<NotAuthorized />} />
-          <Route path="*" element={<NotFound />} />
 
         </Routes>
         <Footer />

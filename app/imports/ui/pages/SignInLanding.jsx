@@ -1,16 +1,16 @@
 import React from 'react';
 import { Button, Col, Container, Image, Row } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import { PageIDs } from '../utilities/ids';
+import { ComponentIDs, PageIDs } from '../utilities/ids';
 
 /* A simple static component to render some text for the landing page. */
 const Landing = () => (
-  <div id={PageIDs.landingPage}>
+  <div id={PageIDs.signInLandingPage}>
     <div className="landing-green-background">
       <Container>
         <Row>
           <Col xs={6}>
-            <Container>
+            <Container id={ComponentIDs.signInLandingButtonCluster}>
               <h1 style={{ paddingTop: '150px', paddingBottom: '10px', color: 'white', fontSize: '36pt' }}>
                 The Best and Easiest Way to Connect with Artists and Jam Out!
               </h1>

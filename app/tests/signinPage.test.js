@@ -86,8 +86,12 @@ test('User can successfully sign in', async (t) => {
     .typeText(emailInput, creds.email)
     .typeText(pwInput, creds.pwRight)
     .click(signInButton)
-    .wait(4000);
+    .wait(2500);
 
   // Check that the user is redirected to the correct URL after successful login
-  await t.expect(await t.eval(() => document.location.href)).eql('http://localhost:3000/');
+  await t.expect(await t.eval(() => document.location.href)).eql('http://localhost:3000/')
+    .expect(Selector('#signInLandingPage').exists)
+    .ok()
+    .expect(Selector('#signInLandingButtonCluster').exists)
+    .ok();
 });
