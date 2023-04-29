@@ -41,52 +41,58 @@ const ViewProfile = () => {
     <div className="viewProfile">
       <Container className="py-4">
         <Card className="card">
-          <Card.Body>
 
+          <Card.Title>
             {/* NAME TITLE AND EMAIL */}
             <h1 className="text-center nameTitle">
               {artistToView.firstName} {artistToView.lastName}
             </h1>
             <p className="cardText text-center">{id.id}</p>
-            <Row className="align-items-center image-row">
-              {/* IMAGE */}
-              <Col md={4} className="text-center image-col d-flex align-items-center px-4">
-                <Image className="mx-auto d-block img-fluid image" src={artistToView.image} height="400px" />
+          </Card.Title>
+
+          <Card.Body>
+
+            {/* IMAGE */}
+            <Row className="d-flex justify-content-center">
+              <Col xs={12} md={4} className="d-flex align-items-center image-col">
+                <Image className="mx-auto d-block img-fluid image" src={artistToView.image} />
               </Col>
 
-              {/* DETAILS */}
-              <Col md={8}>
+              {/* INFO */}
+              <Col xs={12} md={8} className="info-col">
+
+                {/* SKILL LEVEL */}
+                <div className="d-flex align-items-center justify-content-end">
+                  <div className="cardLabel">Skill Level:</div>
+                  <div className="cardText m-lg-2">{artistToView.skillLevel}</div>
+                </div>
+
+                <br />
+
+                {/* INSTRUMENTS AND INFLUENCES */}
                 <Row>
-                  {/* SKILL LEVEL */}
+                  <Col className="text-start">
+                    <h4 className="cardLabel">Instrument{artistToView.instruments.length > 1 ? 's' : ''} Played</h4>
+                    <p className="cardText">{artistToView.instruments.join(', ')}</p>
+                  </Col>
+
                   <Col>
-                    <p className="cardText text-end px-3">
-                      Skill Level: {artistToView.skillLevel}
-                      <br />
-                      <br />
-                      <br />
-                    </p>
+                    <h4 className="cardLabel">Influences</h4>
+                    <p className="cardText">{artistToView.influences.join(', ')}</p>
                   </Col>
                 </Row>
 
+                <br />
+                <br />
+
                 {/* BIO */}
                 <Row>
-                  <Col className="text-center">
-                    <h4>Biography</h4>
+                  <Col className="text-start">
+                    <h4 className="cardLabel">Bio:</h4>
                     <p className="cardText">{artistToView.bio}</p>
                   </Col>
                 </Row>
 
-                {/* INSTRUMENTS AND INFLUENCES */}
-                <Row>
-                  <Col className="text-center">
-                    <h4>Instrument Played</h4>
-                    <p className="cardText">{artistToView.instruments.join(', ')}</p>
-                  </Col>
-                  <Col>
-                    <h4>Influences</h4>
-                    <p className="cardText">{artistToView.influences.join(', ')}</p>
-                  </Col>
-                </Row>
               </Col>
             </Row>
 
@@ -108,6 +114,7 @@ const ViewProfile = () => {
                 </Col>
               </Row>
             )}
+
           </Card.Body>
         </Card>
 

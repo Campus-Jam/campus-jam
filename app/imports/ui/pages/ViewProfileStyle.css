@@ -20,9 +20,30 @@
   color: var(--text-color1);
 }
 
-.viewProfile .nameTitle{
+.viewProfile .nameTitle {
   margin-top: 10px;
   margin-bottom: 0;
+}
+
+.viewProfile .image {
+  width: 80%;
+  border-radius: 40px;
+  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.5);
+  border: 2px solid black;
+}
+
+.viewProfile .card .image-col {
+  width: 30%;
+}
+
+.viewProfile .card .info-col {
+  width: 70%;
+}
+
+.viewProfile .card .cardLabel {
+  color: var(--text-color1);
+  font-size: 24px;
+  font-weight: bolder;
 }
 
 .viewProfile .card .cardText {
@@ -30,12 +51,6 @@
   font-size: 24px;
 }
 
-.viewProfile .image {
-  width: 100%;
-  border-radius: 40px;
-  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.5);
-  border: 2px solid black;
-}
 
 .viewProfile .editProfileButton {
   width: 200px;
@@ -61,11 +76,6 @@
   border-color: black;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
   color: black;
-}
-
-.viewProfile .rightCol {
-  display: flex;
-  flex-direction: column;
 }
 
 .viewProfile .gig-grid {
