@@ -1,30 +1,861 @@
 {
-  "profiles": [
+  "moreArtists": [
     {
-      "firstName": "Peter",
-      "lastName": "Leong",
-      "bio": "I am a professor of Educational Technology",
-      "title": "Professor",
-      "interests": [
-        "Online Learning"
-      ],
-      "projects":[
-        "UH Online",
-        "RadGrad"
-      ],
-      "picture": "http://www2.hawaii.edu/~peterleo/Electronic_Portfolio/Cool-guy.jpg",
-      "email": "peterleo@hawaii.edu"
-    }
-  ],
-  "projects": [
+      "role": "admin",
+      "password": "foo",
+      "firstName": "Ava", "lastName": "Chen", "email": "ava.chen@quux.com",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyPj1d0IG83GglbBjRyl1Ci50m6CQ7QcW7eSKV-A0hAQ&usqp=CAU&ec=48600112",
+      "instruments": ["Vocals"], "skillLevel": "Advanced",
+      "genres": ["Pop", "R&B", "Soul"],
+      "influences": ["Whitney Houston", "Beyonce", "Adele", "Sam Cooke", "Etta James"],
+      "bio": "I am a classically trained singer with experience in pop, R&B, and soul music. I would like to find others with similar musical tastes who would like to get together to see what we can come up with"
+    },
     {
-      "name": "UH Online",
-      "homepage": "https://www.uhonline.hawaii.edu/",
-      "description": "Online learning opportunities at the University of Hawaii.",
-      "interests": [
-        "Online Learning"
-      ],
-      "picture": "http://www.hawaii.edu/wp/wp-content/uploads/2015/12/system-seal.jpg"
-    }
-  ]
+      "role": "user",
+      "password": "foo",
+      "firstName": "Albert", "lastName": "Haynes", "email": "albert.h@foo.com",
+      "image": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXw3NjA4Mjc3NHx8ZW58MHx8fHw%3D&w=1000&q=80",
+      "instruments": ["Guitar"], "skillLevel": "Intermediate",
+      "genres": ["Blues", "Psychedelic Rock"],
+      "influences": ["Hendrix", "Vaughn", "B.B. King", "The Doors", "Grateful Dead"],
+      "bio": "I have been practicing guitar for a little over a year now.  I love playing gnarly riffs over some heavy bass and looking forward to the jam sessions to come!"
+    },
+    {
+      "role": "user",
+      "password": "foo",
+      "firstName": "Henry", "lastName": "Kapono", "email": "henry.k@baz.com",
+      "image": "https://th.bing.com/th/id/OIP.6hJxyracpGt5Sq0xd3HoNAAAAA?w=287&h=176&c=7&r=0&o=5&pid=1.7",
+      "instruments": ["Guitar", "Ukulele", "Vocals"], "skillLevel": "Advanced",
+      "genres": ["Hawaiian", "Reggae"],
+      "influences": ["Bob Marley", "John Lennon", "Jimi Hendrix", "Sting", "Stevie Wonder"],
+      "bio": "I've been playing ukulele my whole life.  My passion is to make music with my friends, and show aloha to my community"
+    },
+    {
+      "role": "user",
+      "password": "foo",
+      "firstName": "Samantha", "lastName": "Lee", "email": "samantha.l@foo.com",
+      "image": "https://images.unsplash.com/photo-1564564295391-7f24f26f568b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fGt1bHxlbnwwfHwwfHw%3D&w=1000&q=80",
+      "instruments": ["Bass Guitar"], "skillLevel": "Advanced",
+      "genres": ["Funk", "Jazz", "Soul"],
+      "influences": ["Victor Wooten", "Marcus Miller", "Thundercat", "Earth, Wind & Fire", "Stevie Wonder"],
+      "bio": "'I have been playing bass guitar for 10 years now. I love the rhythm and groove that comes with funk, jazz, and soul music. Looking for fellow musicians who share the same passion and vibe!"
+    },
+    {
+      "role": "user",
+      "password": "foo",
+      "firstName": "Alex", "lastName": "Nguyen", "email": "alex.n@foo.com",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQayQiD1x_FnLWOHbMia0mXHg6dyd91gcgFPztytUpnPg&usqp=CAU&ec=48600112",
+      "instruments": ["Drums", "Piano"], "skillLevel": "Intermediate",
+      "genres": ["Rock", "Pop", "Indie"],
+      "influences": ["The Beatles", "Queen", "Radiohead", "Coldplay", "Tame Impala"],
+      "bio": "'I started playing drums when I was 12 and picked up piano a few years ago. Im into rock, pop, and indie music and always looking to expand my skills and knowledge. Lets create some awesome music together!"
+    },
+    {
+      "role": "user",
+      "password": "foo",
+      "firstName": "Maria", "lastName": "Garcia", "email": "maria.g@foo.com",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjRk6Vs47AjyBOAOBNF8Cic74PJNkAcrpUsGDUcCYpdA&usqp=CAU&ec=48600112",
+      "instruments": ["Violin", "Kazoo"], "skillLevel": "Beginner",
+      "genres": ["Classical", "Folk", "World"],
+      "influences": ["Bach", "Mozart", "Yo-Yo Ma", "Lindsey Stirling", "Gaelic Storm"],
+      "bio": "'I recently started learning violin and am in love with the classical, folk, and world music that can be played with it. Looking for other musicians who can help me learn and grow!"
+    },
+    {
+      "role": "user",
+      "password": "foo",
+      "firstName": "Jacob", "lastName": "Kim", "email": "jacob.k@bar.com",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmWpVZGN21gUEgVVUx09wMf8sDsZawEsRqSnerToYRJg&usqp=CAU&ec=48600112",
+      "instruments": ["Guitar"], "skillLevel": "Intermediate",
+      "genres": ["Rock", "Blues", "Funk"],
+      "influences": ["Jimi Hendrix", "Stevie Ray Vaughan", "Eric Clapton", "Prince", "The Red Hot Chili Peppers"],
+      "bio": "'I have been playing guitar for several years and am interested in exploring different genres like rock, blues, and funk. I would love to collaborate with other musicians and learn from them."
+    },
+    {
+      "role": "user",
+      "password": "foo",
+      "firstName": "Sophie", "lastName": "Jones", "email": "sophie.j@baz.com",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdeXOLbcQbqTH-1VQt-c_XGEpXCGioogdU_Y6FM8YUbw&usqp=CAU&ec=48600112",
+      "instruments": ["Piano"], "skillLevel": "Advanced",
+      "genres": ["Classical", "Jazz", "Pop"],
+      "influences": ["Chopin", "Bill Evans", "Elton John", "Alicia Keys", "Norah Jones"],
+      "bio": "'I have been playing piano for many years and enjoy exploring various genres like classical, jazz, and pop. I am interested in collaborating with other musicians who share my passion for music."
+    },
+    {
+      "role": "user",
+      "password": "foo",
+      "firstName": "William", "lastName": "Bryant", "email": "william.b@foo.com",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPNXlBHc6ipu53WmeQZWq6GrLcyiTef4fBXfH5wES-gA&usqp=CAU&ec=48600112",
+      "instruments": ["Drums"], "skillLevel": "Intermediate",
+      "genres": ["Rock", "Metal", "Punk"],
+      "influences": ["John Bonham", "Neil Peart", "Dave Grohl", "Travis Barker", "Ginger Baker"],
+      "bio": "'I have been playing drums for a few years and love playing rock, metal, and punk music. I am interested in collaborating with other musicians who share my passion for these genres."
+    },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Emily", "lastName": "Nguyen", "email": "emily.n@foo.com",
+    "image": "https://images.unsplash.com/photo-1605993439219-9d09d2020fa5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Piano"], "skillLevel": "Beginner",
+    "genres": ["Classical", "Jazz"],
+    "influences": ["Mozart", "Chopin", "Bill Evans", "Herbie Hancock"],
+    "bio": "I am a beginner pianist who loves playing classical and jazz music. I am excited to learn more and improve my skills!"
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Aiden", "lastName": "Garcia", "email": "aiden.g@foo.com",
+    "image": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Drums"], "skillLevel": "Advanced",
+    "genres": ["Rock", "Metal"],
+    "influences": ["John Bonham", "Neil Peart", "Mike Portnoy"],
+    "bio": "I've been playing drums for over a decade and love jamming to rock and metal music. Looking for bandmates to create some new sounds!"
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Sophia", "lastName": "Park", "email": "sophia.p@foo.com",
+    "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Violin"], "skillLevel": "Intermediate",
+    "genres": ["Classical"],
+    "influences": ["Niccolò Paganini", "Johann Sebastian Bach"],
+    "bio": "I've been playing the violin for several years and enjoy playing classical music. I'm looking for other musicians to collaborate with and perform in concerts."
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Maxwell", "lastName": "Wu", "email": "maxwell.w@foo.com",
+    "image": "https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Bass"], "skillLevel": "Advanced",
+    "genres": ["Jazz", "Funk"],
+    "influences": ["Victor Wooten", "Marcus Miller", "Jaco Pastorius"],
+    "bio": "I've been playing bass for many years and enjoy playing jazz and funk music. Looking for fellow musicians to jam with and create new music."
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Lila", "lastName": "Gupta", "email": "lila.g@foo.com",
+    "image": "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjd8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Saxophone"], "skillLevel": "Beginner",
+    "genres": ["Jazz", "Blues"],
+    "influences": ["John Coltrane", "Charlie Parker"],
+    "bio": "I recently started playing the saxophone and love listening to jazz and blues music. I'm excited to improve my skills and play with other musicians."
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Ethan", "lastName": "Kumar", "email": "ethan.k@foo.com",
+    "image": "https://images.unsplash.com/photo-1525357816819-392d2380d821?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Guitar"], "skillLevel": "Intermediate",
+    "genres": ["Rock", "Blues"],
+    "influences": ["Eric Clapton", "Jimi Hendrix", "B.B. King"],
+    "bio": "I've been playing guitar for a few years and enjoy playing rock and blues music. I'm looking for other musicians to jam with and perform in gigs."
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Isabella",
+    "lastName": "Lee", "email": "isabella.l@foo.com",
+    "image": "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Piano"], "skillLevel": "Intermediate",
+    "genres": ["Classical", "Pop"],
+    "influences": ["Ludwig van Beethoven", "Adele", "Coldplay"],
+    "bio": "I've been playing the piano for a few years and enjoy playing classical and pop music. I'm excited to collaborate with other musicians and create new music."
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Henry", "lastName": "Nguyen", "email": "henry.n@foo.com",
+    "image": "https://images.unsplash.com/photo-1628157588553-5eeea00af15c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjh8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Drums"], "skillLevel": "Intermediate",
+    "genres": ["Rock", "Punk"],
+    "influences": ["Travis Barker", "Dave Grohl"],
+    "bio": "I've been playing drums for a while and enjoy playing rock and punk music. Looking for other musicians to jam with and create new sounds!"
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Audrey", "lastName": "Liu", "email": "audrey.l@foo.com",
+    "image": "https://images.unsplash.com/photo-1532074205216-d0e1f4b87368?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Guitar"], "skillLevel": "Beginner",
+    "genres": ["Acoustic", "Folk"],
+    "influences": ["Bob Dylan", "Ed Sheeran"],
+    "bio": "I just started playing guitar and love playing acoustic and folk music. Looking for other musicians to learn from and jam with."
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "William", "lastName": "Kim", "email": "william.k@foo.com",
+    "image": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Bass"], "skillLevel": "Advanced",
+    "genres": ["Rock", "Funk"],
+    "influences": ["Flea", "Geddy Lee", "John Entwistle"],
+    "bio": "I've been playing bass for many years and enjoy playing rock and funk music. Looking for other musicians to collaborate with and create new music."
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Sofia", "lastName": "Martinez", "email": "sofia.m@foo.com",
+    "image": "https://images.unsplash.com/photo-1533689476487-034f57831a58?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzR8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Violin"], "skillLevel": "Intermediate",
+    "genres": ["Classical", "Folk"],
+    "influences": ["Antonio Vivaldi", "Lindsey Stirling"],
+    "bio": "I've been playing the violin for a few years and enjoy playing classical and folk music. Looking for other musicians to perform with and improve my skills."
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Alexander", "lastName": "Chen", "email": "alexander.c@foo.com",
+    "image": "https://images.unsplash.com/photo-1639149888905-fb39731f2e6c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDd8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Drums"], "skillLevel": "Advanced",
+    "genres": ["Jazz", "Funk"],
+    "influences": ["Tony Williams", "Stewart Copeland", "Clyde Stubblefield"],
+    "bio": "I've been playing drums for many years and enjoy playing jazz and funk music. Looking for other musicians to jam with and create new music."
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Aria", "lastName": "Patel", "email": "aria.p@foo.com",
+    "image": "https://images.unsplash.com/photo-1521676129211-b7a9e7592e65?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTZ8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Guitar"], "skillLevel": "Intermediate",
+    "genres": ["Rock", "Metal"],
+    "influences": ["Eddie Van Halen", "Dimebag Darrell", "Kirk Hammett"],
+    "bio": "I've been playing guitar for a few years and enjoy playing rock and metal music. Looking for other musicians to jam with and create new sounds!"
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Luke", "lastName": "Gonzalez", "email": "luke.g@foo.com",
+    "image": "https://images.unsplash.com/photo-1520454125516-134a66d9bf78?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTB8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Guitar", "Harmonica"], "skillLevel": "Beginner",
+    "genres": ["Rock", "Blues"],
+    "influences": ["Paul McCartney", "Jack Bruce"],
+    "bio": "I just started playing bass and love playing rock and blues music. Looking for other musicians to learn from and jam with."
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Chloe", "lastName": "Choi", "email": "chloe.c@foo.com",
+    "image": "https://images.unsplash.com/photo-1529092419721-e78fb7bddfb2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjJ8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Piano"], "skillLevel": "Intermediate",
+    "genres": ["Classical", "Jazz"],
+    "influences": ["Frederic Chopin", "Oscar Peterson"],
+    "bio": "I've been playing the piano for a few years and enjoy playing classical and jazz music. Looking for other musicians to collaborate with and create new music."
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Adam", "lastName": "Singh", "email": "adam.s@foo.com",
+    "image": "https://images.unsplash.com/photo-1533931993121-c6668a1c6bfa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTN8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Drums"], "skillLevel": "Intermediate",
+    "genres": ["Rock", "Pop"],
+    "influences": ["Ringo Starr", "Phil Collins"],
+    "bio": "I've been playing drums for a while and enjoy playing rock and pop music. Looking for other musicians to jam with and create new sounds!"
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Olivia", "lastName": "Yoon", "email": "olivia.y@foo.com",
+    "image": "https://images.unsplash.com/photo-1522307837370-cc113a36b784?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODl8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Guitar"], "skillLevel": "Beginner",
+    "genres": ["Acoustic", "Pop"],
+    "influences": ["Taylor Swift", "Ed Sheeran"],
+    "bio": "I just started playing guitar and love playing acoustic and pop music. Looking for other musicians to learn from and jam with."
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Noah", "lastName": "Chung", "email": "noah.c@foo.com",
+    "image": "https://images.unsplash.com/photo-1586723815262-83713dcfbfa1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzd8fHVzZXIlMjBwcm9maWxlJTIwbXVzaWNpYW58ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Bass"], "skillLevel": "Advanced",
+    "genres": ["Rock", "Metal"],
+    "influences": ["Geezer Butler", "Steve Harris", "Les Claypool"],
+    "bio": "I've been playing bass for many years and enjoy playing rock and metal music. Looking for other musicians to jam with and create new music."
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Mia", "lastName": "Saito", "email": "mia.s@foo.com",
+    "image": "https://images.unsplash.com/photo-1499557354967-2b2d8910bcca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHVzZXIlMjBwcm9maWxlJTIwbXVzaWNpYW58ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Violin"], "skillLevel": "Beginner",
+    "genres": ["Classical", "Folk"],
+    "influences": ["Johann Sebastian Bach", "Lindsey Stirling"],
+    "bio": "I just started playing the violin and love playing classical and folk music. Looking for other musicians to learn from and jam with."
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Jayden", "lastName": "Song", "email": "jayden.s@foo.com",
+    "image": "https://images.unsplash.com/photo-1593659238861-ee6e27fb9855?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlciUyMHByb2ZpbGUlMjBtdXNpY2lhbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Drums"],
+    "skillLevel": "Intermediate",
+    "genres": ["Rock", "Funk"],
+    "influences": ["Chad Smith", "Stewart Copeland"],
+    "bio": "I've been playing drums for a while and enjoy playing rock and funk music. Looking for other musicians to jam with and create new sounds!"
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Samantha", "lastName": "Hernandez", "email": "samantha.h@foo.com",
+    "image": "https://images.unsplash.com/photo-1593697972373-87ea6fe88af3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzZ8fHVzZXIlMjBwcm9maWxlJTIwbXVzaWNpYW58ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Vocals"], "skillLevel": "Intermediate",
+    "genres": ["Rock", "Blues"],
+    "influences": ["Jimi Hendrix", "Stevie Ray Vaughan", "B.B. King"],
+    "bio": "I'm a singer, and have been doing it for a few years now.  I love rock and blues music. Looking for other musicians to jam with and create new sounds!"
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Natalie", "lastName": "Tan", "email": "natalie.t@foo.com",
+    "image": "https://images.unsplash.com/photo-1593698054590-a5b3a19565a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjB8fHVzZXIlMjBwcm9maWxlJTIwbXVzaWNpYW58ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Piano"], "skillLevel": "Intermediate",
+    "genres": ["Classical", "Pop"],
+    "influences": ["Ludwig van Beethoven", "Alicia Keys"],
+    "bio": "I've been playing the piano for a few years and enjoy playing classical and pop music. Looking for other musicians to collaborate with and create new music."
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Eli", "lastName": "Choi", "email": "eli.c@foo.com",
+    "image": "https://images.unsplash.com/photo-1593697724148-6595820c2c44?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTR8fHVzZXIlMjBwcm9maWxlJTIwbXVzaWNpYW58ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Drums"], "skillLevel": "Advanced",
+    "genres": ["Jazz", "Funk"],
+    "influences": ["Buddy Rich", "Clyde Stubblefield"],
+    "bio": "I've been playing drums for many years and enjoy playing jazz and funk music. Looking for other musicians to jam with and create new sounds!"
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Gabriella", "lastName": "Garcia", "email": "gabriella.g@foo.com",
+    "image": "https://images.unsplash.com/photo-1593697821252-0c9137d9fc45?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODl8fHVzZXIlMjBwcm9maWxlJTIwbXVzaWNpYW58ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Guitar"], "skillLevel": "Beginner",
+    "genres": ["Acoustic", "Pop"],
+    "influences": ["Ed Sheeran", "Taylor Swift"],
+    "bio": "I just started playing guitar and love playing acoustic and pop music. Looking for other musicians to learn from and jam with."
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Daniel", "lastName": "Caermichael", "email": "daniel.c@foo.com",
+    "image": "https://images.unsplash.com/photo-1414839246800-1ed50eb905e7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjN8fHVzZXIlMjBwcm9maWxlJTIwbXVzaWNpYW58ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Bass"], "skillLevel": "Intermediate",
+    "genres": ["Rock", "Funk"],
+    "influences": ["Flea", "Geddy Lee"],
+    "bio": "I've been playing bass for a few years and enjoy playing rock and funk music. Looking for other musicians to jam with and create new sounds!"
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Ava", "lastName": "Khan", "email": "ava.k@foo.com",
+    "image": "https://images.unsplash.com/photo-1631739714671-0de24b57d810?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTN8fHVzZXIlMjBwcm9maWxlJTIwbXVzaWNpYW58ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Violin"], "skillLevel": "Intermediate",
+    "genres": ["Classical", "Folk"],
+    "influences": ["Johann Sebastian Bach", "Lindsey Stirling"],
+    "bio": "I've been playing the violin for a few years and enjoy playing classical and folk music. Looking for other musicians to perform with and improve my skills."
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Ethan", "lastName": "Kang", "email": "ethan.k2@foo.com",
+    "image": "https://images.unsplash.com/photo-1515890326200-a07ce46010a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTEyfHx1c2VyJTIwcHJvZmlsZSUyMG11c2ljaWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Electric Guitar", "Axe", "Vocals"], "skillLevel": "Intermediate",
+    "genres": ["Rock", "Metal"],
+    "influences": ["Mike Portnoy", "Neil Peart", "Lars Ulrich", "Slip Knot", "Korn", "Perfect Circle", "Megadeath"],
+    "bio": "I've been hammering on my axe for a while and enjoy thrashing to rock and metal. Roar to the wall of sound!"
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Emma", "lastName": "Park", "email": "emma.p@foo.com",
+    "image": "https://images.unsplash.com/photo-1523791886474-b24b350f096a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTUwfHx1c2VyJTIwcHJvZmlsZSUyMG11c2ljaWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Guitar"], "skillLevel": "Beginner",
+    "genres": ["Acoustic", "Folk"],
+    "influences": ["Bob Dylan", "Joni Mitchell"],
+    "bio": "I just started playing guitar and love playing acoustic and folk music. Looking for other musicians to learn from and jam with."
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Joshua", "lastName": "Hwang", "email": "joshua.h@foo.com",
+    "image": "https://images.unsplash.com/photo-1509973385458-f9609c21b528?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTA1fHx1c2VyJTIwcHJvZmlsZSUyMG11c2ljaWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Bass"], "skillLevel": "Advanced",
+    "genres": ["Rock", "Punk"],
+    "influences": ["Mike Dirnt", "Cliff Burton"],
+    "bio": "I've been playing bass for many years and enjoy playing rock and punk music. Looking for other musicians to jam with and create new music."
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Sophie", "lastName": "Nguyen", "email": "sophie.n@foo.com",
+    "image": "https://images.unsplash.com/photo-1593697972679-c4041d132a46?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fHVzZXIlMjBwcm9maWxlJTIwcGlhbm98ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Piano"], "skillLevel": "Beginner",
+    "genres": ["Classical", "Pop"],
+    "influences": ["Ludovico Einaudi", "Adele"],
+    "bio": "I just started playing the piano and love playing classical and pop music. Looking for other musicians to learn from and jam with."
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Leo", "lastName": "Gupta", "email": "leo.g@foo.com",
+    "image": "https://images.unsplash.com/photo-1601266290352-47021dbd51e1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDF8fHVzZXIlMjBwcm9maWxlJTIwZHJ1bXN8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Drums"], "skillLevel": "Intermediate",
+    "genres": ["Rock", "Blues"],
+    "influences": ["John Bonham", "Mitch Mitchell", "Ginger Baker"],
+    "bio": "I've been playing drums for a while and enjoy playing rock and blues music. Looking for other musicians to jam with and create new sounds!"
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Avery", "lastName": "Shin", "email": "avery.s@foo.com",
+    "image": "https://images.unsplash.com/photo-1529847556963-9653a9366021?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTA5fHx1c2VyJTIwcHJvZmlsZSUyMG11c2ljaWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Guitar"], "skillLevel": "Intermediate",
+    "genres": ["Rock", "Metal"],
+    "influences": ["Jimi Hendrix", "Randy Rhoads", "Kirk Hammett"],
+      "bio": "I've been playing guitar for a few years and enjoy playing rock and metal music. Looking for other musicians to jam with and create new sounds!"
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Zoe", "lastName": "Wang", "email": "zoe.w@foo.com",
+    "image": "https://images.unsplash.com/photo-1622748961248-5a0a6c02465c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8cm9ja2VyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Bass"], "skillLevel": "Beginner",
+    "genres": ["Rock", "Funk"],
+    "influences": ["Flea", "Les Claypool"],
+    "bio": "I just started playing bass and love playing rock and funk music. Looking for other musicians to learn from and jam with."
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Connor", "lastName": "Lee", "email": "connor.l@foo.com",
+    "image": "https://images.unsplash.com/photo-1531380237034-06caf5a631fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8dXNlciUyMHByb2ZpbGUlMjBiYXNzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Drums"], "skillLevel": "Advanced",
+    "genres": ["Jazz", "Funk"],
+    "influences": ["Tony Williams", "Bernard Purdie"],
+    "bio": "I've been playing drums for many years and enjoy playing jazz and funk music. Looking for other musicians to jam with and create new sounds!"
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Isabella", "lastName": "Ramos", "email": "isabella.r@foo.com",
+    "image": "https://images.unsplash.com/photo-1608539091730-04103fc424b4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTJ8fHVzZXIlMjBwcm9maWxlJTIwbXVzaWNpYW58ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Guitar"], "skillLevel": "Beginner",
+    "genres": ["Acoustic", "Pop"],
+    "influences": ["John Mayer", "Shawn Mendes"],
+    "bio": "I just started playing guitar and love playing acoustic and pop music. Looking for other musicians to learn from and jam with."
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Evan", "lastName": "Kreutz", "email": "evan.k@foo.com",
+    "image": "https://images.unsplash.com/photo-1512404871764-1cf03a297841?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTE2fHx1c2VyJTIwcHJvZmlsZSUyMG11c2ljaWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Bass"], "skillLevel": "Intermediate",
+    "genres": ["Rock", "Metal"],
+    "influences": ["John Paul Jones", "Steve Harris"],
+    "bio": "I've been playing bass for a few years and enjoy playing rock and metal music. Looking for other musicians to jam with and create new sounds!"
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Sofia", "lastName": "Tran", "email": "sofia.t@foo.com",
+    "image": "https://images.unsplash.com/photo-1522249210728-7cd95094022a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8dXNlciUyMHByb2ZpbGUlMjBwaWFub3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Piano"], "skillLevel": "Intermediate",
+    "genres": ["Classical", "Jazz"],
+    "influences": ["Keith Jarrett", "Thelonious Monk"],
+    "bio": "I've been playing the piano for a few years and enjoy playing classical and jazz music. Looking for other musicians to collaborate with and create new music."
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Max", "lastName": "Ali", "email": "max.a@foo.com",
+    "image": "https://images.unsplash.com/photo-1503506584117-5ed92741077a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDJ8fHByb2ZpbGUlMjBkcnVtbWVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Drums"], "skillLevel": "Intermediate",
+    "genres": ["Rock", "Pop"],
+    "influences": ["Dave Grohl", "Travis Barker"],
+    "bio": "I've been playing drums for a while and enjoy playing rock and pop music. Looking for other musicians to jam with and create new sounds!"
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Emily", "lastName": "Ng", "email": "emily.n2@foo.com",
+    "image": "https://images.unsplash.com/photo-1553197470-4241cfa0c7c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cm9ja2VyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Guitar"], "skillLevel": "Intermediate",
+    "genres": ["Acoustic", "Indie"],
+    "influences": ["Elliott Smith", "The Strokes"],
+    "bio": "I've been playing guitar for a few years and enjoy playing acoustic and indie music. Looking for other musicians to collaborate with and create new sounds!"
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Jayda", "lastName": "Shah", "email": "jayden.s2@foo.com",
+    "image": "https://images.unsplash.com/photo-1568182254775-430665a96589?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fHJvY2tlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Bass"], "skillLevel": "Advanced",
+    "genres": ["Rock", "Metal"],
+    "influences": ["Geezer Butler", "Steve DiGiorgio"],
+    "bio": "I've been playing bass for many years and enjoy playing rock and metal music. Looking for other musicians to jam with and create new sounds!"
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Lila", "lastName": "Das", "email": "lila.d@foo.com",
+    "image": "https://images.unsplash.com/photo-1615826622658-99ac210c7cca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmVtYWxlJTIwcGlhbmlzdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Piano"], "skillLevel": "Beginner",
+    "genres": ["Classical", "Pop"],
+    "influences": ["Ludovico Einaudi", "Ariana Grande"],
+    "bio": "I just started playing the piano and love playing classical and pop music. Looking for other musicians to learn from and jam with."
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Jacob", "lastName": "Lee", "email": "jacob.l@foo.com",
+    "image": "https://plus.unsplash.com/premium_photo-1674681215329-01067f49a38c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZHJ1bW1lcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Drums"], "skillLevel": "Intermediate",
+    "genres": ["Rock", "Blues"],
+    "influences": ["John Bonham", "Ginger Baker"],
+    "bio": "I've been playing drums for a while and enjoy playing rock and blues music. Looking for other musicians to jam with and create new sounds!"
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Aria", "lastName": "Patel", "email": "aria.p2@foo.com",
+    "image": "https://images.unsplash.com/photo-1655184091655-d44838110783?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmVtYWxlJTIwZ3VpdGFyaXN0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Guitar"], "skillLevel": "Beginner",
+    "genres": ["Acoustic", "Folk"],
+    "influences": ["Bob Dylan", "Joni Mitchell"],
+    "bio": "I just started playing guitar and love playing acoustic and folk music. Looking for other musicians to learn from and jam with."
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Samuel", "lastName": "Gomez", "email": "samuel.g@foo.com",
+    "image": "https://images.unsplash.com/photo-1579980756008-49abc40c3ca6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmFzc2lzdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Bass"], "skillLevel": "Intermediate",
+    "genres": ["Rock", "Funk"],
+    "influences": ["Flea", "Geddy Lee"],
+    "bio": "I've been playing bass for a few years and enjoy playing rock and funk music. Looking for other musicians to jam with and create new sounds!"
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Avery", "lastName": "Jeong", "email": "avery.j@foo.com",
+    "image": "https://images.unsplash.com/photo-1593697821094-53ed19153f21?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Njd8fHVzZXIlMjBwcm9maWxlJTIwbXVzaWNpYW58ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Vocals"], "skillLevel": "Advanced",
+    "genres": ["R&B", "Funk"],
+    "influences": ["Art Blakey", "Clyde Stubblefield", "Marvin Gaye", "Stevie Wonder"],
+    "bio": "I've been singing many years and enjoy both making and listening to all sorts of music, but mainly R&B and funk. Looking for other musicians to jam with and create new sounds!"
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Liam", "lastName": "Woo", "email": "liam.w@foo.com",
+    "image": "https://media.istockphoto.com/id/1385170622/photo/the-guitarist-plays-on-guitar-in-a-dark-room-hands-of-a-guitar-player-playing-the-guitar-low.jpg?b=1&s=170667a&w=0&k=20&c=RZiTdX54hGbxGPDc3bnLkaC3AZ62HQSrJgKuX-d0OCA=",
+    "instruments": ["Guitar"], "skillLevel": "Intermediate",
+    "genres": ["Rock", "Metal"],
+    "influences": ["Jimmy Page", "Dimebag Darrell"],
+    "bio": "I've been playing guitar for a few years and enjoy playing rock and metal music. Looking for other musicians to jam with and create new sounds!"
+  },
+    {
+      "role": "user",
+      "password": "foo",
+      "firstName": "Aria", "lastName": "Lee", "email": "aria.l@foo.com",
+      "image": "https://images.unsplash.com/photo-1593459866242-426f7768f3dc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZG91YmxlJTIwYmFzc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400&q=60",
+      "instruments": ["Bass"], "skillLevel": "Beginner",
+      "genres": ["Rock", "Punk", "Jazz", "Blues"],
+      "influences": ["Mike Dirnt", "Kim Gordon", "Charles Mingus", "Ron Carter", "Dave Holland"],
+      "bio": "I just started playing bass and am excited to explore new genres like jazz and blues. As a beginner, I'm looking for other musicians to learn from and jam with. I'm particularly inspired by the innovative work of double-bassists like Charles Mingus, Ron Carter, and Dave Holland."
+    },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Victoria", "lastName": "Nakamura", "email": "victoria.n@foo.com",
+    "image": "https://images.unsplash.com/photo-1513745405825-efaf9a49315f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8ZmVtYWxlJTIwcGlhbmlzdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Piano"], "skillLevel": "Intermediate",
+    "genres": ["Classical", "Pop"],
+    "influences": ["Ludovico Einaudi", "Taylor Swift"],
+    "bio": "I've been playing the piano for a few years and enjoy playing classical and pop music. Looking for other musicians to collaborate with and create new music."
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Mason", "lastName": "Mendoza", "email": "mason.m@foo.com",
+    "image": "https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHByb2ZpbGUlMjBwaWN0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Drums"], "skillLevel": "Intermediate",
+    "genres": ["Rock", "Pop"],
+    "influences": ["Travis Barker", "Chad Smith"],
+    "bio": "I've been playing drums for a while and enjoy playing rock and pop music. Looking for other musicians to jam with and create new sounds!"
+  },
+  {
+    "role": "user",
+    "password": "foo",
+    "firstName": "Avery", "lastName": "Jung", "email": "avery.j2@foo.com",
+    "image": "https://images.unsplash.com/photo-1515006813794-d83c6372f898?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTIxfHx1c2VyJTIwcHJvZmlsZSUyMG11c2ljaWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+    "instruments": ["Guitar"], "skillLevel": "Advanced",
+    "genres": ["Rock", "Metal"],
+    "influences": ["Steve Vai", "John Petrucci"],
+    "bio": "I've been playing guitar for many years and enjoy playing rock and metal music. Looking for other musicians to jam with and create new sounds!"
+  }
+],
+"moreGigs": [
+  {
+    "title": "Summer Festival",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Bluegrass_Band.jpg",
+    "date": "2017-07-15T17:00:00.000Z",
+    "attendees": [ "Sarah", "Tom", "Karen", "James", "Lila", "Eva", "Nathan", "Hannah", "Max", "Olivia", "Samantha", "Juan", "Landon", "Avery", "Mia", "David", "Ava", "Sophie", "Lucas", "Zoe", "Grace", "Leo", "Isabella", "Jacob", "Emma" ],
+    "skillLevel": "Advanced",
+    "genres": [ "Bluegrass", "Folk", "Americana", "Country", "Rockabilly", "Blues", "Jazz", "Gospel", "World Music", "Soul", "Funk", "Reggae", "Hip-Hop", "Electronic", "Classical", "Pop", "Alternative"],
+    "instruments": [ "Fiddle", "Bass", "Drums", "Accordion", "Banjo", "Fiddle", "Bass", "Drums", "Accordion", "Banjo", "Guitar", "Mandolin", "Harmonica", "Piano", "Trumpet", "Saxophone", "Clarinet", "Flute", "Violin", "Cello"],
+    "venue": "The Summer Festival will take place at The Villa@Hoffman Park, a stunning outdoor venue located in the heart of the city. The Villa is a spacious and elegant property that boasts sprawling gardens, tranquil ponds, and plenty of open space for guests to relax and enjoy the festivities.",
+    "about": "The Summer Festival is an exciting event that takes place every year, showcasing live music, delicious food, and a great atmosphere. This year's festival promises to be one of the best yet, with an impressive lineup of talented musicians and mouth-watering food trucks that will keep your taste buds happy all evening long."
+  },
+  {
+    "title": "Acoustic Night",
+    "image": "https://static.vecteezy.com/system/resources/previews/002/100/548/original/an-acoustic-guitar-cubist-surrealism-painting-modern-abstract-design-a-musical-instrument-abstract-colorful-music-cubism-minimalist-style-guitar-and-music-theme-illustration-vector.jpg",
+    "date": "2017-07-15T17:00:00.000Z",
+    "attendees": [
+      "Samantha",
+      "Kai",
+      "Wang"
+    ],
+    "skillLevel": "Intermediate",
+    "genres": [
+      "Acoustic",
+      "Ambient"
+    ],
+    "instruments": [
+      "Guitar",
+      "Bass Guitar",
+      "DJ"
+    ],
+    "venue": "In the back room at Reverb",
+    "about": "An evening jam of acoustic music and coffee."
+  },
+  {
+    "title": "Rock and Metal",
+    "image": "https://decibelpro.app/content/images/2021/06/how-loud-is-a-rock-concert.jpg",
+    "date": "2017-07-15T17:00:00.000Z",
+    "attendees": [
+      "Mike",
+      "Lisa",
+      "Tom"
+    ],
+    "skillLevel": "Beginner",
+    "genres": [
+      "Rock",
+      "Metal"
+    ],
+    "instruments": [
+      "Guitar",
+      "Bass Guitar",
+      "DJ"
+    ],
+    "venue": "Blacksheep Concert Hall",
+    "about": "A high-energy beginner friendly rock session."
+  },
+  {
+    "title": "Jazz Night",
+    "image": "https://www.gannett-cdn.com/-mm-/fe540925f187d73c8a91c93ece4e29936ea358fc/c=0-885-3804-3034/local/-/media/2015/07/16/MIGroup/Lansing/635726564289570272-ThinkstockPhotos-486813379-1-.jpg",
+    "date": "2017-07-15T17:00:00.000Z",
+    "attendees": [
+      "David",
+      "Emily",
+      "Chris"
+    ],
+    "skillLevel": "Intermediate",
+    "genres": [
+      "Jazz"
+    ],
+    "instruments": [
+      "Piano",
+      "Bass Guitar",
+      "Saxophone"
+    ],
+    "venue": "The Jazz Club",
+    "about": "An evening of jazz music and cocktails."
+  },
+  {
+    "title": "Jazz Night at the Park",
+    "image": "https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fEphenolMjBpbiUyMHRoZSUyMHBhcmt8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60",
+    "date": "2023-08-01T19:00:00.000Z",
+    "attendees": [],
+    "skillLevel": "Intermediate",
+    "genres": [ "Jazz", "Blues", "Funk", "Soul", "R&B", "Swing"],
+    "instruments": [ "Saxophone", "Trumpet", "Trombone", "Piano", "Bass", "Drums", "Vocals"],
+    "venue": "Join us for Jazz Night at the Park, held at the beautiful Central Park Amphitheater. This outdoor venue is the perfect setting for an evening of live jazz music and good vibes.",
+    "about": "Jazz Night at the Park is a community event that celebrates the rich history and cultural significance of jazz music. Come out and enjoy a night of smooth tunes, good company, and delicious food from local vendors."
+  },
+  {
+    "title": "Rockin'roleplay",
+    "image": "https://media.istockphoto.com/id/1311237442/photo/red-maracas-and-green-small-ukulele-guitar-sale-in-music-shop.jpg?b=1&s=170667a&w=0&k=20&c=WCQ7ZZwclrxFVCXSzNAjBUjZRO9Q-tkPoD5EdB6Apm4=",
+    "date": "2023-07-22T18:00:00.000Z",
+    "attendees": [],
+    "skillLevel": "Advanced",
+    "genres": [ "Rock", "Metal", "Punk", "Alternative"],
+    "instruments": [ "Guitar", "Bass", "Drums", "Vocals", "Keyboards"],
+    "venue": "Join us for an evening of head-banging rock music at the City Park Amphitheater. This outdoor venue provides the perfect backdrop for an unforgettable night of music and fun.",
+    "about": "Rockin' in the Park is an annual event that celebrates the spirit of rock and roll. With a lineup of talented musicians and plenty of food and drink options, this is one summer festival you won't want to miss."
+  },
+  {
+    "title": "Summer Jazz Fest",
+    "image": "https://media.istockphoto.com/id/1311237442/photo/red-maracas-and-green-small-ukulele-guitar-sale-in-music-shop.jpg?b=1&s=170667a&w=0&k=20&c=WCQ7ZZwclrxFVCXSzNAjBUjZRO9Q-tkPoD5EdB6Apm4=",
+    "date": "2023-08-12T16:00:00.000Z",
+    "attendees": [],
+    "skillLevel": "Advanced",
+    "genres": [ "Jazz", "Blues", "Funk", "Soul", "R&B"],
+    "instruments": [ "Saxophone", "Trumpet", "Trombone", "Piano", "Bass", "Drums", "Vocals"],
+    "venue": "The Summer Jazz Fest will take place at the beautiful Riverside Park, a lush green space located in the heart of downtown. This scenic outdoor venue is the perfect place to kick back, relax, and enjoy some great jazz music.",
+    "about": "The Summer Jazz Fest is a celebration of all things jazz. With a lineup of world-class musicians and a wide variety of food and drink options, this event is sure to be a hit with music lovers of all ages."
+  },
+  {
+    "title": "Country Jam",
+    "image": "https://media.istockphoto.com/id/1311237442/photo/red-maracas-and-green-small-ukulele-guitar-sale-in-music-shop.jpg?b=1&s=170667a&w=0&k=20&c=WCQ7ZZwclrxFVCXSzNAjBUjZRO9Q-tkPoD5EdB6Apm4=",
+    "date": "2023-08-19T17:00:00.000Z",
+    "attendees": [],
+    "skillLevel": "Intermediate",
+    "genres": [ "Country", "Bluegrass", "Folk", "Americana"],
+    "instruments": [ "Guitar", "Bass", "Drums", "Banjo", "Fiddle", "Mandolin", "Vocals"],
+    "venue": "Join us for an evening of country music at the beautiful Lakeside Park. This outdoor venue offers stunning views of the lake and plenty of space to kick up your boots and dance.",
+    "about": "Country Jam is an annual event that celebrates the best of country music. With a lineup of talented musicians and plenty of food and drink options, this event is the perfect way to spend a summer evening with friends and family."
+  },
+  {
+    "title": "Latin Grooves",
+    "image": "https://media.istockphoto.com/id/1311237442/photo/red-maracas-and-green-small-ukulele-guitar-sale-in-music-shop.jpg?b=1&s=170667a&w=0&k=20&c=WCQ7ZZwclrxFVCXSzNAjBUjZRO9Q-tkPoD5EdB6Apm4=",
+    "date": "2023-07-28T19:00:00.000Z",
+    "attendees": [],
+    "skillLevel": "Intermediate",
+    "genres": [ "Salsa", "Bachata", "Merengue", "Cumbia", "Reggaeton"],
+    "instruments": [ "Percussion", "Bass", "Keyboards", "Trumpet", "Saxophone", "Trombone", "Vocals"],
+    "venue": "Get ready to dance the night away at Latin Grooves, held at the spacious and lively Sunburst Park. This outdoor venue provides the perfect setting for a night of hot and spicy Latin music.",
+    "about": "Latin Grooves is a celebration of the vibrant and exciting world of Latin music. With a lineup of talented musicians and a variety of food and drink options, this event is sure to be a hit with anyone who loves to dance."
+  },
+  {
+    "title": "Folk Fest",
+    "image": "https://media.istockphoto.com/id/1311237442/photo/red-maracas-and-green-small-ukulele-guitar-sale-in-music-shop.jpg?b=1&s=170667a&w=0&k=20&c=WCQ7ZZwclrxFVCXSzNAjBUjZRO9Q-tkPoD5EdB6Apm4=",
+    "date": "2023-08-05T18:00:00.000Z",
+    "attendees": [],
+    "skillLevel": "Beginner",
+    "genres": [ "Folk", "Bluegrass", "Americana"],
+    "instruments": [ "Guitar", "Banjo", "Fiddle", "Mandolin", "Harmonica", "Vocals"],
+    "venue": "Join us for an evening of folk music at the picturesque Forest Grove Park. This outdoor venue provides the perfect backdrop for a night of acoustic tunes and good company.",
+    "about": "Folk Fest is an annual event that celebrates the beauty and simplicity of folk music. With a lineup of talented musicians and plenty of food and drink options, this event is the perfect way to unwind and enjoy the summer air."
+  },
+  {
+    "title": "Classical Serenade",
+    "image": "https://media.istockphoto.com/id/1311237442/photo/red-maracas-and-green-small-ukulele-guitar-sale-in-music-shop.jpg?b=1&s=170667a&w=0&k=20&c=WCQ7ZZwclrxFVCXSzNAjBUjZRO9Q-tkPoD5EdB6Apm4=",
+    "date": "2023-08-26T20:00:00.000Z",
+    "attendees": [],
+    "skillLevel": "Advanced",
+    "genres": [ "Classical"],
+    "instruments": [ "Violin", "Cello", "Piano", "Trumpet", "Saxophone", "Clarinet", "Flute"],
+    "venue": "Join us for an enchanting evening of classical music at the stunningly beautiful Hilltop Gardens. This outdoor venue offers breathtaking views and an elegant atmosphere.",
+    "about": "Classical Serenade is a celebration of the timeless beauty and elegance of classical music. With a lineup of talented musicians and plenty of food and drink options, this event is sure to be a hit with anyone who appreciates the finer things in life."
+  },
+  {
+    "title": "R&B Rewind",
+    "image": "https://media.istockphoto.com/id/1311237442/photo/red-maracas-and-green-small-ukulele-guitar-sale-in-music-shop.jpg?b=1&s=170667a&w=0&k=20&c=WCQ7ZZwclrxFVCXSzNAjBUjZRO9Q-tkPoD5EdB6Apm4=",
+    "date": "2023-08-18T19:00:00.000Z",
+    "attendees": [],
+    "skillLevel": "Intermediate",
+    "genres": [ "R&B", "Soul", "Funk", "Motown"],
+    "instruments": [ "Vocals", "Bass", "Drums", "Keyboards", "Saxophone", "Trumpet", "Trombone"],
+    "venue": "Join us for a night of soulful music at the Riverfront Park Amphitheater. This outdoor venue offers stunning views of the river and plenty of space to groove.",
+    "about": "R&B Rewind is a celebration of the classic sounds of R&B and soul music. With a lineup of talented musicians and plenty of food and drink options, this event is sure to be a hit with anyone who loves to dance to the beat of the Motown sound."
+  },
+  {
+    "title": "Reggae Rhythms",
+    "image": "https://media.istockphoto.com/id/1311237442/photo/red-maracas-and-green-small-ukulele-guitar-sale-in-music-shop.jpg?b=1&s=170667a&w=0&k=20&c=WCQ7ZZwclrxFVCXSzNAjBUjZRO9Q-tkPoD5EdB6Apm4=",
+    "date": "2023-07-29T18:00:00.000Z",
+    "attendees": [],
+    "skillLevel": "Intermediate",
+    "genres": [ "Reggae", "Ska", "Rocksteady"],
+    "instruments": [ "Bass", "Drums", "Guitar", "Keyboards", "Horns", "Vocals"],
+    "venue": "Get ready to feel the island vibes at Reggae Rhythms, held at the beautiful Paradise Park. This outdoor venue offers the perfect setting for a night of good music and good vibes.",
+    "about": "Reggae Rhythms is a celebration of the infectious beats and positive energy of reggae music. With a lineup of talented musicians and plenty of food and drink options, this event is sure to be a hit with anyone who loves to dance."
+  },
+  {
+    "title": "Bluegrass Bonanza",
+    "image": "https://media.istockphoto.com/id/1311237442/photo/red-maracas-and-green-small-ukulele-guitar-sale-in-music-shop.jpg?b=1&s=170667a&w=0&k=20&c=WCQ7ZZwclrxFVCXSzNAjBUjZRO9Q-tkPoD5EdB6Apm4=",
+    "date": "2023-08-11T17:00:00.000Z",
+    "attendees": [],
+    "skillLevel": "Advanced",
+    "genres": [ "Bluegrass", "Folk", "Americana"],
+    "instruments": [ "Banjo", "Guitar", "Fiddle", "Mandolin", "Bass", "Harmonica", "Vocals"],
+    "venue": "Join us for a foot-stomping good time at the Bluegrass Bonanza, held at the charming and rustic Mill Creek Farm. This outdoor venue provides the perfect setting for a night of traditional bluegrass music.",
+    "about": "Bluegrass Bonanza is an annual event that celebrates the rich history and cultural significance of bluegrass music. With a lineup of talented musicians and plenty of food and drink options, this event is the perfect way to spend a summer evening with friends and family."
+  },
+  {
+    "title": "Hip Hop House Party",
+    "image": "https://media.istockphoto.com/id/1311237442/photo/red-maracas-and-green-small-ukulele-guitar-sale-in-music-shop.jpg?b=1&s=170667a&w=0&k=20&c=WCQ7ZZwclrxFVCXSzNAjBUjZRO9Q-tkPoD5EdB6Apm4=",
+    "date": "2023-07-21T20:00:00.000Z",
+    "attendees": [],
+    "skillLevel": "Intermediate",
+    "genres": [ "Hip-Hop", "Rap"],
+    "instruments": [ "MC", "DJ"],
+    "venue": "Get ready to party at the Hip Hop House Party, held at the cool and urban Warehouse District. This outdoor venue provides the perfect setting for a night of hip-hop beats and good times.",
+    "about": "Hip Hop House Party is a celebration of the vibrant and dynamic world of hip-hop music. With a lineup of talented MCs and DJs and plenty of food and drink options, this event is sure to be a hit with anyone who loves to dance."
+  },
+  {
+    "title": "Electric Nights",
+    "image": "https://media.istockphoto.com/id/1311237442/photo/red-maracas-and-green-small-ukulele-guitar-sale-in-music-shop.jpg?b=1&s=170667a&w=0&k=20&c=WCQ7ZZwclrxFVCXSzNAjBUjZRO9Q-tkPoD5EdB6Apm4=",
+    "date": "2023-08-25T21:00:00.000Z",
+    "attendees": [],
+    "skillLevel": "Advanced",
+    "genres": [ "Electronic", "Techno", "House"],
+    "instruments": [ "DJ", "Synthesizer", "Drum Machine"],
+    "venue": "Join us for a night of electric beats at Electric Nights, held at the sleek and modern Cityscape Club. This outdoor venue provides the perfect setting for a night of cutting-edge electronic music.",
+    "about": "Electric Nights is a celebration of the futuristic and experimental sounds of electronic music. With a lineup of talented DJs and plenty of food and drink options, this event is sure to be a hit with anyone who loves to dance."
+  },
+  {
+    "title": "Soulful Sundays",
+    "image": "https://media.istockphoto.com/id/1311237442/photo/red-maracas-and-green-small-ukulele-guitar-sale-in-music-shop.jpg?b=1&s=170667a&w=0&k=20&c=WCQ7ZZwclrxFVCXSzNAjBUjZRO9Q-tkPoD5EdB6Apm4=",
+    "date": "2023-07-30T16:00:00.000Z",
+    "attendees": [],
+    "skillLevel": "Beginner",
+    "genres": [ "Soul", "R&B", "Funk", "Jazz"],
+    "instruments": [ "Vocals", "Bass", "Drums", "Keyboards", "Saxophone", "Trumpet", "Trombone"],
+    "venue": "Join us for a laid-back afternoon of soulful music at the beautiful Lakeshore Park. This outdoor venue provides the perfect setting for a relaxing Sunday with friends and family.",
+    "about": "Soulful Sundays is a weekly event that celebrates the smooth and soulful sounds of R&B and jazz music. With a lineup of talented musicians and plenty of food and drink options, this event is the perfect way to wind down after a busy week."
+  },
+  {
+    "title": "Funk Fest",
+    "image": "https://media.istockphoto.com/id/1311237442/photo/red-maracas-and-green-small-ukulele-guitar-sale-in-music-shop.jpg?b=1&s=170667a&w=0&k=20&c=WCQ7ZZwclrxFVCXSzNAjBUjZRO9Q-tkPoD5EdB6Apm4=",
+    "date": "2023-08-04T19:00:00.000Z",
+    "attendees": [],
+    "skillLevel": "Intermediate",
+    "genres": [ "Funk", "Soul", "R&B"],
+    "instruments": [ "Bass", "Drums", "Guitar", "Keyboards", "Horns", "Vocals"],
+    "venue": "Join us for a night of funky beats at the Funk Fest, held at the funky and cool Warehouse District. This outdoor venue provides the perfect setting for a night of good music and good vibes.",
+    "about": "Funk Fest is a celebration of the groovy and upbeat sounds of funk music. With a lineup of talented musicians and plenty of food and drink options, this event is sure to be a hit with anyone who loves to dance."
+  },
+  {
+    "title": "Piano in the Park",
+    "image": "https://media.istockphoto.com/id/1311237442/photo/red-maracas-and-green-small-ukulele-guitar-sale-in-music-shop.jpg?b=1&s=170667a&w=0&k=20&c=WCQ7ZZwclrxFVCXSzNAjBUjZRO9Q-tkPoD5EdB6Apm4=",
+    "date": "2023-08-20T17:00:00.000Z",
+    "attendees": [],
+    "skillLevel": "Advanced",
+    "genres": [ "Classical", "Jazz", "Blues", "Pop"],
+    "instruments": [ "Piano"],
+    "venue": "Join us for a beautiful evening of piano music at the serene and tranquil Hillside Park. This outdoor venue provides the perfect setting for an intimate and enchanting musical experience.",
+    "about": "Piano in the Park is a celebration of the versatility and beauty of the piano. With a lineup of talented pianists and plenty of food and drink options, this event is sure to be a hit with anyone who loves to immerse themselves in music."
+  },
+  {
+    "title": "Ska Fest",
+    "image": "https://media.istockphoto.com/id/1311237442/photo/red-maracas-and-green-small-ukulele-guitar-sale-in-music-shop.jpg?b=1&s=170667a&w=0&k=20&c=WCQ7ZZwclrxFVCXSzNAjBUjZRO9Q-tkPoD5EdB6Apm4=",
+    "date": "2023-07-23T16:00:00.000Z",
+    "attendees": [],
+    "skillLevel": "Intermediate",
+    "genres": [ "Ska", "Reggae", "Rocksteady"],
+    "instruments": [ "Guitar", "Bass", "Drums", "Horns", "Vocals"],
+    "venue": "Get ready to skank at the Ska Fest, held at the lively and energetic Sunburst Park. This outdoor venue provides the perfect setting for a night of ska and reggae music.",
+    "about": "Ska Fest is a celebration of the upbeat and energetic sounds of ska music. With a lineup of talented musicians and plenty of food and drink options, this event is sure to be a hit with anyone who loves to dance."
+  },
+  {
+    "title": "World Music Festival",
+    "image": "https://media.istockphoto.com/id/1311237442/photo/red-maracas-and-green-small-ukulele-guitar-sale-in-music-shop.jpg?b=1&s=170667a&w=0&k=20&c=WCQ7ZZwclrxFVCXSzNAjBUjZRO9Q-tkPoD5EdB6Apm4=",
+    "date": "2023-08-27T15:00:00.000Z",
+    "attendees": [],
+    "skillLevel": "Advanced",
+    "genres": [ "World Music"],
+    "instruments": [ "Various"],
+    "venue": "Join us for a day of cultural immersion at the World Music Festival, held at the expansive and diverse Heritage Park. This outdoor venue provides the perfect setting for a celebration of music and culture from around the world.",
+    "about": "The World Music Festival is a celebration of the rich and diverse musical traditions from around the globe. With a lineup of talented musicians and plenty of food and drink options, this event is the perfect way to expand your horizons and experience new sounds and cultures."
+  }
+ ]
 }
