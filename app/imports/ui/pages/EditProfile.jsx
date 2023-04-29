@@ -276,6 +276,11 @@ const EditProfile = () => {
                   </Col>
                 </Row>
 
+                {/* NOTE */}
+                <Row>
+                  <h9>* indicates required field</h9>
+                </Row>
+
                 {/* SUBMIT BUTTON */}
                 <Row className="justify-content-end">
                   <Button type="submit" disabled={submitting} className={submitting ? 'isSubmitting' : ''}>

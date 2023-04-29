@@ -115,10 +115,7 @@ const CreateJamSession = () => {
                   <Row>
                     <Col>
                       <Form.Label>Title<span className="required-field">*</span></Form.Label>
-                      <Form.Control name="title" onChange={handleInputChange} required isInvalid={!formData.title} />
-                      <Form.Control.Feedback type="invalid">
-                        Please enter jam session&apos;s title.
-                      </Form.Control.Feedback>
+                      <Form.Control name="title" onChange={handleInputChange} required />
                     </Col>
 
                     {/* DATE */}
@@ -140,34 +137,29 @@ const CreateJamSession = () => {
 
                     {/* SKILL LEVEL */}
                     <Col>
-                      <Form.Label>Skill Level</Form.Label>
+                      <Form.Label>Skill Level<span className="required-field">*</span></Form.Label>
                       <Select
                         options={SkillLevelOptions}
                         isSearchable
                         styles={globalSelectStyle}
                         onChange={(selected) => setFormData({ ...formData, skillLevel: selected.value })}
+                        required
                       />
                     </Col>
                   </Row>
 
-                  <Row>
+                  <Row className="pt-lg-5">
                     {/* IMAGE URL */}
                     <Col xs={6}>
                       <Form.Label>Image URL<span className="required-field">*</span></Form.Label>
-                      <Form.Control name="image" onChange={handleInputChange} required isInvalid={!formData.image} />
-                      <Form.Control.Feedback type="invalid">
-                        Please enter an image representative of the jam session.
-                      </Form.Control.Feedback>
+                      <Form.Control name="image" onChange={handleInputChange} required />
                     </Col>
 
                     {/* VENUE */}
                     <Col xs={6}>
                       <Form.Label>Venue<span className="required-field">*</span></Form.Label>
                       <InputGroup>
-                        <FormControl name="venue" onChange={handleInputChange} required isInvalid={!formData.venue} />
-                        <Form.Control.Feedback type="invalid">
-                          Please enter jam session&apos;s venue.
-                        </Form.Control.Feedback>
+                        <FormControl name="venue" onChange={handleInputChange} required />
                       </InputGroup>
                     </Col>
                   </Row>
@@ -175,7 +167,7 @@ const CreateJamSession = () => {
                   <Row>
                     {/* INSTRUMENTS */}
                     <Col xs={6}>
-                      <Form.Label>Instrument(s)</Form.Label>
+                      <Form.Label>Instrument(s)<span className="required-field">*</span></Form.Label>
                       <Creatable
                         isMulti
                         name="instruments"
@@ -187,12 +179,13 @@ const CreateJamSession = () => {
                           label: instr,
                         }))}
                         onChange={(selected) => handleSelectChange(selected, 'instruments', true)}
+                        required
                       />
                     </Col>
 
                     {/* GENRES */}
                     <Col xs={6}>
-                      <Form.Label>Genre(s)</Form.Label>
+                      <Form.Label>Genre(s)<span className="required-field">*</span></Form.Label>
                       <Creatable
                         isMulti
                         name="genres"
@@ -204,6 +197,7 @@ const CreateJamSession = () => {
                           label: genre,
                         }))}
                         onChange={(selected) => handleSelectChange(selected, 'genres', true)}
+                        required
                       />
                     </Col>
                   </Row>
@@ -211,12 +205,14 @@ const CreateJamSession = () => {
                   {/* ABOUT */}
                   <Row>
                     <Col>
-                      <Form.Label>About</Form.Label>
-                      <Form.Control name="about" onChange={handleInputChange} placeholder="Description of Jam Session" />
+                      <Form.Label>About<span className="required-field">*</span></Form.Label>
+                      <Form.Control name="about" onChange={handleInputChange} placeholder="Description of Jam Session" required />
                     </Col>
-                    <Form.Control.Feedback type="invalid">
-                      Please enter the instruments you would prefer at this jam session.
-                    </Form.Control.Feedback>
+                  </Row>
+
+                  {/* NOTE */}
+                  <Row>
+                    <h9>* indicates required field</h9>
                   </Row>
 
                   {/* SUBMIT BUTTON */}
