@@ -101,7 +101,7 @@ const CreateJamSession = () => {
 
   return (
     ready ? (
-      <div id={PageIDs.createJamSessionPage} className="createJamSession">
+      <div id={PageIDs.createJamSessionPage} className="editProfileStyle">
         <Container className="justify-content-center">
           <Col>
             <Col className="justify-content-center text-center py-2">

@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Card, Col, Container, Row, Button } from 'react-bootstrap';
+import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import './EditProfileStyle.css';
 import { useTracker } from 'meteor/react-meteor-data';
 import Select from 'react-select';
 import Creatable from 'react-select/creatable';
 import { globalSelectStyle } from '../utilities/ReactSelectStyle';
-import { Artists, getUniqueInstruments, getUniqueGenres, skillLevels } from '../../api/artists/Artists';
+import { Artists, getUniqueGenres, getUniqueInstruments, skillLevels } from '../../api/artists/Artists';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { PageIDs } from '../utilities/ids';
 
 const SUBMIT_BUTTON_TIMEOUT_MS = 1000;
 
@@ -46,21 +47,15 @@ const EditProfile = () => {
     label: sl,
   }));
 
-  const getInstrumentOptions = (artists) => {
-    const instrumentOptions = getUniqueInstruments(artists).map((instrument) => ({
-      value: instrument, // Use the instrument itself as the value
-      label: instrument, // Use the instrument itself as the label
-    }));
-    return instrumentOptions;
-  };
+  const getInstrumentOptions = (artists) => getUniqueInstruments(artists).map((instrument) => ({
+    value: instrument, // Use the instrument itself as the value
+    label: instrument, // Use the instrument itself as the label
+  }));
 
-  const getGenreOptions = (artists) => {
-    const genreOptions = getUniqueGenres(artists).map((genre) => ({
-      value: genre, // Use the genre itself as the value
-      label: genre, // Use the genre itself as the label
-    }));
-    return genreOptions;
-  };
+  const getGenreOptions = (artists) => getUniqueGenres(artists).map((genre) => ({
+    value: genre, // Use the genre itself as the value
+    label: genre, // Use the genre itself as the label
+  }));
 
   const SkillLevelOptions = getSkillLevelOptions(skillLevels);
   const InstrumentOptions = getInstrumentOptions(allArtists);
@@ -131,14 +126,14 @@ const EditProfile = () => {
   };
 
   return (isReady ? (
-    <div className="createJamSession">
+    <div id={PageIDs.editProfilePage} className="editProfileStyle">
       <Container className="justify-content-center pb-3">
         <Col>
           <Col className="justify-content-center text-center py-2">
             <h2>Edit Profile</h2>
           </Col>
 
-          <Card>
+          <Card id={ComponentIDs.editProfileForm}>
             <Card.Body>
               <Form onSubmit={handleSubmit}>
 
