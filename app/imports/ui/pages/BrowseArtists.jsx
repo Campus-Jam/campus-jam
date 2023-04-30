@@ -37,8 +37,8 @@ const BrowseArtists = () => {
   const { ready, artists, currentUserRole } = useTracker(() => {
     const subscription = Meteor.subscribe(Artists.userPublicationName);
     const rdy = subscription.ready();
-    const artistItems = Artists.collection.find().fetch();
     const user = Meteor.user();
+    const artistItems = [...Artists.collection.find().fetch()].sort(() => Math.random() - 0.5);
     const isAdmin = user && Roles.userIsInRole(user._id, 'admin');
     return {
       artists: artistItems,

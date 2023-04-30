@@ -27,17 +27,25 @@
   background-color:var(--button-color2);
 }
 
-.browseGigs .addJamButton {
+.browseGigs .createJamButton {
   position: fixed;
   right: .75vh;
   top: 87vh;
   z-index: 9998;
   background-color: var(--button-color2);
-  border: white;
   height: 65px; /* Changed from 4vw */
   width: 180px; /* Changed from 5vw */
   border: 2px solid black;
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.8);
+}
+
+.browseGigs .createJamButton:active{
+  color: var(--button-color-pressed);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8);
+}
+
+.browseGigs .createJamButton:active{
+  color: var(--button-color1);
 }
 
 .browseGigs .gig-grid {

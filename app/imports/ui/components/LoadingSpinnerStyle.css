@@ -1,0 +1,19 @@
+.loadingSpinnerStyle {
+  background-color: var(--page-background-color1);
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.spinner-border {
+  color: var(--text-color1); /* Change the color */
+  font-size: 24px;
+  font-width: bolder;
+  width: 60px !important;
+  height: 60px !important;
+  border-width: 0.5rem;
+  border-radius: 50%;
+  vertical-align: middle;
+}

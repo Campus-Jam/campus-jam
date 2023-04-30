@@ -21,7 +21,7 @@ const BrowseGigs = () => {
   const { ready, gigs, currentUserRole } = useTracker(() => {
     const subscription = Meteor.subscribe(Gigs.userPublicationName);
     const rdy = subscription.ready();
-    const gigItems = Gigs.collection.find().fetch();
+    const gigItems = Gigs.collection.find().fetch().sort((a, b) => a.date - b.date);
     const user = Meteor.user();
     const isAdmin = user && Roles.userIsInRole(user._id, 'admin');
     return {
@@ -63,8 +63,8 @@ const BrowseGigs = () => {
           )}
         </div>
 
-        {/* ADD JAM SESSION BUTTON */}
-        <Button as={NavLink} to="/createjamsession" className="addJamButton text-center align-content-center">
+        {/* CREATE A JAM-SESSION BUTTON */}
+        <Button as={NavLink} to="/createjamsession" className="createJamButton text-center align-content-center">
           Create a New <br />
           Jam-Session
         </Button>

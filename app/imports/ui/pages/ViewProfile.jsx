@@ -119,7 +119,7 @@ const ViewProfile = () => {
               </Col>
             </Row>
 
-            {/* EDIT PROFILE BUTTON */}
+            {/* CREATE JAMSESSION BUTTON */}
             {currentUser === id.id && (
               <Row>
                 <Col className="text-end mt-3">
