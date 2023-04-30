@@ -6,25 +6,21 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import moment from 'moment';
 import { FaSkullCrossbones } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import { Artists } from '../../api/artists/Artists';
 import { ArtistsToGigs } from '../../api/artistsToGigs/ArtistsToGigs';
 import { deleteGigAndLinks } from '../../startup/both/collectionHelpers';
 
 // Maximum Length of Attendees that should be displayed
 const MAX_CARD_ATTENDEES_LEN = 125;
-
 // Maximum Length of Genre(s) that should be displayed
 const MAX_CARD_GENRES_LEN = 125;
-
 // Maximum Length of Genre(s) that should be displayed
 const MAX_CARD_INSTRUMENTS_LEN = 115;
-
 // Maximum Length of Genre(s) that should be displayed
 const MAX_CARD_VENUE_LEN = 125;
-
 // Maximum Length of About that should be displayed
 const MAX_CARD_ABOUT_LEN = 225;
-
 // A function used to truncate card data to a length specified by maxlen
 const truncateTo = (data, maxlen) => {
   if (data.length <= maxlen) {
@@ -47,12 +43,12 @@ const GigCard = ({ gigEntry, userRole }) => {
     const artists = Artists.collection.find().fetch();
     const joinedArtistIds = ArtistsToGigs.collection.find({ gig_id: gigEntry._id }).map((doc) => doc.artist_id);
     const joinedArtists = artists.filter((artist) => joinedArtistIds.includes(artist._id));
-    const whosGoing = joinedArtists.map((artist) => artist.firstName);
+    // const whosGoing = joinedArtists.map((artist) => artist.firstName);
 
     return {
       ready: rdy,
       artistData: currentArtist,
-      attendees: whosGoing };
+      attendees: joinedArtists };
   });
 
   const [joined, setJoined] = useState(false);
@@ -129,7 +125,16 @@ const GigCard = ({ gigEntry, userRole }) => {
           {/* ATTENDEES */}
           <ListGroup.Item className="d-flex justify-content-between align-items-center attendees">
             <span className="label fw-bold d-flex justify-content-start">Attendees: </span>
-            <span className="content">{truncateTo(attendees.join(', '), MAX_CARD_ATTENDEES_LEN)}</span>
+            <span className="content" style={{ minWidth: '150px' }}>
+              {truncateTo(attendees.map((attendee, index) => (
+                <React.Fragment key={attendee._id}>
+                  {index === 0 ? '' : ', '}
+                  <Link to={`/viewProfile/${attendee.email}`} className="attendee-link">
+                    {attendee.firstName}
+                  </Link>
+                </React.Fragment>
+              )), MAX_CARD_ATTENDEES_LEN)}
+            </span>
           </ListGroup.Item>
 
           {/* SKILL LEVEL */}

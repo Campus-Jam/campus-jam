@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Button, Card, Col, Container, Image, Nav, Row } from 'react-bootstrap';
@@ -27,10 +27,19 @@ const ViewProfile = () => {
     currentUser: Meteor.user() ? Meteor.user().username : '',
   }), []);
 
-  const artistToView = Artists.collection.findOne({ email: id.id });
+  const [imageSrc, setImageSrc] = useState('');
+  const artistToView = useTracker(() => {
+    const artist = Artists.collection.findOne({ email: id.id });
+    return artist;
+  });
+
+  useEffect(() => {
+    if (artistToView) {
+      setImageSrc(artistToView.image || '');
+    }
+  }, [artistToView]);
 
   const defaultImageSrc = '/images/profileImagePlaceholder.png';
-  const [imageSrc, setImageSrc] = useState(artistToView ? artistToView.image : defaultImageSrc);
   const handleImageError = () => {
     setImageSrc(defaultImageSrc);
   };

@@ -74,3 +74,10 @@
   background-color: var(--button-color2);
 }
 
+.gigCard .attendee-link {
+  color: var(--text-color2);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
