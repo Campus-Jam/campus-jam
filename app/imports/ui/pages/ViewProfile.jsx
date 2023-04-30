@@ -29,8 +29,8 @@ const ViewProfile = () => {
 
   const artistToView = Artists.collection.findOne({ email: id.id });
 
-  const [imageSrc, setImageSrc] = useState(artistToView.image);
   const defaultImageSrc = '/images/profileImagePlaceholder.png';
+  const [imageSrc, setImageSrc] = useState(artistToView ? artistToView.image : defaultImageSrc);
   const handleImageError = () => {
     setImageSrc(defaultImageSrc);
   };
@@ -128,15 +128,22 @@ const ViewProfile = () => {
           </Card.Body>
         </Card>
 
-        <h3 className="text-center py-2"> Jam Sessions that {artistToView.firstName} has joined:</h3>
-
         {/* JOINED GIGS */}
-        <div className="gig-grid">
-          {gigObj.map((gig) => (
-            <div key={gig._id}>
-              <GigCard gigEntry={gig} />
-            </div>
-          ))}
+        <div>
+          {gigObj.length > 0 && (
+            <>
+              <h3 className="text-center py-2">
+                Jam Sessions that {artistToView.firstName} has joined:
+              </h3>
+              <div className="gig-grid">
+                {gigObj.map((gig) => (
+                  <div key={gig._id}>
+                    <GigCard gigEntry={gig} />
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
         </div>
 
       </Container>
