@@ -66,4 +66,28 @@ Meteor.methods({
     const artistIds = ArtistsToGigs.collection.find({ gig_id: gigId }).map((doc) => doc.artist_id);
     return Artists.collection.find({ _id: { $in: artistIds } }).fetch();
   },
+
+  'artistsToGigs.removeArtistOrGigEntries'(id) {
+    check(id, String);
+
+    const artistEntries = ArtistsToGigs.collection.find({ artist_id: id });
+    const gigEntries = ArtistsToGigs.collection.find({ gig_id: id });
+
+    // Remove all entries with the given artist ID.
+    artistEntries.forEach((entry) => {
+      ArtistsToGigs.collection.remove({ artist_id: entry.artist_id, gig_id: entry.gig_id });
+    });
+
+    // Remove all entries with the given gig ID.
+    gigEntries.forEach((entry) => {
+      ArtistsToGigs.collection.remove({ artist_id: entry.artist_id, gig_id: entry.gig_id });
+
+      // Check if there are any artists left in the gig.
+      const artistsInGigCount = ArtistsToGigs.collection.find({ gig_id: entry.gig_id }).count();
+      // If there are no artists left in the gig, remove the gig document.
+      if (artistsInGigCount === 0) {
+        Gigs.collection.remove({ _id: entry.gig_id });
+      }
+    });
+  },
 });

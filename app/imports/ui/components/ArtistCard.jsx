@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './ArtistCardStyle.css';
-import { Card, Image, ListGroup } from 'react-bootstrap';
+import { Button, Card, Image, ListGroup } from 'react-bootstrap';
+import { FaSkullCrossbones } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-
-// import { List } from 'react-bootstrap-icons';
+import { Meteor } from 'meteor/meteor';
+import { withTracker } from 'meteor/react-meteor-data';
+import { deleteUserAndLinks } from '../../startup/both/collectionHelpers';
 
 // Maximum Length of Genres that should be displayed
 const MAX_CARD_GENRES_LEN = 25;
-
 // Maximum Length of Instruments that should be displayed
 const MAX_CARD_INSTRUMENTS_LEN = 25;
-
 // Maximum Length of Bio that should be displayed
 const MAX_CARD_BIO_LEN = 135;
-
 // A function used to truncate card data to a length specified by maxlen
 const truncateTo = (data, maxlen) => {
   if (!data || data.length <= maxlen) {
@@ -43,7 +42,7 @@ export const isValidArtist = (artistToValidate) => !!(artistToValidate &&
     Array.isArray(artistToValidate.instruments) &&
     artistToValidate.skillLevel);
 
-const ArtistCard = ({ artistEntry }) => {
+const ArtistCard = ({ artistEntry, userRole }) => {
 
   const [imageSrc, setImageSrc] = useState(artistEntry.image);
   const defaultImageSrc = '/images/profileImagePlaceholder.png';
@@ -54,6 +53,15 @@ const ArtistCard = ({ artistEntry }) => {
   if (!isValidArtist(artistEntry)) {
     return null;
   }
+
+  const isAdmin = userRole === 'admin';
+
+  const handleDelete = () => {
+    if (window.confirm('Are you sure you want to delete this user?')) {
+      deleteUserAndLinks(artistEntry._id);
+    }
+  };
+
   return (
     <div className="artistCard">
       <Card className="h-100">
@@ -97,6 +105,18 @@ const ArtistCard = ({ artistEntry }) => {
 
         </ListGroup>
 
+        {isAdmin && (
+          <Card.Footer className="d-flex justify-content-end me-4">
+            <Button
+              variant="danger"
+              className="justify-content-center delUser"
+              onClick={handleDelete}
+            >
+              <FaSkullCrossbones />
+            </Button>
+          </Card.Footer>
+        )}
+
       </Card>
     </div>
   );
@@ -104,6 +124,13 @@ const ArtistCard = ({ artistEntry }) => {
 
 ArtistCard.propTypes = {
   artistEntry: artistEntrySchema,
+  currentUserRole: PropTypes.string,
 }.isRequired;
 
-export default ArtistCard;
+export default withTracker(() => {
+  const currentUser = Meteor.user();
+  const currentUserRole = currentUser && currentUser.profile && currentUser.profile.role;
+  return {
+    currentUserRole,
+  };
+})(ArtistCard);

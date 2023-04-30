@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
+import { Roles } from 'meteor/alanning:roles';
 import './BrowseArtistsStyle.css';
 import { Container, Button } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
@@ -33,13 +34,16 @@ const BrowseArtists = () => {
   const [filter, setFilter] = useState({ instrument: '', genre: '', skillLevel: '' });
 
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
-  const { ready, artists } = useTracker(() => {
+  const { ready, artists, currentUserRole } = useTracker(() => {
     const subscription = Meteor.subscribe(Artists.userPublicationName);
     const rdy = subscription.ready();
     const artistItems = Artists.collection.find().fetch();
+    const user = Meteor.user();
+    const isAdmin = user && Roles.userIsInRole(user._id, 'admin');
     return {
       artists: artistItems,
       ready: rdy,
+      currentUserRole: (isAdmin) ? 'admin' : 'user',
     };
   }, []);
 
@@ -51,8 +55,9 @@ const BrowseArtists = () => {
   const uniqueInstruments = getUniqueInstruments(artists);
   const uniqueGenres = getUniqueGenres(artists);
 
-  return (ready ? (
+  return ready ? (
     <div id={PageIDs.browseArtistsPage} className="browseArtist">
+
       <Container className="py-3">
         {/* FILTER BUTTON */}
         <div>
@@ -91,7 +96,7 @@ const BrowseArtists = () => {
             })
             .map((artist) => (
               <div key={artist._id}>
-                <ArtistCard artistEntry={artist} />
+                <ArtistCard artistEntry={artist} userRole={currentUserRole} />
               </div>
             ))}
         </div>
@@ -99,8 +104,7 @@ const BrowseArtists = () => {
       </Container>
     </div>
   ) :
-    <LoadingSpinner />
-  );
+    <LoadingSpinner />;
 };
 
 export default BrowseArtists;

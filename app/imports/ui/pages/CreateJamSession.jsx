@@ -110,7 +110,7 @@ const CreateJamSession = () => {
 
             <Card>
               <Card.Body>
-                <Form key={formResetKey} onSubmit={handleSubmit} autocomplete="off">
+                <Form key={formResetKey} onSubmit={handleSubmit} autoComplete="off">
 
                   {/* TITLE */}
                   <Row>
@@ -213,7 +213,7 @@ const CreateJamSession = () => {
 
                   {/* NOTE */}
                   <Row>
-                    <h9>* indicates required field</h9>
+                    <small>* indicates required field</small>
                   </Row>
 
                   {/* SUBMIT BUTTON */}

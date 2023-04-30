@@ -87,6 +87,17 @@ if (Meteor.isServer) {
 
       Artists.collection.insert(artist);
     },
+
+    // REMOVE ARTIST METHOD
+    'artists.remove'(artistId) {
+      check(artistId, String);
+
+      if (!this.userId) {
+        throw new Meteor.Error('not-authorized');
+      }
+
+      Artists.collection.remove({ _id: artistId });
+    },
   });
 }
 
