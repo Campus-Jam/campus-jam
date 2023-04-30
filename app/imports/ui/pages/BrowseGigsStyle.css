@@ -8,10 +8,9 @@
 .browseGigs .filterButton {
   position: fixed;
   right: .75vh;
-  top: 12vh;
+  top: 20vh;
   z-index: 9998;
   background-color: var(--button-color1);
-  border: white;
   height: 48px; /* Changed from 4vw */
   width: 60px; /* Changed from 5vw */
   border-radius: 10px; /* Changed from 1vw */
@@ -31,13 +30,13 @@
 .browseGigs .addJamButton {
   position: fixed;
   right: .75vh;
-  top: 92vh;
+  top: 87vh;
   z-index: 9998;
   background-color: var(--button-color2);
   border: white;
-  height: 48px; /* Changed from 4vw */
-  width: 60px; /* Changed from 5vw */
-  border-radius: 10px; /* Changed from 1vw */
+  height: 65px; /* Changed from 4vw */
+  width: 180px; /* Changed from 5vw */
+  border: 2px solid black;
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.8);
 }
 

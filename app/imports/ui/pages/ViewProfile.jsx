@@ -13,31 +13,39 @@ import GigCard from '../components/GigCard';
 
 const ViewProfile = () => {
   const id = useParams();
-  const { ready } = useTracker(() => {
+  const [artistToView, setArtistToView] = useState(null);
+  const [gigObj, setGigObj] = useState([]);
+  const [imageSrc, setImageSrc] = useState('');
+
+  const { ready, currentUser } = useTracker(() => {
     const artistSub = Meteor.subscribe(Artists.userPublicationName);
     const artistToGigSub = Meteor.subscribe(ArtistsToGigs.userPublicationName);
     const gigSub = Meteor.subscribe(Gigs.userPublicationName);
 
     return {
       ready: artistSub.ready() && artistToGigSub.ready() && gigSub.ready(),
+      currentUser: Meteor.user() ? Meteor.user().username : '',
     };
   }, []);
 
-  const { currentUser } = useTracker(() => ({
-    currentUser: Meteor.user() ? Meteor.user().username : '',
-  }), []);
-
-  const [imageSrc, setImageSrc] = useState('');
-  const artistToView = useTracker(() => {
-    const artist = Artists.collection.findOne({ email: id.id });
-    return artist;
-  });
-
   useEffect(() => {
-    if (artistToView) {
-      setImageSrc(artistToView.image || '');
+    if (ready) {
+      const fetchedArtistToView = Artists.collection.findOne({ email: id.id });
+
+      if (fetchedArtistToView) {
+        setArtistToView(fetchedArtistToView);
+        setImageSrc(fetchedArtistToView.image || '');
+
+        const gigIds = ArtistsToGigs.collection.find({ artist_id: fetchedArtistToView._id }).map((doc) => doc.gig_id);
+        const fetchedGigObj = Gigs.collection.find({ _id: { $in: gigIds } }).fetch();
+
+        setGigObj(fetchedGigObj);
+      } else {
+        setArtistToView(null);
+        setGigObj([]);
+      }
     }
-  }, [artistToView]);
+  }, [ready, id.id]);
 
   const defaultImageSrc = '/images/profileImagePlaceholder.png';
   const handleImageError = () => {
@@ -47,11 +55,7 @@ const ViewProfile = () => {
   if (!ready || !artistToView) {
     return <LoadingSpinner />;
   }
-
-  const gigIds = ArtistsToGigs.collection.find({ artist_id: artistToView._id }).map((doc) => doc.gig_id);
-  const gigObj = Gigs.collection.find({ _id: { $in: gigIds } }).fetch();
-
-  return (ready ? (
+  return (
     <div id={PageIDs.viewProfilePage} className="viewProfile">
       <Container className="py-4">
         <Card id={ComponentIDs.viewProfileForm} className="card">
@@ -157,8 +161,6 @@ const ViewProfile = () => {
 
       </Container>
     </div>
-  ) :
-    <LoadingSpinner />
   );
 };
 export default ViewProfile;

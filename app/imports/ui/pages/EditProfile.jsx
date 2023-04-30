@@ -119,8 +119,13 @@ const EditProfile = () => {
         // eslint-disable-next-line no-console
         console.log('Artist updated successfully!');
       }
+
+      const currentUser = Meteor.user();
+      const currentUserEmail = currentUser.emails[0].address;
+
       setTimeout(() => {
         setSubmitting(false);
+        window.location.href = `viewProfile/${currentUserEmail}`;
       }, SUBMIT_BUTTON_TIMEOUT_MS);
     });
   };

@@ -62,9 +62,6 @@ const CreateJamSession = () => {
       const currentUserEmail = currentUser.emails[0].address;
       console.log(currentUserEmail);
       linkEmailToGig(currentUserEmail, formData.title);
-      // const currentUser = Meteor.user();
-      // const currentUserEmail = currentUser.emails[0].address;
-      // linkEmailToGig(currentUserEmail, formData.title);
 
       setTimeout(() => {
         setSubmitting(false);
@@ -212,16 +209,18 @@ const CreateJamSession = () => {
                     </Col>
                   </Row>
 
-                  {/* NOTE */}
-                  <Row>
-                    <small>* indicates required field</small>
-                  </Row>
+                  <Row className="flex-row">
+                    {/* NOTE */}
+                    <Col>
+                      <small>* indicates required field</small>
+                    </Col>
 
-                  {/* SUBMIT BUTTON */}
-                  <Row className="justify-content-center">
-                    <Button type="submit" disabled={submitting} className={submitting ? 'isSubmitting' : ''}>
-                      {submitting ? 'Please wait...' : 'Submit'}
-                    </Button>
+                    {/* SUBMIT BUTTON */}
+                    <Col className="d-flex justify-content-end align-items-center">
+                      <Button type="submit" disabled={submitting} className={submitting ? 'isSubmitting' : ''}>
+                        {submitting ? 'Please wait...' : 'Submit'}
+                      </Button>
+                    </Col>
                   </Row>
 
                 </Form>

@@ -64,8 +64,9 @@ const BrowseGigs = () => {
         </div>
 
         {/* ADD JAM SESSION BUTTON */}
-        <Button as={NavLink} to="/createjamsession" className="addJamButton">
-          <Plus size="24px" />
+        <Button as={NavLink} to="/createjamsession" className="addJamButton text-center align-content-center">
+          Create a New <br />
+          Jam-Session
         </Button>
 
         {/* GIG CARDS */}
