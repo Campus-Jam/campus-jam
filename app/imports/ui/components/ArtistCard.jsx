@@ -4,8 +4,6 @@ import './ArtistCardStyle.css';
 import { Button, Card, Image, ListGroup } from 'react-bootstrap';
 import { FaSkullCrossbones } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { Meteor } from 'meteor/meteor';
-import { withTracker } from 'meteor/react-meteor-data';
 import { deleteUserAndLinks } from '../../startup/both/collectionHelpers';
 
 // Maximum Length of Genres that should be displayed
@@ -124,13 +122,7 @@ const ArtistCard = ({ artistEntry, userRole }) => {
 
 ArtistCard.propTypes = {
   artistEntry: artistEntrySchema,
-  currentUserRole: PropTypes.string,
+  userRole: PropTypes.string,
 }.isRequired;
 
-export default withTracker(() => {
-  const currentUser = Meteor.user();
-  const currentUserRole = currentUser && currentUser.profile && currentUser.profile.role;
-  return {
-    currentUserRole,
-  };
-})(ArtistCard);
+export default ArtistCard;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
+import { Roles } from 'meteor/alanning:roles';
 import './BrowseGigsStyle.css';
 import { Button, Container } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
@@ -16,13 +17,16 @@ const BrowseGigs = () => {
   const [filter, setFilter] = useState({ instrument: '', genre: '', skillLevel: '' });
 
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
-  const { ready, gigs } = useTracker(() => {
+  const { ready, gigs, currentUserRole } = useTracker(() => {
     const subscription = Meteor.subscribe(Gigs.userPublicationName);
     const rdy = subscription.ready();
     const gigItems = Gigs.collection.find().fetch();
+    const user = Meteor.user();
+    const isAdmin = user && Roles.userIsInRole(user._id, 'admin');
     return {
       gigs: gigItems,
       ready: rdy,
+      currentUserRole: (isAdmin) ? 'admin' : 'user',
     };
   }, []);
 
@@ -80,7 +84,7 @@ const BrowseGigs = () => {
             })
             .map((gig) => (
               <div key={gig._id}>
-                <GigCard gigEntry={gig} />
+                <GigCard gigEntry={gig} userRole={currentUserRole} />
               </div>
             ))}
         </div>

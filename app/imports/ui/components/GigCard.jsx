@@ -5,8 +5,10 @@ import { Card, Image, ListGroup, Button } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import moment from 'moment';
+import { FaSkullCrossbones } from 'react-icons/fa';
 import { Artists } from '../../api/artists/Artists';
 import { ArtistsToGigs } from '../../api/artistsToGigs/ArtistsToGigs';
+import { deleteGigAndLinks } from '../../startup/both/collectionHelpers';
 
 // Maximum Length of Attendees that should be displayed
 const MAX_CARD_ATTENDEES_LEN = 125;
@@ -35,7 +37,7 @@ const truncateTo = (data, maxlen) => {
 };
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-const GigCard = ({ gigEntry }) => {
+const GigCard = ({ gigEntry, userRole }) => {
   const { ready, artistData, attendees } = useTracker(() => {
     const artistSub = Meteor.subscribe(Artists.userPublicationName);
     const artistToGigSub = Meteor.subscribe(ArtistsToGigs.userPublicationName);
@@ -46,6 +48,7 @@ const GigCard = ({ gigEntry }) => {
     const joinedArtistIds = ArtistsToGigs.collection.find({ gig_id: gigEntry._id }).map((doc) => doc.artist_id);
     const joinedArtists = artists.filter((artist) => joinedArtistIds.includes(artist._id));
     const whosGoing = joinedArtists.map((artist) => artist.firstName);
+
     return {
       ready: rdy,
       artistData: currentArtist,
@@ -59,6 +62,14 @@ const GigCard = ({ gigEntry }) => {
   const defaultImageSrc = '/images/default_jamsession_image.png';
   const handleImageError = () => {
     setImageSrc(defaultImageSrc);
+  };
+
+  const isAdmin = userRole === 'admin';
+
+  const handleDelete = () => {
+    if (window.confirm('Are you sure you want to delete this jam session?')) {
+      deleteGigAndLinks(gigEntry._id);
+    }
   };
 
   useEffect(() => {
@@ -155,9 +166,20 @@ const GigCard = ({ gigEntry }) => {
               <Button className={`btn ${joined ? 'leaveButton' : 'joinButton'}`} onClick={joinGig} disabled={buttonDisabled}>
                 {joined ? 'Leave' : 'Join'}
               </Button>
-
             </span>
           </ListGroup.Item>
+
+          {isAdmin && (
+            <Card.Footer className="d-flex justify-content-end me-4">
+              <Button
+                variant="danger"
+                className="justify-content-center delUser"
+                onClick={handleDelete}
+              >
+                <FaSkullCrossbones />
+              </Button>
+            </Card.Footer>
+          )}
 
         </ListGroup>
       </Card>
@@ -177,7 +199,8 @@ GigCard.propTypes = {
     venue: PropTypes.string,
     about: PropTypes.string,
     _id: PropTypes.string,
-  }).isRequired,
-};
+  }),
+  userRole: PropTypes.string,
+}.isRequired;
 
 export default GigCard;

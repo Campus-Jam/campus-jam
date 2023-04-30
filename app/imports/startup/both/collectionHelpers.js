@@ -92,3 +92,14 @@ export const deleteUserAndLinks = (artistId) => {
     }
   }
 };
+
+export const deleteGigAndLinks = (gigId) => {
+  const currUser = Meteor.user();
+  if (currUser && Roles.userIsInRole(currUser._id, 'admin')) {
+    // Remove all ArtistsToGigs documents containing the gigId
+    Meteor.call('artistsToGigs.removeArtistOrGigEntries', gigId);
+
+    // Remove the Gig from the GigsCollection
+    Meteor.call('gigs.remove', gigId);
+  }
+};
