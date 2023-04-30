@@ -77,7 +77,7 @@ const NavBar = () => {
                   >
                     Jam Sessions
                   </Nav.Link>
-
+                  {/*
                   <Nav.Link
                     className={`${activePage === '/createJamSession' ? 'activeBtn' : ''} navbar-button`}
                     as={NavLink}
@@ -88,6 +88,7 @@ const NavBar = () => {
                   >
                     Add Jam Session
                   </Nav.Link>
+                  */}
                 </>
               )}
 

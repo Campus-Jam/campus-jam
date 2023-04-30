@@ -5,6 +5,7 @@ import './BrowseGigsStyle.css';
 import { Button, Container } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Filter, Plus } from 'react-bootstrap-icons';
+import { NavLink } from 'react-router-dom';
 import LoadingSpinner from '../components/LoadingSpinner';
 import GigCard from '../components/GigCard';
 import GigFilterForm from '../components/GigFilterForm';
@@ -63,7 +64,7 @@ const BrowseGigs = () => {
         </div>
 
         {/* ADD JAM SESSION BUTTON */}
-        <Button className="addJamButton">
+        <Button as={NavLink} to="/createjamsession" className="addJamButton">
           <Plus size="24px" />
         </Button>
 
