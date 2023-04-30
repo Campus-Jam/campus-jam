@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './ArtistCardStyle.css';
 import { Card, Image, ListGroup } from 'react-bootstrap';
@@ -37,24 +37,20 @@ const artistEntrySchema = PropTypes.shape({
   _id: PropTypes.string,
 });
 
-export const isValidArtist = (artistToValidate) => {
-  if (
-    artistToValidate &&
+export const isValidArtist = (artistToValidate) => !!(artistToValidate &&
     artistToValidate.firstName &&
     Array.isArray(artistToValidate.genres) &&
     Array.isArray(artistToValidate.instruments) &&
-    artistToValidate.skillLevel
-  ) {
-    return true;
-  }
-  return false;
-
-};
+    artistToValidate.skillLevel);
 
 const ArtistCard = ({ artistEntry }) => {
-  // old code when i thought artistEntry was different than Artists :( actually ended up wasting like 2 hours on this so i don't want to delete it lol
-  // const artistToView = Artists.collection.findOne({ email: artistEntry.email });
-  // const artistId = artistEntry._id;
+
+  const [imageSrc, setImageSrc] = useState(artistEntry.image);
+  const defaultImageSrc = '/images/profileImagePlaceholder.png';
+  const handleImageError = () => {
+    setImageSrc(defaultImageSrc);
+  };
+
   if (!isValidArtist(artistEntry)) {
     return null;
   }
@@ -67,7 +63,12 @@ const ArtistCard = ({ artistEntry }) => {
               <Card.Title>{artistEntry.firstName} {artistEntry.lastName}</Card.Title>
             </div>
             <div className="d-flex justify-content-center">
-              <Image src={artistEntry.image} height={100} className="image-shadow" />
+              <Image
+                src={imageSrc}
+                height={100}
+                className="image-shadow"
+                onError={handleImageError}
+              />
             </div>
           </Link>
         </Card.Header>

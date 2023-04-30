@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Button, Card, Col, Container, Image, Nav, Row } from 'react-bootstrap';
@@ -29,6 +29,12 @@ const ViewProfile = () => {
 
   const artistToView = Artists.collection.findOne({ email: id.id });
 
+  const [imageSrc, setImageSrc] = useState(artistToView.image);
+  const defaultImageSrc = '/images/profileImagePlaceholder.png';
+  const handleImageError = () => {
+    setImageSrc(defaultImageSrc);
+  };
+
   if (!ready || !artistToView) {
     return <LoadingSpinner />;
   }
@@ -54,7 +60,12 @@ const ViewProfile = () => {
             {/* IMAGE */}
             <Row className="d-flex justify-content-center">
               <Col xs={12} md={4} className="d-flex align-items-center image-col">
-                <Image className="mx-auto d-block img-fluid image" src={artistToView.image} />
+                <Image
+                  src={imageSrc}
+                  height={100}
+                  className="mx-auto d-block img-fluid image"
+                  onError={handleImageError}
+                />
               </Col>
 
               {/* INFO */}
