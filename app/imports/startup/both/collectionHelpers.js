@@ -4,7 +4,6 @@ import { Roles } from 'meteor/alanning:roles';
 import { check } from 'meteor/check';
 import { Gigs } from '../../api/gigs/Gigs';
 import { Artists } from '../../api/artists/Artists';
-import { ArtistsToGigs } from '/imports/api/artistsToGigs/ArtistsToGigs';
 
 Meteor.methods({
   'users.delete'(userId) {
