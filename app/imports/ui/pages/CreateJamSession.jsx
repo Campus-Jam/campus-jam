@@ -68,6 +68,7 @@ const CreateJamSession = () => {
 
       setTimeout(() => {
         setSubmitting(false);
+        window.location.href = '/jamsessions';
       }, SUBMIT_BUTTON_TIMEOUT_MS);
     });
   };
