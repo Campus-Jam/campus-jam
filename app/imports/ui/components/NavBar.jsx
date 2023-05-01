@@ -42,7 +42,7 @@ const NavBar = () => {
       <Navbar expand="lg" style={menuStyle} className={navbarClassName}>
         <Container>
 
-          <Navbar.Brand as={NavLink} to="/jamsessions" className="align-items-center" onClick={() => handleNavClick('/jamsessions')}>
+          <Navbar.Brand as={NavLink} to="/" className="align-items-center" onClick={() => handleNavClick('/')}>
             <span style={{ fontWeight: 800, fontSize: '24px' }}>
               <Image src="/images/logo-transparent.png" width={80} style={{ marginBottom: 3 }} />
               jamb-UH-ree
@@ -77,18 +77,6 @@ const NavBar = () => {
                   >
                     Jam Sessions
                   </Nav.Link>
-                  {/*
-                  <Nav.Link
-                    className={`${activePage === '/createJamSession' ? 'activeBtn' : ''} navbar-button`}
-                    as={NavLink}
-                    id={ComponentIDs.createJamSession}
-                    to="/createJamSession"
-                    key="createJamSession"
-                    onClick={() => handleNavClick('/createJamSession')}
-                  >
-                    Add Jam Session
-                  </Nav.Link>
-                  */}
                 </>
               )}
 
