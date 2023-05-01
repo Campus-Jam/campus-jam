@@ -82,7 +82,6 @@ const BrowseArtists = () => {
         {/* ARTIST CARDS */}
         <div className="artist-grid">
           {artists
-            .sort(() => Math.random() - 0.5)
             .filter((artist) => {
               if (!isValidArtist(artist)) {
                 return false;
