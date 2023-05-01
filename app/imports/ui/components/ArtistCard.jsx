@@ -103,8 +103,9 @@ const ArtistCard = ({ artistEntry, userRole }) => {
 
         </ListGroup>
 
-        {isAdmin && (
-          <Card.Footer className="d-flex justify-content-end me-4">
+        {/* ADMIN DELETE BUTTON */}
+        <div className="adminDeleteButton">
+          {isAdmin && (
             <Button
               variant="danger"
               className="justify-content-center delUser"
@@ -112,8 +113,8 @@ const ArtistCard = ({ artistEntry, userRole }) => {
             >
               <FaSkullCrossbones />
             </Button>
-          </Card.Footer>
-        )}
+          )}
+        </div>
 
       </Card>
     </div>

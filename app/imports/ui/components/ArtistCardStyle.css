@@ -61,3 +61,10 @@
   height: 155px;
   margin: 0;
 }
+
+.artistCard .adminDeleteButton {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  z-index: 9995;
+}

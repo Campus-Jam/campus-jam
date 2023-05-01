@@ -88,4 +88,10 @@
   font-weight: bold;
 }
 
+.gigCard .adminDeleteButton {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+}
+
 

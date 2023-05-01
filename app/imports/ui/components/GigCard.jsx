@@ -171,26 +171,30 @@ const GigCard = ({ gigEntry, userRole }) => {
           <ListGroup.Item className="d-flex justify-content-between align-items-center about">
             <span className="label fw-bold d-flex justify-content-start">About: </span>
             <span className="content">{truncateTo(gigEntry.about, MAX_CARD_ABOUT_LEN)}</span>
-            <span className="joinButtonSpan">
+          </ListGroup.Item>
+
+          <Card.Footer>
+            {/* JOIN BUTTON */}
+            <div className="d-flex justify-content-end align-content-center m-3 joinButtonSpan">
               <Button className={`btn ${joined ? 'leaveButton' : 'joinButton'}`} onClick={joinGig} disabled={buttonDisabled}>
                 {joined ? 'Leave' : 'Join'}
               </Button>
-            </span>
-          </ListGroup.Item>
-
-          {isAdmin && (
-            <Card.Footer className="d-flex justify-content-end me-4">
-              <Button
-                variant="danger"
-                className="justify-content-center delUser"
-                onClick={handleDelete}
-              >
-                <FaSkullCrossbones />
-              </Button>
-            </Card.Footer>
-          )}
-
+            </div>
+          </Card.Footer>
         </ListGroup>
+
+        {/* ADMIN DELETE BUTTON */}
+        <div className="adminDeleteButton">
+          {isAdmin && (
+            <Button
+              variant="danger"
+              className="justify-content-center delUser"
+              onClick={handleDelete}
+            >
+              <FaSkullCrossbones />
+            </Button>
+          )}
+        </div>
       </Card>
     </div>
   ) : null;
