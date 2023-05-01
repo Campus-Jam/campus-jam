@@ -78,6 +78,7 @@ const BrowseGigs = () => {
         {/* GIG CARDS */}
         <div className="gig-grid">
           {gigs
+            .sort(() => Math.random() - 0.5)
             .filter((gig) => {
               if (filter.instrument && !gig.instruments.includes(filter.instrument)) {
                 return false;
