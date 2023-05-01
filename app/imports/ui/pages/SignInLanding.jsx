@@ -21,7 +21,7 @@ const Landing = () => (
                 </Col>
                 <Col xs={6}>
                   <Button as={NavLink} to="/jamsessions" className="m-2" variant="success" style={{ width: '100%' }}>Join Jam Sessions</Button>
-                  <Button as={NavLink} to="/addJamSessions" className="m-2" variant="success" style={{ width: '100%' }}>Add a Jam Session</Button>
+                  <Button as={NavLink} to="/createjamsession" className="m-2" variant="success" style={{ width: '100%' }}>Add a Jam Session</Button>
                 </Col>
               </Row>
             </Container>
