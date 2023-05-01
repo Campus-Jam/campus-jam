@@ -100,6 +100,12 @@ const EditProfile = () => {
     }
   }, [isReady, currentArtist?._id]);
 
+  const { currentUser } = useTracker(() => ({
+    currentUser: Meteor.user() ? Meteor.user().username : '',
+    loggedIn: !!Meteor.user(),
+  }), []);
+  const artistID = currentUser;
+
   const handleSubmit = (event) => {
     event.preventDefault();
     setSubmitting(true);
@@ -120,7 +126,7 @@ const EditProfile = () => {
         console.log('Artist updated successfully!');
       }
       setTimeout(() => {
-        setSubmitting(false);
+        window.location.href = `/viewProfile/${artistID}`;
       }, SUBMIT_BUTTON_TIMEOUT_MS);
     });
   };
@@ -279,7 +285,7 @@ const EditProfile = () => {
                 {/* SUBMIT BUTTON */}
                 <Row className="justify-content-end">
                   <Button type="submit" disabled={submitting} className={submitting ? 'isSubmitting' : ''}>
-                    {submitting ? 'Please wait...' : 'Submit'}
+                    {submitting ? 'Please wait...' : 'Submit' }
                   </Button>
                 </Row>
               </Form>
