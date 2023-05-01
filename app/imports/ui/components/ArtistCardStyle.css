@@ -64,7 +64,6 @@
 
 .artistCard .adminDeleteButton {
   position: absolute;
-  top: 25px;
-  right: 25px;
-  z-index: 9995;
+  top: 20px;
+  right: 20px;
 }
