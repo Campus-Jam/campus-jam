@@ -12,7 +12,7 @@ import { ArtistsToGigs } from '../../api/artistsToGigs/ArtistsToGigs';
 import { deleteGigAndLinks } from '../../startup/both/collectionHelpers';
 
 // Maximum Length of Attendees that should be displayed
-const MAX_CARD_ATTENDEES_LEN = 125;
+const MAX_CARD_ATTENDEES_LEN = 10;
 // Maximum Length of Genre(s) that should be displayed
 const MAX_CARD_GENRES_LEN = 125;
 // Maximum Length of Genre(s) that should be displayed
@@ -124,17 +124,21 @@ const GigCard = ({ gigEntry, userRole }) => {
 
           {/* ATTENDEES */}
           <ListGroup.Item className="d-flex justify-content-between align-items-center attendees">
-            <span className="label fw-bold d-flex justify-content-start">Attendees: </span>
-            <span className="content" style={{ minWidth: '150px' }}>
-              {truncateTo(attendees.map((attendee, index) => (
-                <React.Fragment key={attendee._id}>
-                  {index === 0 ? '' : ', '}
-                  <Link to={`/viewProfile/${attendee.email}`} className="attendee-link">
-                    {attendee.firstName}
-                  </Link>
-                </React.Fragment>
-              )), MAX_CARD_ATTENDEES_LEN)}
-            </span>
+            <div className="label fw-bold d-flex justify-content-start">Attendees: </div>
+            <div className="content" style={{ minWidth: '150px', wordBreak: 'break-word' }}>
+              {attendees.map((attendee, index) => (
+                index < MAX_CARD_ATTENDEES_LEN ? (
+                  <React.Fragment key={attendee._id}>
+                    {index === 0 ? '' : ', '}
+                    <span style={{ display: 'inline-block' }}>
+                      <Link to={`/viewProfile/${attendee.email}`} className="attendee-link">
+                        {attendee.firstName}
+                      </Link>
+                    </span>
+                  </React.Fragment>
+                ) : null
+              ))}
+            </div>
           </ListGroup.Item>
 
           {/* SKILL LEVEL */}

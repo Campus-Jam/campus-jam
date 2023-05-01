@@ -3,17 +3,21 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+.browseGigs .button-container {
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  z-index: 9999;
 }
 
 .browseGigs .filterButton {
-  position: fixed;
-  right: .75vh;
-  top: 20vh;
-  z-index: 9998;
   background-color: var(--button-color1);
-  height: 48px; /* Changed from 4vw */
-  width: 60px; /* Changed from 5vw */
-  border-radius: 10px; /* Changed from 1vw */
+  height: 48px;
+  width: 60px;
+  border-radius: 10px;
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.8);
 }
 
@@ -28,15 +32,14 @@
 }
 
 .browseGigs .createJamButton {
-  position: fixed;
-  right: .75vh;
-  top: 87vh;
-  z-index: 9998;
   background-color: var(--button-color2);
-  height: 65px; /* Changed from 4vw */
-  width: 180px; /* Changed from 5vw */
+  height: 65px;
+  width: 180px;
   border: 2px solid black;
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.8);
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
 }
 
 .browseGigs .createJamButton:active{

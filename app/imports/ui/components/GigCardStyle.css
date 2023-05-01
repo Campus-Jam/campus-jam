@@ -27,8 +27,12 @@
 }
 
 .gigCard .content {
+  min-width: 100%;
   display: flex;
+  justify-content: start;
   margin-left: 15px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .gigCard .list-group-item {
@@ -72,6 +76,10 @@
 
 .gigCard .joinButtonSpan > .leaveButton {
   background-color: var(--button-color2);
+}
+
+.gigCard .attendees {
+
 }
 
 .gigCard .attendee-link {

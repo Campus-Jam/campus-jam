@@ -20,10 +20,10 @@ const BrowseGigs = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, gigs, currentUserRole } = useTracker(() => {
     const subscription = Meteor.subscribe(Gigs.userPublicationName);
-    const rdy = subscription.ready();
     const gigItems = Gigs.collection.find().fetch().sort((a, b) => a.date - b.date);
     const user = Meteor.user();
     const isAdmin = user && Roles.userIsInRole(user._id, 'admin');
+    const rdy = subscription.ready() && gigItems && user;
     return {
       gigs: gigItems,
       ready: rdy,
@@ -39,35 +39,41 @@ const BrowseGigs = () => {
   const uniqueGenres = getUniqueGenres(gigs);
   const uniqueSkillLevels = getUniqueSkillLevels(gigs);
 
-  return (ready ? (
+  return (!ready) ? <LoadingSpinner /> : (
     <div id={PageIDs.browseGigsPage} className="browseGigs">
       <Container className="py-3">
-        {/* FILTER BUTTON */}
-        <div>
-          <Button
-            id={ComponentIDs.browseGigsFilterButton}
-            onClick={handleFilterClick}
-            className={`filterButton ${showFilter ? 'activeFilterStyle' : ''}`}
-          >
-            <Filter size="24px" />
-          </Button>
-          {showFilter && (
-            <GigFilterForm
-              id={ComponentIDs.browseGigsFilterForm}
-              filter={filter}
-              setFilter={setFilter}
-              instruments={uniqueInstruments}
-              genres={uniqueGenres}
-              skillLevels={uniqueSkillLevels}
-            />
-          )}
-        </div>
+        <div className="button-container">
+          {/* FILTER BUTTON */}
+          <div>
+            <Button
+              id={ComponentIDs.browseGigsFilterButton}
+              onClick={handleFilterClick}
+              className={`filterButton ${showFilter ? 'activeFilterStyle' : ''}`}
+            >
+              <Filter size="24px" />
+            </Button>
+            {showFilter && (
+              <GigFilterForm
+                id={ComponentIDs.browseGigsFilterForm}
+                filter={filter}
+                setFilter={setFilter}
+                instruments={uniqueInstruments}
+                genres={uniqueGenres}
+                skillLevels={uniqueSkillLevels}
+              />
+            )}
+          </div>
 
-        {/* CREATE A JAM-SESSION BUTTON */}
-        <Button as={NavLink} to="/createjamsession" className="createJamButton text-center align-content-center">
-          Create a New <br />
-          Jam-Session
-        </Button>
+          {/* CREATE A JAM-SESSION BUTTON */}
+          <Button
+            as={NavLink}
+            to="/createjamsession"
+            className="createJamButton text-center align-content-center"
+          >
+            Create a New <br />
+            Jam-Session
+          </Button>
+        </div>
 
         {/* GIG CARDS */}
         <div className="gig-grid">
@@ -92,8 +98,6 @@ const BrowseGigs = () => {
         </div>
       </Container>
     </div>
-  ) :
-    <LoadingSpinner />
   );
 };
 
