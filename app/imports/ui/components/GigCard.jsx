@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './GigCardStyle.css';
-import { Card, Image, ListGroup, Button } from 'react-bootstrap';
+import { Card, Image, ListGroup, Button, Col } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import moment from 'moment';
@@ -107,6 +107,21 @@ const GigCard = ({ gigEntry, userRole }) => {
   return ready ? (
     <div className="gigCard">
       <Card className="h-100">
+
+        {/* ADMIN DELETE BUTTON */}
+        <div className="adminDeleteButton">
+          {isAdmin && (
+            <Button
+              variant="danger"
+              className="justify-content-center delUser"
+              onClick={handleDelete}
+            >
+              <FaSkullCrossbones />
+            </Button>
+          )}
+        </div>
+
+        {/* TITLE AND IMAGE */}
         <Card.Header>
           <div className="d-flex justify-content-center">
             <Card.Title>{gigEntry.title}</Card.Title>
@@ -141,12 +156,16 @@ const GigCard = ({ gigEntry, userRole }) => {
             </div>
           </ListGroup.Item>
 
-          {/* SKILL LEVEL */}
+          {/* DATE AND SKILL-LEVEL */}
           <ListGroup.Item className="d-flex justify-content-between align-items-center skill-level">
-            <span className="label fw-bold d-flex justify-content-start">Date: </span>
-            <span className="content">{moment(gigEntry.date).format('MMMM Do YYYY, h:mm a')}</span>
-            <span className="label fw-bold d-flex justify-content-start">Skill Level: </span>
-            <span className="content">{gigEntry.skillLevel}</span>
+            <Col className="d-flex align-content-center">
+              <div className="label fw-bold d-flex justify-content-start">Date: </div>
+              <div className="content">{moment(gigEntry.date).format('MMMM Do YYYY, h:mm a')}</div>
+            </Col>
+            <Col className="d-flex align-content-center">
+              <div className="label">Skill-Level: </div>
+              <div className="content align-content-center">{gigEntry.skillLevel}</div>
+            </Col>
           </ListGroup.Item>
 
           {/* GENRES */}
@@ -183,18 +202,6 @@ const GigCard = ({ gigEntry, userRole }) => {
           </Card.Footer>
         </ListGroup>
 
-        {/* ADMIN DELETE BUTTON */}
-        <div className="adminDeleteButton">
-          {isAdmin && (
-            <Button
-              variant="danger"
-              className="justify-content-center delUser"
-              onClick={handleDelete}
-            >
-              <FaSkullCrossbones />
-            </Button>
-          )}
-        </div>
       </Card>
     </div>
   ) : null;

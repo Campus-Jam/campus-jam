@@ -24,14 +24,14 @@
   display: flex;
   justify-content: flex-start;
   font-weight: bolder;
+  flex-wrap: nowrap;
 }
 
 .gigCard .content {
   min-width: 100%;
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   margin-left: 15px;
-  display: flex;
   flex-wrap: wrap;
 }
 
@@ -90,8 +90,8 @@
 
 .gigCard .adminDeleteButton {
   position: absolute;
-  top: 25px;
-  right: 25px;
+  top: 20px;
+  right: 20px;
 }
 
 

@@ -7,7 +7,11 @@
   background-color: var(--page-background-color2);
 }
 
-.artistCard .card-title {
+.artistCard .artistCardLink{
+  text-decoration: none;
+}
+
+.artistCard .card-header .card-title {
   color: var(--text-color1);
 }
 
