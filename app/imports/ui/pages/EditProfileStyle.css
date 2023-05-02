@@ -43,6 +43,18 @@
   font-weight: bold;
 }
 
+.editProfileStyle button[type="submit"]:hover{
+  background-color: var(--button-color1)!important;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+  color: black;
+}
+
+.editProfileStyle button[type="submit"]:active{
+  background-color: var(--button-color-pressed) !important;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5) !important;
+  color: black !important;
+}
+
 .editProfileStyle button.isSubmitting {
   background-color: var(--button-color1);
   opacity: 100;

@@ -58,24 +58,22 @@
   margin-bottom: 20px;
   margin-right: 20px;
   background-color: var(--button-color2);
-  border-color: black;
+  border: 2px solid black!important;
   box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.5);
   font-size: 20px;
   font-weight: bold;
 }
 
-.viewProfile .editProfileButton:active {
-  background-color: var(--button-color-pressed) !important;
-  border-color: black !important;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5) !important;
-  color: black !important;
-}
-
 .viewProfile .editProfileButton:hover {
-  background-color: var(--button-color1);
-  border-color: black;
+  background-color: var(--button-color1)!important;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
   color: black;
+}
+
+.viewProfile .editProfileButton:active {
+  background-color: var(--button-color-pressed) !important;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5) !important;
+  color: black !important;
 }
 
 .viewProfile .gig-grid {
