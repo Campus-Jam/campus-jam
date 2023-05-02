@@ -70,4 +70,18 @@
   position: absolute;
   top: 20px;
   right: 20px;
+  border-radius: 10px!important;
+}
+
+.artistCard .adminDeleteButton .delUser{
+  color: black;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+  border: 1px solid black;
+}
+
+.artistCard .adminDeleteButton .delUser:active{
+  background-color: grey;
+  color: black;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  border: 1px solid black;
 }

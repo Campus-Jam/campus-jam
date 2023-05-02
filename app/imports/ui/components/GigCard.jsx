@@ -113,7 +113,7 @@ const GigCard = ({ gigEntry, userRole }) => {
           {isAdmin && (
             <Button
               variant="danger"
-              className="justify-content-center delUser"
+              className="delUser d-flex justify-content-center align-content-center"
               onClick={handleDelete}
             >
               <FaSkullCrossbones />
@@ -188,7 +188,7 @@ const GigCard = ({ gigEntry, userRole }) => {
 
           {/* ABOUT */}
           <ListGroup.Item className="d-flex justify-content-between align-items-center about">
-            <span className="label fw-bold d-flex justify-content-start">About: </span>
+            <span className="label fw-bold d-flex justify-content-start w-100">About: </span>
             <span className="content">{truncateTo(gigEntry.about, MAX_CARD_ABOUT_LEN)}</span>
           </ListGroup.Item>
 

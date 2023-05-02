@@ -66,11 +66,11 @@ const ArtistCard = ({ artistEntry, userRole }) => {
         <Card className="h-100">
 
           {/* ADMIN DELETE BUTTON */}
-          <div className="adminDeleteButton">
+          <div className="adminDeleteButton ">
             {isAdmin && (
               <Button
                 variant="danger"
-                className="justify-content-center delUser"
+                className="delUser d-flex justify-content-center align-content-center"
                 onClick={handleDelete}
               >
                 <FaSkullCrossbones />

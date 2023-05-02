@@ -48,16 +48,6 @@ const CreateJamSession = () => {
     const { title, image, date, skillLevel, genres, instruments, venue, about } = formData;
     setSubmitting(true);
     Meteor.call('gigs.insert', title, image, date, skillLevel, genres, instruments, venue, about, (error, result) => {
-      if (error) {
-        // eslint-disable-next-line no-console
-        console.log(error);
-        handleFormReset();
-      } else {
-        // eslint-disable-next-line no-console
-        console.log(result);
-        handleFormReset();
-      }
-
       const currentUser = Meteor.user();
       const currentUserEmail = currentUser.emails[0].address;
       console.log(currentUserEmail);
@@ -65,6 +55,15 @@ const CreateJamSession = () => {
 
       setTimeout(() => {
         setSubmitting(false);
+        if (error) {
+          // eslint-disable-next-line no-console
+          console.log(error);
+          handleFormReset();
+        } else {
+          // eslint-disable-next-line no-console
+          console.log(result);
+          handleFormReset();
+        }
         window.location.href = '/jamsessions';
       }, SUBMIT_BUTTON_TIMEOUT_MS);
     });

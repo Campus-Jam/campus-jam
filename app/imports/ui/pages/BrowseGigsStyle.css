@@ -25,14 +25,17 @@
 
 .browseGigs .filterButton:active {
   background-color: var(--button-color-pressed)!important;
-  color: black;
+  color: black !important;
+  border: 2px solid black !important;
   box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.8);
 }
 
 .browseGigs .filterButton:hover {
-  background-color: var(--button-color2);
+  border: 2px solid black !important;
+  background-color: var(--button-color2)!important;
   color: black;
   box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.8);
+
 }
 
 .browseGigs .activeFilterStyle{
@@ -43,7 +46,7 @@
   background-color: var(--button-color2);
   height: 65px;
   width: 180px;
-  border: 2px solid black;
+  border: 2px solid black !important;
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.8);
   position: fixed;
   bottom: 20px;
@@ -51,13 +54,17 @@
   z-index: 9999;
 }
 
-.browseGigs .createJamButton:active{
-  color: var(--button-color-pressed);
+.browseGigs .createJamButton:hover{
+  background-color: var(--button-color1);
+  color: black!important;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8);
 }
 
 .browseGigs .createJamButton:active{
-  color: var(--button-color1);
+  background-color: var(--button-color-pressed)!important;
+  color: black;
+  border: 2px solid black;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8);
 }
 
 .browseGigs .gig-grid {

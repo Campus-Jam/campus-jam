@@ -14,7 +14,7 @@
   height: 48px;
   width: 60px;
   border-radius: 10px;
-  border: 2px solid black;
+  border: 2px solid black!important;
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.8);
 }
 

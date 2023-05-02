@@ -31,7 +31,8 @@
   min-width: 100%;
   display: flex;
   justify-content: flex-start;
-  margin-left: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
   flex-wrap: wrap;
 }
 
@@ -66,16 +67,35 @@
 }
 
 .gigCard .joinButtonSpan > .btn:active {
-  background-color: var(--button-color-pressed);
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+  color: black;
+  border: none;
 }
 
 .gigCard .joinButtonSpan > .joinButton {
   background-color: var(--button-color1);
+  border: 2px solid black !important;
+}
+
+.gigCard .joinButtonSpan > .joinButton:active {
+  background-color: var(--button-color1);
+  border: 2px solid black !important;
+  background-image: linear-gradient(to right, var(--button-color1) 0%, var(--button-color2) 100%) !important;
+  font-weight: bold;
+  transition: background-image 0.5s ease-in-out;
 }
 
 .gigCard .joinButtonSpan > .leaveButton {
+  border: 2px solid black !important;
   background-color: var(--button-color2);
+}
+
+.gigCard .joinButtonSpan > .leaveButton:active {
+  border: 2px solid black !important;
+  background-color: var(--button-color2);
+  background-image: linear-gradient(to right, var(--button-color2) 0%, var(--button-color1) 100%) !important;
+  font-weight: bold;
+  transition: background-image 0.5s ease-in-out;
 }
 
 .gigCard .attendees {
@@ -92,6 +112,21 @@
   position: absolute;
   top: 20px;
   right: 20px;
+  border-radius: 10px!important;
 }
+
+.gigCard .adminDeleteButton .delUser{
+  color: black;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+  border: 1px solid black;
+}
+
+.gigCard .adminDeleteButton .delUser:active{
+  background-color: grey;
+  color: black;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  border: 1px solid black;
+}
+
 
 

@@ -69,7 +69,7 @@ const BrowseGigs = () => {
             id={ComponentIDs.createJamSessionBtn}
             as={NavLink}
             to="/createjamsession"
-            className="createJamButton text-center align-content-center"
+            className="text-center align-content-center createJamButton"
           >
             Create a New <br />
             Jam-Session
