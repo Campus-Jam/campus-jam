@@ -85,18 +85,26 @@ const ViewProfile = () => {
               <Col xs={12} md={8} className="info-col">
 
                 {/* SKILL LEVEL */}
-                <div className="d-flex align-items-center justify-content-end">
-                  <div className="cardLabel">Skill Level:</div>
-                  <div className="cardText m-lg-2">{artistToView.skillLevel}</div>
-                </div>
+                <Row>
+                  <Col className="text-start">
+                    <h4 className="cardLabel">Instrument{artistToView.instruments.length > 1 ? 's' : ''} Played</h4>
+                    <p className="cardText">{artistToView.instruments.join(', ')}</p>
+                  </Col>
+                  <Col className="d-flex align-items-center justify-content-start">
+                    <div className="cardLabel">Skill Level:</div>
+                    <br />
+                    <div className="cardText m-lg-2">{artistToView.skillLevel}</div>
+                  </Col>
+                </Row>
 
                 <br />
 
                 {/* INSTRUMENTS AND INFLUENCES */}
                 <Row>
+                  {/* GENRES */}
                   <Col className="text-start">
-                    <h4 className="cardLabel">Instrument{artistToView.instruments.length > 1 ? 's' : ''} Played</h4>
-                    <p className="cardText">{artistToView.instruments.join(', ')}</p>
+                    <h4 className="cardLabel">Genres:</h4>
+                    <p className="cardText">{artistToView.genres}</p>
                   </Col>
 
                   <Col>
@@ -105,7 +113,6 @@ const ViewProfile = () => {
                   </Col>
                 </Row>
 
-                <br />
                 <br />
 
                 {/* BIO */}
