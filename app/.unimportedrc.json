@@ -17,6 +17,7 @@
   ],
   "ignoreUnused": [
     "@babel/runtime",
+    "@react-icons/all-files",
     "classnames",
     "core-js",
     "graphql",
@@ -43,7 +44,6 @@
     "tests/**"
   ],
   "ignoreUnimported": [
-    "imports/ui/pages/scratch.jsx",
     "imports/ui/utilities/StickyState.js",
     "imports/ui/utilities/pageStyles.js"
   ]

@@ -38,8 +38,8 @@ test('Filter button toggles filter form', async t => {
     .notOk();
 });
 
-test('Add Jam Button exists', async t => {
-  const addJamButton = Selector('.addJamButton');
+test('Create Jam Button exists', async t => {
+  const addJamButton = Selector('#createJamSessionBtn');
 
   await t
     .expect(addJamButton.exists)

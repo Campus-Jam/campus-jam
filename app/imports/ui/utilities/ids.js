@@ -12,6 +12,7 @@ export const ComponentIDs = {
   browseArtistsFilterButton: 'browseArtistsFilterButton',
   browseGigsFilterButton: 'browseGigsFilterButton',
   browseGigsFilterForm: 'browseGigsFilterForm',
+  createJamSessionBtn: 'createJamSessionBtn',
   currentUserDropdown: 'currentUserDropdown',
   currentUserDropdownSignOut: 'currentUserDropdownSignOut',
   editProfileForm: 'editProfileForm',
