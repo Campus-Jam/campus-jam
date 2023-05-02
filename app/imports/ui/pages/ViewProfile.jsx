@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Button, Card, Col, Container, Image, Nav, Row } from 'react-bootstrap';
 import './ViewProfileStyle.css';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useParams, useLocation } from 'react-router-dom';
 import { ComponentIDs, PageIDs } from '../utilities/ids';
 import { Artists } from '../../api/artists/Artists';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -47,6 +47,12 @@ const ViewProfile = () => {
     }
   }, [ready, id.id]);
 
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   const defaultImageSrc = '/images/profileImagePlaceholder.png';
   const handleImageError = () => {
     setImageSrc(defaultImageSrc);
@@ -84,16 +90,15 @@ const ViewProfile = () => {
               {/* INFO */}
               <Col xs={12} md={8} className="info-col">
 
-                {/* SKILL LEVEL */}
+                {/* INSTRUMENTS & SKILL LEVEL */}
                 <Row>
                   <Col className="text-start">
                     <h4 className="cardLabel">Instrument{artistToView.instruments.length > 1 ? 's' : ''} Played</h4>
                     <p className="cardText">{artistToView.instruments.join(', ')}</p>
                   </Col>
-                  <Col className="d-flex align-items-center justify-content-start">
-                    <div className="cardLabel">Skill Level:</div>
-                    <br />
-                    <div className="cardText m-lg-2">{artistToView.skillLevel}</div>
+                  <Col className="text-start">
+                    <h4 className="cardLabel">Skill-Level</h4>
+                    <p className="cardText">{artistToView.skillLevel}</p>
                   </Col>
                 </Row>
 
