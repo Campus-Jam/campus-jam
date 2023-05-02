@@ -7,22 +7,30 @@
 }
 
 .browseGigs .button-container {
-  position: fixed;
-  top: 60px;
-  right: 20px;
-  z-index: 9999;
+
 }
 
 .browseGigs .filterButton {
+  position: fixed;
+  top: 120px;
+  right: 20px;
+  z-index: 9999;
   background-color: var(--button-color1);
   height: 48px;
   width: 60px;
   border-radius: 10px;
+  border: 2px solid black;
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.8);
 }
 
 .browseGigs .filterButton:active {
-  background-color: var(--button-color-pressed);
+  background-color: var(--button-color-pressed)!important;
+  color: black;
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.8);
+}
+
+.browseGigs .filterButton:hover {
+  background-color: var(--button-color2);
   color: black;
   box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.8);
 }
@@ -40,6 +48,7 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
+  z-index: 9999;
 }
 
 .browseGigs .createJamButton:active{

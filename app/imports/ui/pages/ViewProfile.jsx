@@ -104,7 +104,7 @@ const ViewProfile = () => {
                   {/* GENRES */}
                   <Col className="text-start">
                     <h4 className="cardLabel">Genres:</h4>
-                    <p className="cardText">{artistToView.genres}</p>
+                    <p className="cardText">{artistToView.genres.join(', ')}</p>
                   </Col>
 
                   <Col>
